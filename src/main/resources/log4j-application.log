@@ -1,0 +1,331 @@
+2018-11-07 21:34:41 INFO  GetMail:29 - Соединение с почтовым сервером установлено
+2018-11-07 21:35:45 INFO  GetMail:29 - Соединение с почтовым сервером установлено
+2018-11-07 21:59:23 INFO  GetMail:12 - Старт программы
+2018-11-07 21:59:25 INFO  GetMail:30 - Соединение с почтовым сервером установлено
+2018-11-07 22:00:56 INFO  GetMail:12 - Старт программы
+2018-11-07 22:00:57 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:00:57 INFO  GetMail:57 - О8 сформированы
+2018-11-07 22:01:13 INFO  GetMail:12 - Старт программы
+2018-11-07 22:01:14 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:01:14 INFO  GetMail:57 - О8 сформированы
+2018-11-07 22:01:38 INFO  GetMail:12 - Старт программы
+2018-11-07 22:01:39 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:01:39 INFO  GetMail:57 - О8 сформированы
+2018-11-07 22:02:04 INFO  GetMail:12 - Старт программы
+2018-11-07 22:02:05 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:02:06 INFO  GetMail:57 - О8 сформированы
+2018-11-07 22:04:22 INFO  GetMail:12 - Старт программы
+2018-11-07 22:04:43 ERROR GetMail:33 - Сбой при попытке соединения с почтовым сервером
+com.sun.mail.util.MailConnectException: Couldn't connect to host, port: imap.ukr.net, 993; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection timed out: connect
+	at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:740)
+	at javax.mail.Service.connect(Service.java:366)
+	at javax.mail.Service.connect(Service.java:246)
+	at Model.GetMail.<clinit>(GetMail.java:27)
+	at Controller.GetData.getList(GetData.java:12)
+	at Dispatcher.main(Dispatcher.java:13)
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:359)
+	at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:238)
+	at com.sun.mail.iap.Protocol.<init>(Protocol.java:134)
+	at com.sun.mail.imap.protocol.IMAPProtocol.<init>(IMAPProtocol.java:131)
+	at com.sun.mail.imap.IMAPStore.newIMAPProtocol(IMAPStore.java:763)
+	at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:698)
+	... 5 more
+2018-11-07 22:04:59 INFO  GetMail:12 - Старт программы
+2018-11-07 22:05:20 ERROR GetMail:33 - Сбой при попытке соединения с почтовым сервером
+com.sun.mail.util.MailConnectException: Couldn't connect to host, port: imap.ukr.net, 993; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection timed out: connect
+	at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:740)
+	at javax.mail.Service.connect(Service.java:366)
+	at javax.mail.Service.connect(Service.java:246)
+	at Model.GetMail.<clinit>(GetMail.java:27)
+	at Controller.GetData.getList(GetData.java:12)
+	at Dispatcher.main(Dispatcher.java:13)
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:359)
+	at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:238)
+	at com.sun.mail.iap.Protocol.<init>(Protocol.java:134)
+	at com.sun.mail.imap.protocol.IMAPProtocol.<init>(IMAPProtocol.java:131)
+	at com.sun.mail.imap.IMAPStore.newIMAPProtocol(IMAPStore.java:763)
+	at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:698)
+	... 5 more
+2018-11-07 22:05:51 INFO  GetMail:12 - Старт программы
+2018-11-07 22:06:12 ERROR GetMail:33 - Сбой при попытке соединения с почтовым сервером
+com.sun.mail.util.MailConnectException: Couldn't connect to host, port: imap.ukr.net, 993; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection timed out: connect
+	at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:740)
+	at javax.mail.Service.connect(Service.java:366)
+	at javax.mail.Service.connect(Service.java:246)
+	at Model.GetMail.<clinit>(GetMail.java:27)
+	at Controller.GetData.getList(GetData.java:12)
+	at Dispatcher.main(Dispatcher.java:13)
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:359)
+	at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:238)
+	at com.sun.mail.iap.Protocol.<init>(Protocol.java:134)
+	at com.sun.mail.imap.protocol.IMAPProtocol.<init>(IMAPProtocol.java:131)
+	at com.sun.mail.imap.IMAPStore.newIMAPProtocol(IMAPStore.java:763)
+	at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:698)
+	... 5 more
+2018-11-07 22:08:35 INFO  GetMail:12 - Старт программы
+2018-11-07 22:08:37 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:08:38 INFO  GetMail:57 - О8 сформированы
+2018-11-07 22:09:52 INFO  GetMail:12 - Старт программы
+2018-11-07 22:09:53 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:09:54 INFO  GetMail:57 - О8 сформированы
+2018-11-07 22:12:22 INFO  GetMail:12 - Старт программы
+2018-11-07 22:12:23 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:12:23 INFO  GetMail:57 - О8 сформированы
+2018-11-07 22:16:29 INFO  GetMail:12 - Старт программы
+2018-11-07 22:16:30 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:16:31 INFO  GetMail:62 - О8 сформированы
+2018-11-07 22:17:24 INFO  GetMail:12 - Старт программы
+2018-11-07 22:17:25 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:17:25 INFO  GetMail:62 - О8 сформированы
+2018-11-07 22:19:59 INFO  GetMail:12 - Старт программы
+2018-11-07 22:20:00 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:20:00 INFO  GetMail:33 - Получено 0письма
+2018-11-07 22:20:00 INFO  GetMail:64 - О8 сформированы
+2018-11-07 22:20:19 INFO  GetMail:12 - Старт программы
+2018-11-07 22:20:20 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:20:20 INFO  GetMail:33 - Получено 5 письма
+2018-11-07 22:20:22 INFO  GetMail:64 - О8 сформированы
+2018-11-07 22:20:41 INFO  GetMail:12 - Старт программы
+2018-11-07 22:20:42 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:20:42 INFO  GetMail:33 - Получено 0 писем
+2018-11-07 22:20:42 INFO  GetMail:64 - О8 сформированы
+2018-11-07 22:21:10 INFO  GetMail:12 - Старт программы
+2018-11-07 22:21:11 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:21:11 INFO  GetMail:33 - Получено 0 писем
+2018-11-07 22:21:11 INFO  GetMail:64 - О8 сформированы
+2018-11-07 22:21:11 INFO  GetMail:14 - Конец работы программы
+2018-11-07 22:21:48 INFO  GetMail:12 - Старт программы
+2018-11-07 22:21:49 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:21:49 INFO  GetMail:33 - Получено 5 писем
+2018-11-07 22:21:51 INFO  GetMail:64 - О8 сформированы
+2018-11-07 22:21:51 INFO  GetMail:14 - Конец работы программы
+2018-11-07 22:23:53 INFO  GetMail:12 - Старт программы
+2018-11-07 22:23:55 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:23:55 INFO  GetMail:33 - Получено 3 писем
+2018-11-07 22:23:56 INFO  GetMail:64 - О8 сформированы
+2018-11-07 22:23:56 INFO  GetMail:14 - Конец работы программы
+2018-11-07 22:24:38 INFO  GetMail:12 - Старт программы
+2018-11-07 22:24:39 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:24:39 INFO  GetMail:33 - Получено 4 писем
+2018-11-07 22:24:40 INFO  GetMail:64 - О8 сформированы
+2018-11-07 22:24:40 INFO  GetMail:14 - Конец работы программы
+2018-11-07 22:28:07 INFO  GetMail:12 - Старт программы
+2018-11-07 22:28:08 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:28:08 INFO  GetMail:33 - Получено 5 писем
+2018-11-07 22:31:33 INFO  GetMail:12 - Старт программы
+2018-11-07 22:31:34 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:31:34 INFO  GetMail:33 - Получено 4 писем
+2018-11-07 22:31:36 INFO  GetMail:66 - О8 сформированы
+2018-11-07 22:31:36 INFO  GetMail:14 - Конец работы программы
+2018-11-07 22:32:03 INFO  GetMail:12 - Старт программы
+2018-11-07 22:32:04 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:32:04 INFO  GetMail:33 - Получено 3 писем
+2018-11-07 22:32:05 INFO  GetMail:66 - О8 сформированы
+2018-11-07 22:32:05 INFO  GetMail:14 - Конец работы программы
+2018-11-07 22:33:02 INFO  GetMail:12 - Старт программы
+2018-11-07 22:33:03 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-07 22:33:03 INFO  GetMail:33 - Получено 4 писем
+2018-11-07 22:33:04 INFO  GetMail:66 - О8 сформированы
+2018-11-07 22:33:04 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:13:57 INFO  GetMail:12 - Старт программы
+2018-11-08 23:14:00 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:14:00 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:14:00 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:14:00 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:18:39 INFO  GetMail:12 - Старт программы
+2018-11-08 23:18:41 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:18:41 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:18:41 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:18:41 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:20:42 INFO  GetMail:12 - Старт программы
+2018-11-08 23:20:44 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:20:44 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:20:44 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:20:44 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:22:10 INFO  GetMail:12 - Старт программы
+2018-11-08 23:22:11 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:22:11 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:22:11 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:22:11 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:23:29 INFO  GetMail:12 - Старт программы
+2018-11-08 23:23:30 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:23:30 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:23:31 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:23:31 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:26:08 INFO  GetMail:12 - Старт программы
+2018-11-08 23:26:09 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:26:09 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:26:10 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:26:10 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:27:00 INFO  GetMail:12 - Старт программы
+2018-11-08 23:27:01 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:27:01 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:27:01 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:27:01 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:29:00 INFO  GetMail:12 - Старт программы
+2018-11-08 23:29:02 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:29:02 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:29:02 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:29:02 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:29:31 INFO  GetMail:12 - Старт программы
+2018-11-08 23:29:32 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:29:32 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:29:32 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:29:32 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:31:11 INFO  GetMail:12 - Старт программы
+2018-11-08 23:31:13 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:31:13 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:31:13 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:31:13 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:32:56 INFO  GetMail:12 - Старт программы
+2018-11-08 23:32:58 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:32:58 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:32:58 INFO  GetMail:66 - О8 сформированы
+2018-11-08 23:32:58 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:34:41 INFO  GetMail:12 - Старт программы
+2018-11-08 23:34:43 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:34:43 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:34:43 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:34:43 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:41:01 INFO  GetMail:12 - Старт программы
+2018-11-08 23:41:03 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:41:03 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:41:03 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:41:03 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:41:41 INFO  GetMail:12 - Старт программы
+2018-11-08 23:41:42 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:41:42 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:41:43 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:41:43 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:46:59 INFO  GetMail:12 - Старт программы
+2018-11-08 23:47:00 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:47:00 INFO  GetMail:33 - Получено 0 писем
+2018-11-08 23:47:00 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:47:00 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:47:10 INFO  GetMail:12 - Старт программы
+2018-11-08 23:47:11 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:47:11 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:47:11 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:47:11 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:47:48 INFO  GetMail:12 - Старт программы
+2018-11-08 23:47:49 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:47:49 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:47:50 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:47:50 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:48:14 INFO  GetMail:12 - Старт программы
+2018-11-08 23:48:15 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:48:15 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:48:16 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:48:16 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:48:58 INFO  GetMail:12 - Старт программы
+2018-11-08 23:48:59 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:48:59 INFO  GetMail:33 - Получено 1 писем
+2018-11-08 23:49:00 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:49:00 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:50:30 INFO  GetMail:12 - Старт программы
+2018-11-08 23:50:31 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:50:31 INFO  GetMail:33 - Получено 6 писем
+2018-11-08 23:50:33 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:50:33 INFO  GetMail:14 - Конец работы программы
+2018-11-08 23:57:09 INFO  GetMail:12 - Старт программы
+2018-11-08 23:57:11 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-08 23:57:11 INFO  GetMail:33 - Получено 6 писем
+2018-11-08 23:57:13 INFO  GetMail:67 - О8 сформированы
+2018-11-08 23:57:13 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:26:27 INFO  GetMail:12 - Старт программы
+2018-11-10 20:26:28 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:26:28 INFO  GetMail:33 - Получено 3 писем
+2018-11-10 20:26:29 INFO  GetMail:67 - О8 сформированы
+2018-11-10 20:26:29 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:29:29 INFO  GetMail:12 - Старт программы
+2018-11-10 20:29:30 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:29:30 INFO  GetMail:33 - Получено 8 писем
+2018-11-10 20:29:33 INFO  GetMail:67 - О8 сформированы
+2018-11-10 20:29:33 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:31:23 INFO  GetMail:12 - Старт программы
+2018-11-10 20:31:24 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:31:24 INFO  GetMail:33 - Получено 8 писем
+2018-11-10 20:31:27 INFO  GetMail:67 - О8 сформированы
+2018-11-10 20:31:27 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:32:09 INFO  GetMail:12 - Старт программы
+2018-11-10 20:32:10 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:32:10 INFO  GetMail:33 - Получено 1 писем
+2018-11-10 20:32:10 INFO  GetMail:67 - О8 сформированы
+2018-11-10 20:32:10 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:47:06 INFO  GetMail:12 - Старт программы
+2018-11-10 20:47:08 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:47:08 INFO  GetMail:33 - Получено 1 писем
+2018-11-10 20:47:08 INFO  GetMail:67 - О8 сформированы
+2018-11-10 20:47:08 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:47:23 INFO  GetMail:12 - Старт программы
+2018-11-10 20:47:25 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:47:25 INFO  GetMail:33 - Получено 8 писем
+2018-11-10 20:47:27 INFO  GetMail:67 - О8 сформированы
+2018-11-10 20:47:27 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:57:50 INFO  GetMail:12 - Старт программы
+2018-11-10 20:57:51 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:57:51 INFO  GetMail:33 - Получено 8 писем
+2018-11-10 20:57:53 INFO  GetMail:70 - О8 сформированы
+2018-11-10 20:57:53 INFO  GetMail:14 - Конец работы программы
+2018-11-10 20:59:07 INFO  GetMail:12 - Старт программы
+2018-11-10 20:59:08 INFO  GetMail:31 - Соединение с почтовым сервером установлено
+2018-11-10 20:59:08 INFO  GetMail:33 - Получено 8 писем
+2018-11-10 20:59:11 INFO  GetMail:70 - О8 сформированы
+2018-11-10 20:59:11 INFO  GetMail:14 - Конец работы программы
+2018-11-10 22:59:30 INFO  GetMail:11 - Старт программы
+2018-11-10 22:59:31 INFO  GetMail:40 - Соединение с почтовым сервером установлено
+2018-11-10 22:59:31 INFO  GetMail:40 - Получено 0 писем
+2018-11-10 22:59:31 INFO  GetMail:24 - Конец работы программы
+2018-11-10 22:59:48 INFO  GetMail:11 - Старт программы
+2018-11-10 22:59:50 INFO  GetMail:40 - Соединение с почтовым сервером установлено
+2018-11-10 22:59:50 INFO  GetMail:40 - Получено 8 писем
+2018-11-10 22:59:50 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:50 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:51 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:51 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:52 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:52 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:52 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:53 INFO  GetMail:64 - Строки прочитаны
+2018-11-10 22:59:53 INFO  GetMail:24 - Конец работы программы
+2018-11-10 23:00:41 INFO  GetMail:11 - Старт программы
+2018-11-10 23:00:42 INFO  GetMail:40 - Соединение с почтовым сервером установлено
+2018-11-10 23:00:42 INFO  GetMail:40 - Получено 5 писем
+2018-11-10 23:00:44 INFO  GetMail:69 - Строки прочитаны
+2018-11-10 23:00:44 INFO  GetMail:24 - Конец работы программы
