@@ -13,14 +13,13 @@ import javax.mail.search.FlagTerm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Controller {
-    public List<String> lines = new ArrayList<>();
-    private static Message[] messages;
     private final static Logger log = Logger.getLogger(Controller.class.getName());
+    public ArrayList<String> lines = new ArrayList<>();
+    private ArrayList<O8> o8s = new ArrayList<>();
+    private static Message[] messages;
     private Connect connect;
-    private O8[] o8s;
 
     public Controller() {
         connect = new Connect();
@@ -69,6 +68,21 @@ public class Controller {
         }
         log.info("Строки прочитаны");
     }
+
+    public void createO8(){
+        for (String s : lines) {
+            String [] element = s.split("_");
+            if (o8s.size()==0) o8s.add(new O8());
+        }
+
+
+    }
+
+
+
+
+
+
 
     static private String getTextFromMessage(Message message) throws MessagingException, IOException {
         String result = "";
