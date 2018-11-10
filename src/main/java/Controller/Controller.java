@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Connect;
-import Model.GetMail;
+import Model.O8;
 import org.apache.log4j.Logger;
 
 import javax.mail.BodyPart;
@@ -18,8 +18,9 @@ import java.util.List;
 public class Controller {
     public List<String> lines = new ArrayList<>();
     private static Message[] messages;
-    private final static Logger log = Logger.getLogger(GetMail.class.getName());
+    private final static Logger log = Logger.getLogger(Controller.class.getName());
     private Connect connect;
+    private O8[] o8s;
 
     public Controller() {
         connect = new Connect();

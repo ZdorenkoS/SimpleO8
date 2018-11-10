@@ -6,7 +6,7 @@ import javax.mail.*;
 import java.util.Properties;
 
 public class Connect {
-    private final static Logger log = Logger.getLogger(GetMail.class.getName());
+    private final static Logger log = Logger.getLogger(Connect.class.getName());
     private Properties props;
     private Session session;
     private Store store;
