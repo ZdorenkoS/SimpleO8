@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Connect;
+import Model.Goods;
 import Model.O8;
 import org.apache.log4j.Logger;
 
@@ -13,6 +14,7 @@ import javax.mail.search.FlagTerm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Controller {
     private final static Logger log = Logger.getLogger(Controller.class.getName());
@@ -33,11 +35,15 @@ public class Controller {
         connect.disconnect();
     }
 
+    public ArrayList<O8> getO8s() {
+        return o8s;
+    }
+
     public void getMesssages() {
         try {
             messages = connect.getFolder().search(new FlagTerm(new Flags(Flags.Flag.SEEN), false));
             if (messages == null) log.info("Новых писем нет");
-            else log.info("Получено " + messages.length + " писем");
+            else log.info("Получено писем: " + messages.length);
         } catch (MessagingException ex) {
             log.info("Сбой при попытке доступа к папкам", ex);
         }
@@ -59,7 +65,7 @@ public class Controller {
                 lines.addAll(Arrays.asList(s.split("#")));
 
                 for (int i = 0; i < lines.size(); i++) {
-                    if (lines.get(i).startsWith("_")) lines.remove(i);
+                    if (lines.get(i).startsWith("_") || lines.get(i).equals("")) lines.remove(i);
                 }
 
             }
@@ -70,17 +76,45 @@ public class Controller {
     }
 
     public void createO8(){
-        for (String s : lines) {
-            String [] element = s.split("_");
-            if (o8s.size()==0) o8s.add(new O8());
+        ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
+        Collections.sort(lines);                                                        // сортируем линии, получим нужные строки подряд
+        for (String s :lines) {
+            parts.add(s.split("_"));                                              // разделяем линию на составляющие
         }
+        int x = 0;                                                                      // счетчик количества О8
+        for (int i = 0; i <parts.size() ; i++) {
+             String [] str = parts.get(i);
+             // создаем первый О8
+             if (i==0) {o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
+                       try {
+                           if (str.length > 10) o8s.get(0).setParcel(str[11]);              // может отсутствовать
+                           if (str.length > 10) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
+                       } catch (IndexOutOfBoundsException ex ){}
+                        o8s.get(0).getGoods().add(new Goods(str[7],str[8], str[9]));     // добавляем товары из первой линии
 
-
+                 log.info("Создан О8 № "+x);
+                      }
+             // для всех строк кроме 1
+             else {
+                 // проверяем линия от нового О8 или продолжает уже созданный
+                 if (parts.get(i)[0].equals(parts.get(i-1)[0]) && parts.get(i)[2].equals(parts.get(i - 1)[2]) && parts.get(i)[3].equals(parts.get(i - 1)[3])){
+                  o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));      // добавляем товары
+                 }
+                 // создаем новый О8
+                 else {
+                     o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
+                     x++;
+                     try{
+                     if (str.length > 10) o8s.get(x).setParcel(str[11]);
+                     if (str.length > 10) o8s.get(x).setDeferment(str[12]);
+                     } catch(IndexOutOfBoundsException ex ){
+                 }
+                     o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
+                     log.info("Создан О8 № " + x);
+                 }
+            }
+        }
     }
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 import Controller.Controller;
-
+import Model.O8;
 import org.apache.log4j.Logger;
 
 public class Dispatcher {
@@ -13,12 +13,11 @@ public class Dispatcher {
         controller.getConnect();
         controller.getMesssages();
         controller.getLines();
+        controller.createO8();
 
-        for (String s:controller.lines) {
-            System.out.println(s);
+        for (O8 o:controller.getO8s()) {
+            System.out.println(o.toString());
         }
-
-
 
         controller.disconnect();
         log.info("Конец работы программы");
