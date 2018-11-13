@@ -24,6 +24,9 @@ public class O8 {
         this.invoice = invoice;
         this.supplier = supplier;
         goods = new ArrayList<>();
+        parcel = "";
+        deferment = "";
+
     }
 
     @Override

@@ -18,7 +18,7 @@ import java.util.Collections;
 
 public class Controller {
     private final static Logger log = Logger.getLogger(Controller.class.getName());
-    public ArrayList<String> lines = new ArrayList<>();
+    private ArrayList<String> lines = new ArrayList<>();
     private ArrayList<O8> o8s = new ArrayList<>();
     private static Message[] messages;
     private Connect connect;
@@ -121,24 +121,35 @@ public class Controller {
         int i =1;
         for (O8 o8:o8s) {
             for (int j = 0; j <o8.getGoods().size() ; j++) {
-                sb.append(i + "");
-                sb.append(o8.getStock()+" ");
-                if (o8.getCurrency().equalsIgnoreCase("БЕЗНАЛ")) sb.append("UAH ");
-                if (o8.getCurrency().equalsIgnoreCase("НАЛ")) sb.append("UA2 ");
-                if (o8.getCurrency().equalsIgnoreCase("USD")) sb.append("USD ");
-                sb.append(o8.getSupplier()+" ");
-                sb.append(o8.getGoods().get(j).getSku()+" ");
-                sb.append(o8.getGoods().get(j).getQuantity()+" ");
-                sb.append(o8.getGoods().get(j).getPrice()+" ");
-                sb.append("  ");
-                if (o8.getDelivery().equalsIgnoreCase("КУРЬЕР")) sb.append("01   ");
-                else if (Integer.parseInt(o8.getParcel())>0) sb.append("02 ").append(o8.getParcel()+" ");
-                else sb.append("    ");
-                sb.append(o8.getInvoice()+" ");
-                sb.append(o8.getDeferment()+" ");
-                sb.append("/n");
+                sb.append(i + "\t");
+                sb.append(o8.getStock()+"\t");
+                if (o8.getCurrency().equalsIgnoreCase("БЕЗНАЛ")) sb.append("UAH\t");
+                if (o8.getCurrency().equalsIgnoreCase("НАЛ")) sb.append("UA2\t");
+                if (o8.getCurrency().equalsIgnoreCase("USD")) sb.append("USD\t");
+                sb.append(o8.getSupplier()+"\t");
+                sb.append(o8.getGoods().get(j).getSku()+"\t");
+                sb.append(o8.getGoods().get(j).getQuantity()+"\t");
+                sb.append(o8.getGoods().get(j).getPrice()+"\t");
+                sb.append(" \t");
+                try {
+                    if (o8.getDelivery().equalsIgnoreCase("КУРЬЕР")) sb.append("01\t");
+                    else if (Long.parseLong(o8.getParcel()) > 0) sb.append("02"+"\t").append(o8.getParcel() + "\t");
+                    else sb.append(" \t");
+                } catch (NumberFormatException ex) {
+                    sb.append(" \t \t");
+                }
+
+                sb.append(o8.getInvoice()+"\t");
+               try {
+                  if (Integer.parseInt(o8.getDeferment()) >0 )sb.append(o8.getDeferment() + "\t");
+               } catch (NumberFormatException ex){
+                   sb.append(" \t");
+               }
+                sb.append("\n");
             }
+            i++;
         }
+        log.info("Данные для ерп сформированы");
         return sb.toString();
     }
 
