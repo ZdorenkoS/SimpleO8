@@ -1,4 +1,4 @@
-import Controller.Controller;
+import Controller.BrowserController;
 import org.apache.log4j.Logger;
 
 public class Dispatcher {
@@ -8,18 +8,18 @@ public class Dispatcher {
 
     public static void main(String[] args) {
         log.info("Старт программы");
-        Controller controller = new Controller();
+ /*       Controller controller = new Controller();
         controller.getConnect();
         controller.getMesssages();
         controller.getLines();
         controller.createO8();
         System.out.println(controller.getString());
+*/
+        BrowserController browserController = new BrowserController(BrowserController.browsr.CHROME);
+        browserController.start();
 
-/*        for (O8 o:controller.getO8s()) {
-            System.out.println(o.toString());
-        }*/
-
-        controller.disconnect();
+//      controller.disconnect();
+//      browserController.disconnect();
         log.info("Конец работы программы");
     }
 }

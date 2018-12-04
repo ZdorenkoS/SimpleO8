@@ -48,7 +48,7 @@ public class Controller {
             log.info("Сбой при попытке доступа к папкам", ex);
         }
     }
-
+//TODO удалить пробелы из номера ттн
     public void getLines() {
         String s = "";
         try {
@@ -74,8 +74,8 @@ public class Controller {
         }
         log.info("Строки прочитаны");
     }
-
-    public void createO8(){
+// TODO сделать проверку на одинаковые коды товара и цену
+    public void parseO8(){
         ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
         Collections.sort(lines);                                                        // сортируем линии, получим нужные строки подряд
         for (String s :lines) {

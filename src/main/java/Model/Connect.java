@@ -31,7 +31,7 @@ public class Connect {
     public Folder getFolder() {
         return folder;
     }
-
+// TODO скрыть логин и пароль
     public void connect() {
         try {
             store.connect("imap.ukr.net", "d.a.o.s@ukr.net", "Nikita2012");

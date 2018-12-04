@@ -3,9 +3,9 @@ package Model;
 import java.util.ArrayList;
 
 public class O8 {
-    private String stock;                           // Склад
-    private String delivery;                     // Тип доставки
-    private String currency;                     // Валюта
+    private String stock;                          // Склад
+    private String delivery;                       // Тип доставки
+    private String currency;                       // Валюта
     private String invoice;                        // Номер счета
     private String supplier;                       // Код поставщика
     private String parcel;                         // Номер ТТН (для посылок)
