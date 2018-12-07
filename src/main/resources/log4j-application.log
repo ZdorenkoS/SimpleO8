@@ -1000,3 +1000,101 @@ Caused by: java.net.ConnectException: Connection timed out: connect
 2018-12-04 23:09:03 INFO  BrowserController:30 - Браузер готов к работе
 2018-12-04 23:09:23 INFO  BrowserController:60 - ЕРП готов к работе
 2018-12-04 23:09:23 INFO  Dispatcher:23 - Конец работы программы
+2018-12-06 21:51:06 INFO  Dispatcher:11 - Старт программы
+2018-12-06 21:51:08 INFO  Connect:40 - Соединение с почтовым сервером установлено
+2018-12-06 21:51:08 INFO  Controller:46 - Получено писем: 0
+2018-12-06 21:51:08 INFO  Controller:75 - Строки прочитаны
+2018-12-06 21:51:13 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 21:51:33 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 21:51:33 INFO  Dispatcher:26 - Конец работы программы
+2018-12-06 21:52:39 INFO  Dispatcher:10 - Старт программы
+2018-12-06 21:52:44 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 21:53:04 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 21:55:05 INFO  Dispatcher:10 - Старт программы
+2018-12-06 21:55:09 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 21:55:30 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 22:04:13 INFO  Dispatcher:10 - Старт программы
+2018-12-06 22:04:17 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 22:04:37 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 22:11:00 INFO  Dispatcher:10 - Старт программы
+2018-12-06 22:11:05 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 22:11:25 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 22:12:57 INFO  Dispatcher:10 - Старт программы
+2018-12-06 22:13:02 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 22:13:21 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 22:44:45 INFO  Dispatcher:10 - Старт программы
+2018-12-06 22:44:50 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 22:45:10 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 22:45:25 INFO  Dispatcher:27 - Конец работы программы
+2018-12-06 22:47:32 INFO  Dispatcher:10 - Старт программы
+2018-12-06 22:47:36 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 22:47:56 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 22:48:10 INFO  Dispatcher:27 - Конец работы программы
+2018-12-06 22:49:08 INFO  Dispatcher:10 - Старт программы
+2018-12-06 22:49:12 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 22:49:32 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 22:49:36 INFO  Dispatcher:27 - Конец работы программы
+2018-12-06 22:55:12 INFO  Dispatcher:10 - Старт программы
+2018-12-06 22:55:16 INFO  BrowserController:28 - Браузер готов к работе
+2018-12-06 22:55:37 INFO  BrowserController:53 - ЕРП готов к работе
+2018-12-06 23:07:36 INFO  Dispatcher:10 - Старт программы
+2018-12-06 23:07:40 INFO  BrowserController:29 - Браузер готов к работе
+2018-12-06 23:08:01 INFO  BrowserController:54 - ЕРП готов к работе
+2018-12-06 23:09:25 INFO  Dispatcher:10 - Старт программы
+2018-12-06 23:09:30 INFO  BrowserController:29 - Браузер готов к работе
+2018-12-06 23:09:50 INFO  BrowserController:54 - ЕРП готов к работе
+2018-12-06 23:10:49 INFO  Dispatcher:10 - Старт программы
+2018-12-06 23:10:53 INFO  BrowserController:29 - Браузер готов к работе
+2018-12-06 23:11:13 INFO  BrowserController:54 - ЕРП готов к работе
+2018-12-06 23:12:16 INFO  Dispatcher:10 - Старт программы
+2018-12-06 23:12:20 INFO  BrowserController:29 - Браузер готов к работе
+2018-12-06 23:12:40 INFO  BrowserController:54 - ЕРП готов к работе
+2018-12-06 23:13:38 INFO  Dispatcher:10 - Старт программы
+2018-12-06 23:13:43 INFO  BrowserController:29 - Браузер готов к работе
+2018-12-06 23:14:02 INFO  BrowserController:54 - ЕРП готов к работе
+2018-12-06 23:14:21 INFO  Dispatcher:27 - Конец работы программы
+2018-12-06 23:21:10 INFO  Dispatcher:10 - Старт программы
+2018-12-06 23:21:14 INFO  BrowserController:29 - Браузер готов к работе
+2018-12-06 23:21:34 INFO  BrowserController:54 - ЕРП готов к работе
+2018-12-06 23:21:55 INFO  Dispatcher:26 - Конец работы программы
+2018-12-06 23:23:47 INFO  Dispatcher:10 - Старт программы
+2018-12-06 23:23:52 INFO  BrowserController:29 - Браузер готов к работе
+2018-12-06 23:24:11 INFO  BrowserController:54 - ЕРП готов к работе
+2018-12-06 23:24:38 INFO  Dispatcher:26 - Конец работы программы
+2018-12-07 16:38:36 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:38:41 INFO  BrowserController:30 - Браузер готов к работе
+2018-12-07 16:42:14 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:42:19 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 16:42:37 INFO  BrowserController:59 - ЕРП готов к работе
+2018-12-07 16:42:53 INFO  Dispatcher:26 - Конец работы программы
+2018-12-07 16:44:59 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:45:03 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 16:45:21 INFO  BrowserController:57 - ЕРП готов к работе
+2018-12-07 16:45:37 INFO  Dispatcher:26 - Конец работы программы
+2018-12-07 16:53:42 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:53:47 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 16:54:05 INFO  BrowserController:57 - ЕРП готов к работе
+2018-12-07 16:55:17 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:55:21 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 16:55:39 INFO  BrowserController:57 - ЕРП готов к работе
+2018-12-07 16:57:31 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:57:36 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 16:58:50 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:58:55 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 16:59:13 INFO  BrowserController:59 - ЕРП готов к работе
+2018-12-07 16:59:49 INFO  Dispatcher:10 - Старт программы
+2018-12-07 16:59:53 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 17:00:12 INFO  BrowserController:60 - ЕРП готов к работе
+2018-12-07 17:01:19 INFO  Dispatcher:10 - Старт программы
+2018-12-07 17:01:23 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 17:04:16 INFO  Dispatcher:10 - Старт программы
+2018-12-07 17:04:20 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 17:04:40 INFO  Dispatcher:10 - Старт программы
+2018-12-07 17:04:45 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 17:08:02 INFO  Dispatcher:10 - Старт программы
+2018-12-07 17:08:06 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 17:09:49 INFO  Dispatcher:10 - Старт программы
+2018-12-07 17:09:53 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 17:11:13 INFO  Dispatcher:10 - Старт программы
+2018-12-07 17:11:18 INFO  BrowserController:32 - Браузер готов к работе
+2018-12-07 17:11:37 INFO  BrowserController:66 - ЕРП готов к работе

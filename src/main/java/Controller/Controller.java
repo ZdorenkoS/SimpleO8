@@ -75,7 +75,7 @@ public class Controller {
         log.info("Строки прочитаны");
     }
 // TODO сделать проверку на одинаковые коды товара и цену
-    public void parseO8(){
+    public void makeO8(){
         ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
         Collections.sort(lines);                                                        // сортируем линии, получим нужные строки подряд
         for (String s :lines) {
