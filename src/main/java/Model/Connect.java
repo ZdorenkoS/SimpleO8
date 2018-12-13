@@ -19,7 +19,7 @@ public class Connect {
         props.put("mail.store.protocol", "imaps");
         props.put("mail.imap.ssl.enable", "true");
         props.put("mail.imap.port", "IMAP_port");
-        session = Session.getDefaultInstance(props);
+        session = Session.getInstance(props);
         try {
             store = session.getStore();
         } catch (NoSuchProviderException ex) {
@@ -37,6 +37,7 @@ public class Connect {
             store.connect("imap.ukr.net", "d.a.o.s@ukr.net", "Nikita2012");
             folder = store.getFolder("INBOX");
             folder.open(Folder.READ_WRITE);
+
             log.info("Соединение с почтовым сервером установлено");
         } catch (MessagingException ex) {
             log.error("Сбой при попытке доступа к папкам", ex);

@@ -1,28 +1,31 @@
-import Controller.BrowserController;
+import Controller.Controller;
 import org.apache.log4j.Logger;
+
+import java.util.concurrent.TimeUnit;
 
 public class Dispatcher {
     private final static Logger log;
-    static {
-        log = Logger.getLogger(Dispatcher.class.getName());}
+    static {log = Logger.getLogger(Dispatcher.class.getName());}
 
     public static void main(String[] args) {
         log.info("Старт программы");
-/*      Controller controller = new Controller();
+        Controller controller = new Controller();
         controller.getConnect();
-        controller.getMesssages();
-        controller.getLines();
-        controller.makeO8();*/
+    //    BrowserController browserController = new BrowserController(BrowserController.browsr.CHROME);
+    //    browserController.start();
 
-        String s = "1\tP3001\tUA2\t\196079\t235647\t1\t2882,600\t\t\t20400111394695\n" +
-                "1\tP3001\tUA2\t\196079\t235647\t1\t2880,600\t\t\t20400111394695\n";
-
-        BrowserController browserController = new BrowserController(BrowserController.browsr.CHROME);
-        browserController.start();
-        browserController.createO8(s);
-
-//      controller.disconnect();
-//      browserController.disconnect();
+       Boolean b = true;
+        while (b){
+            controller.getMesssages();
+            if (controller.getMess().size()>0){
+                controller.getLines();
+                controller.makeO8();
+    //            browserController.createO8(controller.getString());
+            }
+            try {TimeUnit.SECONDS.sleep(30);} catch (InterruptedException e) {e.printStackTrace();}
+        }
+        controller.disconnect();
+    //    browserController.disconnect();
         log.info("Конец работы программы");
     }
 }

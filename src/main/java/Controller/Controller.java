@@ -5,10 +5,7 @@ import Model.Goods;
 import Model.O8;
 import org.apache.log4j.Logger;
 
-import javax.mail.BodyPart;
-import javax.mail.Flags;
-import javax.mail.Message;
-import javax.mail.MessagingException;
+import javax.mail.*;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.search.FlagTerm;
 import java.io.IOException;
@@ -16,11 +13,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Controller {
+public class Controller extends Thread{
     private final static Logger log = Logger.getLogger(Controller.class.getName());
     private ArrayList<String> lines = new ArrayList<>();
     private ArrayList<O8> o8s = new ArrayList<>();
-    private static Message[] messages;
+    private ArrayList<Message> messages;
     private Connect connect;
 
     public Controller() {
@@ -35,15 +32,21 @@ public class Controller {
         connect.disconnect();
     }
 
-    public ArrayList<O8> getO8s() {
-        return o8s;
-    }
+    public ArrayList<Message> getMess() {return messages;}
+
 
     public void getMesssages() {
+        Folder folder = connect.getFolder();
+
         try {
-            messages = connect.getFolder().search(new FlagTerm(new Flags(Flags.Flag.SEEN), false));
+            System.out.println(folder.getUnreadMessageCount() + " непрочитаннные сообщения");
+            messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
+            for (Message m:messages
+                 ) {
+                System.out.println(m.getFrom());
+            }
             if (messages == null) log.info("Новых писем нет");
-            else log.info("Получено писем: " + messages.length);
+            else log.info("Получено писем: " + messages.size());
         } catch (MessagingException ex) {
             log.info("Сбой при попытке доступа к папкам", ex);
         }
@@ -67,7 +70,6 @@ public class Controller {
                 for (int i = 0; i < lines.size(); i++) {
                     if (lines.get(i).startsWith("_") || lines.get(i).equals("")) lines.remove(i);
                 }
-
             }
         } catch (MessagingException | IOException ex) {
             log.info("Ошибка при парсинге строк", ex);
@@ -92,7 +94,7 @@ public class Controller {
                        } catch (IndexOutOfBoundsException ex ){}
                         o8s.get(0).getGoods().add(new Goods(str[7],str[8], str[9]));     // добавляем товары из первой линии
 
-                 log.info("Создан О8 № "+x);
+                 log.info("Создан О8 № "+(x+1));
                       }
              // для всех строк кроме 1
              else {
@@ -122,7 +124,8 @@ public class Controller {
         for (O8 o8:o8s) {
             for (int j = 0; j <o8.getGoods().size() ; j++) {
                 sb.append(i + "\t");
-                sb.append(o8.getStock()+"\t");
+                if (o8.getStock().equals("3001")) sb.append("P3001\t");
+                if (o8.getStock().equals("5005")) sb.append("M5005\t");
                 if (o8.getCurrency().equalsIgnoreCase("БЕЗНАЛ")) sb.append("UAH\t");
                 if (o8.getCurrency().equalsIgnoreCase("НАЛ")) sb.append("UA2\t");
                 if (o8.getCurrency().equalsIgnoreCase("USD")) sb.append("USD\t");
@@ -149,6 +152,8 @@ public class Controller {
             }
             i++;
         }
+        lines.clear();
+        o8s.clear();
         log.info("Данные для ерп сформированы");
         return sb.toString();
     }

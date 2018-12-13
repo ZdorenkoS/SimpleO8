@@ -2,16 +2,19 @@ package Controller;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
 import java.util.concurrent.TimeUnit;
 
-public class BrowserController {
+public class BrowserController extends Thread{
     public enum browsr{CHROME,FIREFOX}
     private static WebDriver driver;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
@@ -28,7 +31,8 @@ public class BrowserController {
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        driver.manage().window().setPosition(new Point(0,0));
+    //  driver.manage().window().maximize();
         log.info("Браузер готов к работе");
     }
 
@@ -49,7 +53,7 @@ public class BrowserController {
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_62']/tbody/tr/td[2]/span/nobr")).click();
         driver.switchTo().parentFrame();
-        WebElement wait = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("listOCL_0")));
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.findElement(By.id("listOCL_0")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.switchTo().frame("wcFrame0");
@@ -62,27 +66,34 @@ public class BrowserController {
     }
 
     public void createO8(String s){
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("listOCL_1")));
+        Toolkit.getDefaultToolkit()
+                .getSystemClipboard()
+                .setContents(
+                        new StringSelection(s),
+                        null);
+        new WebDriverWait (driver, 1);
         driver.findElement(By.id("listOCL_1")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("C0_24")).click();
-        driver.findElement(By.className("JSTextfield")).sendKeys(s);
+        driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL+"v"));
+        new WebDriverWait(driver, 3);
         driver.findElement(By.id("hc_OK")).click();
         driver.findElement(By.id("hc_Find")).click();
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
         driver.switchTo().parentFrame();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("listOCL_2")));
+        new WebDriverWait(driver, 1);
         driver.findElement(By.id("listOCL_2")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("hc_Find")).click();
-        new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.className("JSSelectGrid selectedModifier")));
+        new WebDriverWait(driver, 2);
         try {WebElement element = driver.findElement(By.id("GOTOLAST0_1"));
             if (element.isDisplayed()) element.click();}
         catch (Exception ex){}
         driver.findElement(By.id("selectAll0_1")).click();
         driver.findElement(By.xpath("(//div[@id='div']/font)[2]")).click();
         driver.findElement(By.xpath("//table[@id='HE0_117']/tbody/tr/td[2]/span/nobr")).click();
+        log.info("О8 созданы");
     }
 
     public void disconnect() {
