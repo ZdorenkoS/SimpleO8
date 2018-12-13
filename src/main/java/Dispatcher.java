@@ -1,6 +1,7 @@
 import Controller.Controller;
 import org.apache.log4j.Logger;
 
+import javax.mail.MessagingException;
 import java.util.concurrent.TimeUnit;
 
 public class Dispatcher {
@@ -20,7 +21,8 @@ public class Dispatcher {
             if (controller.getMess().size()>0){
                 controller.getLines();
                 controller.makeO8();
-    //            browserController.createO8(controller.getString());
+                try {controller.getFolder().close();} catch (MessagingException e) {e.printStackTrace();}
+                //            browserController.createO8(controller.getString());
             }
             try {TimeUnit.SECONDS.sleep(30);} catch (InterruptedException e) {e.printStackTrace();}
         }

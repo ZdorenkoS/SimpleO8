@@ -36,7 +36,7 @@ public class Connect {
         try {
             store.connect("imap.ukr.net", "d.a.o.s@ukr.net", "Nikita2012");
             folder = store.getFolder("INBOX");
-            folder.open(Folder.READ_WRITE);
+
 
             log.info("Соединение с почтовым сервером установлено");
         } catch (MessagingException ex) {

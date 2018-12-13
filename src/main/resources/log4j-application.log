@@ -3781,3 +3781,149 @@ javax.mail.FolderClosedException: Lost folder connection to server
 2018-12-13 23:20:18 INFO  Controller:49 - Получено писем: 0
 2018-12-13 23:20:48 INFO  Controller:49 - Получено писем: 0
 2018-12-13 23:21:18 INFO  Controller:49 - Получено писем: 0
+2018-12-13 23:31:29 INFO  Dispatcher:11 - Старт программы
+2018-12-13 23:31:30 INFO  Connect:41 - Соединение с почтовым сервером установлено
+2018-12-13 23:31:31 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:31:31 INFO  Controller:77 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:167)
+	at Controller.Controller.getLines(Controller.java:61)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:31:31 INFO  Controller:79 - Строки прочитаны
+2018-12-13 23:32:01 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:32:01 INFO  Controller:77 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:167)
+	at Controller.Controller.getLines(Controller.java:61)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:32:01 INFO  Controller:79 - Строки прочитаны
+2018-12-13 23:33:29 INFO  Dispatcher:11 - Старт программы
+2018-12-13 23:33:30 INFO  Connect:41 - Соединение с почтовым сервером установлено
+2018-12-13 23:33:30 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:33:30 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:33:30 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:33:59 INFO  Dispatcher:11 - Старт программы
+2018-12-13 23:34:01 INFO  Connect:41 - Соединение с почтовым сервером установлено
+2018-12-13 23:34:02 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:34:02 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:34:02 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:34:32 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:34:32 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:34:32 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:35:03 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:35:03 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:35:03 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:35:33 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:35:33 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:35:33 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:36:04 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:36:04 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:36:04 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:36:34 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:36:34 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:36:34 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:37:05 INFO  Controller:51 - Получено писем: 3
+2018-12-13 23:37:05 INFO  Controller:80 - Ошибка при парсинге строк
+javax.mail.FolderClosedException
+	at com.sun.mail.imap.IMAPMessage.getProtocol(IMAPMessage.java:169)
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1546)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at Controller.Controller.getTextFromMessage(Controller.java:170)
+	at Controller.Controller.getLines(Controller.java:64)
+	at Dispatcher.main(Dispatcher.java:21)
+2018-12-13 23:37:05 INFO  Controller:82 - Строки прочитаны
+2018-12-13 23:37:32 INFO  Dispatcher:12 - Старт программы
+2018-12-13 23:37:33 INFO  Connect:41 - Соединение с почтовым сервером установлено
+2018-12-13 23:37:33 INFO  Controller:54 - Получено писем: 3
+2018-12-13 23:37:34 INFO  Controller:83 - Строки прочитаны
+2018-12-13 23:37:34 INFO  Controller:103 - Создан О8 № 1
+2018-12-13 23:37:34 INFO  Controller:121 - Создан О8 № 1
+2018-12-13 23:37:34 INFO  Controller:121 - Создан О8 № 2
+2018-12-13 23:37:34 INFO  Controller:121 - Создан О8 № 3
+2018-12-13 23:37:34 INFO  Controller:121 - Создан О8 № 4
+2018-12-13 23:37:34 INFO  Controller:121 - Создан О8 № 5
+2018-12-13 23:38:05 INFO  Controller:54 - Получено писем: 1
+2018-12-13 23:38:05 INFO  Controller:83 - Строки прочитаны
+2018-12-13 23:38:05 INFO  Controller:103 - Создан О8 № 1
+2018-12-13 23:38:05 INFO  Controller:121 - Создан О8 № 1
+2018-12-13 23:38:05 INFO  Controller:121 - Создан О8 № 2
+2018-12-13 23:38:05 INFO  Controller:121 - Создан О8 № 3
+2018-12-13 23:38:05 INFO  Controller:121 - Создан О8 № 4
+2018-12-13 23:38:05 INFO  Controller:121 - Создан О8 № 5
+2018-12-13 23:38:05 INFO  Controller:121 - Создан О8 № 6
+2018-12-13 23:38:35 INFO  Controller:54 - Получено писем: 0

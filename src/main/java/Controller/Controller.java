@@ -34,22 +34,28 @@ public class Controller extends Thread{
 
     public ArrayList<Message> getMess() {return messages;}
 
+    public Folder getFolder(){
+        return connect.getFolder();
+    }
 
     public void getMesssages() {
         Folder folder = connect.getFolder();
 
         try {
+            folder.open(Folder.READ_WRITE);
             System.out.println(folder.getUnreadMessageCount() + " непрочитаннные сообщения");
             messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
             for (Message m:messages
                  ) {
                 System.out.println(m.getFrom());
             }
+
             if (messages == null) log.info("Новых писем нет");
             else log.info("Получено писем: " + messages.size());
         } catch (MessagingException ex) {
             log.info("Сбой при попытке доступа к папкам", ex);
         }
+
     }
 //TODO удалить пробелы из номера ттн
     public void getLines() {
