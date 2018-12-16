@@ -1,16 +1,12 @@
-package Controller;
+package controller;
 
-import Model.Connect;
-import Model.Goods;
-import Model.O8;
+import model.Email;
+import model.Goods;
+import model.O8;
 import org.apache.log4j.Logger;
 
-import javax.mail.*;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.search.FlagTerm;
-import java.io.IOException;
+import javax.mail.Message;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class Controller extends Thread{
@@ -18,71 +14,31 @@ public class Controller extends Thread{
     private ArrayList<String> lines = new ArrayList<>();
     private ArrayList<O8> o8s = new ArrayList<>();
     private ArrayList<Message> messages;
-    private Connect connect;
+    private Email email;
 
     public Controller() {
-        connect = new Connect();
+        email = new Email();
     }
 
     public void getConnect(){
-        connect.connect();
+        email.connect();
     }
 
     public void disconnect() {
-        connect.disconnect();
+        email.disconnect();
     }
 
     public ArrayList<Message> getMess() {return messages;}
 
-    public Folder getFolder(){
-        return connect.getFolder();
-    }
-
     public void getMesssages() {
-        Folder folder = connect.getFolder();
-
-        try {
-            folder.open(Folder.READ_WRITE);
-            System.out.println(folder.getUnreadMessageCount() + " непрочитаннные сообщения");
-            messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
-            for (Message m:messages
-                 ) {
-                System.out.println(m.getFrom());
-            }
-
-            if (messages == null) log.info("Новых писем нет");
-            else log.info("Получено писем: " + messages.size());
-        } catch (MessagingException ex) {
-            log.info("Сбой при попытке доступа к папкам", ex);
-        }
-
+        messages = email.getMessages();
     }
-//TODO удалить пробелы из номера ттн
+
     public void getLines() {
-        String s = "";
-        try {
-            for (Message m : messages) {
-                s = getTextFromMessage(m)
-                        .replaceAll("\\p{Cntrl}", "@")
-                        .replaceAll("@.3001", "#3001")
-                        .replaceAll("@.5005", "#5005")
-                        .replaceAll("@@@@@@@@@@@@", "_ _")
-                        .replaceAll("@@@@@@@@", "_ _")
-                        .replaceAll("@@@@@@", "_")
-                        .replaceAll("@@@@", "_")
-                        .replaceAll("@", "");
-                lines.addAll(Arrays.asList(s.split("#")));
-
-                for (int i = 0; i < lines.size(); i++) {
-                    if (lines.get(i).startsWith("_") || lines.get(i).equals("")) lines.remove(i);
-                }
-            }
-        } catch (MessagingException | IOException ex) {
-            log.info("Ошибка при парсинге строк", ex);
-        }
-        log.info("Строки прочитаны");
+        lines = email.getLines(messages);
     }
-// TODO сделать проверку на одинаковые коды товара и цену
+
+
     public void makeO8(){
         ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
         Collections.sort(lines);                                                        // сортируем линии, получим нужные строки подряд
@@ -101,7 +57,7 @@ public class Controller extends Thread{
                         o8s.get(0).getGoods().add(new Goods(str[7],str[8], str[9]));     // добавляем товары из первой линии
 
                  log.info("Создан О8 № "+(x+1));
-                      }
+             }
              // для всех строк кроме 1
              else {
                  // проверяем линия от нового О8 или продолжает уже созданный
@@ -118,11 +74,16 @@ public class Controller extends Thread{
                      } catch(IndexOutOfBoundsException ex ){
                  }
                      o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
-                     log.info("Создан О8 № " + x);
+                     log.info("Создан О8 № " + (x + 1));
                  }
             }
         }
     }
+
+    public void o8Validation(){
+        for (O8 o:o8s) {o.validation();}
+    }
+
 
     public String getString(){
         StringBuilder sb = new StringBuilder();
@@ -158,6 +119,7 @@ public class Controller extends Thread{
             }
             i++;
         }
+        messages.clear();
         lines.clear();
         o8s.clear();
         log.info("Данные для ерп сформированы");
@@ -166,33 +128,5 @@ public class Controller extends Thread{
 
 
 
-    static private String getTextFromMessage(Message message) throws MessagingException, IOException {
-        String result = "";
-        if (message.isMimeType("text/plain")) {
-            result = message.getContent().toString();
-        } else if (message.isMimeType("multipart/*")) {
-            MimeMultipart mimeMultipart = (MimeMultipart) message.getContent();
-            result = getTextFromMimeMultipart(mimeMultipart);
-        }
-        return result;
-    }
 
-    static private String getTextFromMimeMultipart(
-            MimeMultipart mimeMultipart) throws MessagingException, IOException {
-        String result = "";
-        int count = mimeMultipart.getCount();
-        for (int i = 0; i < count; i++) {
-            BodyPart bodyPart = mimeMultipart.getBodyPart(i);
-            if (bodyPart.isMimeType("text/plain")) {
-                result = result + "\n" + bodyPart.getContent();
-                break; // without break same text appears twice in my tests
-            } else if (bodyPart.isMimeType("text/html")) {
-                String html = (String) bodyPart.getContent();
-                result = result + "\n" + org.jsoup.Jsoup.parse(html).text();
-            } else if (bodyPart.getContent() instanceof MimeMultipart) {
-                result = result + getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent());
-            }
-        }
-        return result;
-    }
 }

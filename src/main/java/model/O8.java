@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.ArrayList;
 
@@ -14,9 +14,7 @@ public class O8 {
 
 
 
-    public O8() {
-    }
-
+    public O8() {}
     public O8(String stock, String delivery, String currency, String invoice, String supplier) {
         this.stock = stock;
         this.delivery = delivery;
@@ -26,8 +24,26 @@ public class O8 {
         goods = new ArrayList<>();
         parcel = "";
         deferment = "";
-
     }
+
+    public void validation() {
+        this.setParcel(this.parcel.trim());
+        for (int i = 0; i < goods.size(); i++) {
+            for (int j = 0; j < goods.size(); j++) {
+                if (goods.get(i).getSku().equals(goods.get(j).getSku())
+                        && goods.get(i).getPrice().equals(goods.get(j).getPrice())) {
+                    goods.get(i).setQuantity(String.valueOf(Integer.parseInt(goods.get(i).getQuantity()) + Integer.parseInt(goods.get(j).getQuantity())));
+                    goods.remove(j);
+                }
+            }
+        }
+    }
+
+
+
+
+
+
 
     @Override
     public String toString() {
@@ -47,64 +63,40 @@ public class O8 {
         return stock;
     }
 
-    public void setStock(String stock) {
-        this.stock = stock;
-    }
-
     public String getDelivery() {
         return delivery;
-    }
-
-    public void setDelivery(String delivery) {
-        this.delivery = delivery;
     }
 
     public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
     public String getInvoice() {
         return invoice;
-    }
-
-    public void setInvoice(String invoice) {
-        this.invoice = invoice;
     }
 
     public String getSupplier() {
         return supplier;
     }
 
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
-    }
-
     public String getParcel() {
         return parcel;
-    }
-
-    public void setParcel(String parcel) {
-        this.parcel = parcel;
     }
 
     public String getDeferment() {
         return deferment;
     }
 
-    public void setDeferment(String deferment) {
-        this.deferment = deferment;
-    }
-
     public ArrayList<Goods> getGoods() {
         return goods;
     }
 
-    public void setGoods(ArrayList<Goods> goods) {
-        this.goods = goods;
+    public void setParcel(String parcel) {
+        this.parcel = parcel;
+    }
+
+    public void setDeferment(String deferment) {
+        this.deferment = deferment;
     }
 }
 

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Goods {
     private String sku;        // Код товара

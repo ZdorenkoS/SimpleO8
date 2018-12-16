@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ConfigProperties;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -37,9 +38,9 @@ public class BrowserController extends Thread{
     }
 
     public void start(){
-        driver.get("http://jde.nautilus.allo.ua/jde/E1Menu.maf?jdeowpBackButtonProtect=PROTECTED");
-        driver.findElement(By.id("User")).sendKeys("zdorenkos");
-        driver.findElement(By.id("Password")).sendKeys("3Bd4");
+        driver.get(ConfigProperties.getProperty("erpUrl"));
+        driver.findElement(By.id("User")).sendKeys(ConfigProperties.getProperty("erpUser"));
+        driver.findElement(By.id("Password")).sendKeys(ConfigProperties.getProperty("erpPassword"));
         driver.findElement(By.id("F1")).submit();
 //FIXME переписать код чтобы работал и в файрфокс
         driver.findElement(By.id("drop_mainmenu")).click();
