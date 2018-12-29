@@ -72,7 +72,7 @@ public class BrowserController extends Thread{
                 .setContents(
                         new StringSelection(s),
                         null);
-        new WebDriverWait (driver, 1);
+        new WebDriverWait (driver, 2);
         driver.findElement(By.id("listOCL_1")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("C0_24")).click();

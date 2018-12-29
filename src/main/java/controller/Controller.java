@@ -13,6 +13,7 @@ public class Controller extends Thread{
     private final static Logger log = Logger.getLogger(Controller.class.getName());
     private ArrayList<String> lines = new ArrayList<>();
     private ArrayList<O8> o8s = new ArrayList<>();
+    private ArrayList<O8> o8sFail = new ArrayList<>();
     private ArrayList<Message> messages;
     private Email email;
 
@@ -38,6 +39,13 @@ public class Controller extends Thread{
         lines = email.getLines(messages);
     }
 
+    public ArrayList<O8> getO8s() {
+        return o8s;
+    }
+
+    public ArrayList<O8> getO8sFail() {
+        return o8sFail;
+    }
 
     public void makeO8(){
         ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
@@ -81,48 +89,24 @@ public class Controller extends Thread{
     }
 
     public void o8Validation(){
-        for (O8 o:o8s) {o.validation();}
+        O8 o8 = new O8();
+        o8.validation(o8s, o8sFail);
     }
 
+    public void updateView(){
+
+    }
 
     public String getString(){
         StringBuilder sb = new StringBuilder();
-        int i =1;
-        for (O8 o8:o8s) {
-            for (int j = 0; j <o8.getGoods().size() ; j++) {
-                sb.append(i + "\t");
-                if (o8.getStock().equals("3001")) sb.append("P3001\t");
-                if (o8.getStock().equals("5005")) sb.append("M5005\t");
-                if (o8.getCurrency().equalsIgnoreCase("БЕЗНАЛ")) sb.append("UAH\t");
-                if (o8.getCurrency().equalsIgnoreCase("НАЛ")) sb.append("UA2\t");
-                if (o8.getCurrency().equalsIgnoreCase("USD")) sb.append("USD\t");
-                sb.append(o8.getSupplier()+"\t");
-                sb.append(o8.getGoods().get(j).getSku()+"\t");
-                sb.append(o8.getGoods().get(j).getQuantity()+"\t");
-                sb.append(o8.getGoods().get(j).getPrice()+"\t");
-                sb.append(" \t");
-                try {
-                    if (o8.getDelivery().equalsIgnoreCase("КУРЬЕР")) sb.append("01\t");
-                    else if (Long.parseLong(o8.getParcel()) > 0) sb.append("02"+"\t").append(o8.getParcel() + "\t");
-                    else sb.append(" \t");
-                } catch (NumberFormatException ex) {
-                    sb.append(" \t \t");
-                }
-
-                sb.append(o8.getInvoice()+"\t");
-               try {
-                  if (Integer.parseInt(o8.getDeferment()) >0 )sb.append(o8.getDeferment() + "\t");
-               } catch (NumberFormatException ex){
-                   sb.append(" \t");
-               }
-                sb.append("\n");
-            }
-            i++;
+        for (int i = 0; i < o8s.size() ; i++) {
+           sb.append(o8s.get(i).buildString(i+1));
         }
         messages.clear();
         lines.clear();
         o8s.clear();
         log.info("Данные для ерп сформированы");
+        System.out.println(sb.toString());
         return sb.toString();
     }
 

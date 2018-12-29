@@ -5,9 +5,7 @@ public class Goods {
     private String quantity;   // Количество
     private String price;      // Цена
 
-    public Goods() {
-    }
-
+    public Goods() {}
     public Goods(String sku, String quantity, String price) {
         this.sku = sku;
         this.quantity = quantity;
@@ -16,10 +14,6 @@ public class Goods {
 
     public String getSku() {
         return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
     }
 
     public String getQuantity() {
@@ -32,10 +26,6 @@ public class Goods {
 
     public String getPrice() {
         return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 
     @Override

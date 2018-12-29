@@ -13,7 +13,6 @@ public class O8 {
     private ArrayList<Goods> goods;
 
 
-
     public O8() {}
     public O8(String stock, String delivery, String currency, String invoice, String supplier) {
         this.stock = stock;
@@ -26,22 +25,66 @@ public class O8 {
         deferment = "";
     }
 
-    public void validation() {
-        this.setParcel(this.parcel.trim());
-        for (int i = 0; i < goods.size(); i++) {
+    public String buildString (int i){
+        StringBuilder sb = new StringBuilder();
             for (int j = 0; j < goods.size(); j++) {
-                if (goods.get(i).getSku().equals(goods.get(j).getSku())
-                        && goods.get(i).getPrice().equals(goods.get(j).getPrice())) {
-                    goods.get(i).setQuantity(String.valueOf(Integer.parseInt(goods.get(i).getQuantity()) + Integer.parseInt(goods.get(j).getQuantity())));
-                    goods.remove(j);
+                sb.append(i + "\t");
+                if (stock.equals("3001")) sb.append("P3001\t");
+                if (stock.equals("5005")) sb.append("M5005\t");
+                if (currency.equalsIgnoreCase("БЕЗНАЛ")) sb.append("UAH\t");
+                if (currency.equalsIgnoreCase("НАЛ")) sb.append("UA2\t");
+                if (currency.equalsIgnoreCase("USD")) sb.append("USD\t");
+                sb.append(supplier + "\t");
+                sb.append(goods.get(j).getSku() + "\t");
+                sb.append(goods.get(j).getQuantity() + "\t");
+                sb.append(goods.get(j).getPrice() + "\t");
+                sb.append(" \t");
+                try {
+                    if (delivery.equalsIgnoreCase("КУРЬЕР")) sb.append("01\t");
+                    else if (Long.parseLong(parcel) > 0) sb.append("02" + "\t").append(parcel + "\t");
+                    else sb.append("\t");
+                } catch (NumberFormatException ex) {
+                    sb.append(" \t \t");
                 }
+
+                sb.append(invoice + "\t");
+                try {
+                    if (Integer.parseInt(deferment) > 0) sb.append(deferment + "\t");
+                } catch (NumberFormatException ex) {
+                    sb.append("\t");
+                }
+                sb.append("\n");
             }
+        return sb.toString();
+    }
+
+    public void validation(ArrayList<O8> o8s,ArrayList<O8> o8Fail) {
+        for (O8 o8: o8s) {
+            o8.setParcel(o8.parcel.trim());
+          for (int i = 1; i < o8.goods.size(); i++) {
+              if (o8.goods.get(0).getSku().equals(o8.goods.get(i).getSku())
+                    && o8.goods.get(0).getPrice().equals(o8.goods.get(i).getPrice())) {
+                o8.goods.get(0).setQuantity(String.valueOf(Integer.parseInt(o8.goods.get(0).getQuantity()) + Integer.parseInt(o8.goods.get(i).getQuantity())));
+                o8.goods.remove(i);
+            try {
+                Integer.parseInt(o8.goods.get(i).getSku());
+                Double.parseDouble(o8.goods.get(i).getPrice());
+                if (Integer.parseInt(o8.goods.get(i).getQuantity())<1) throw new Exception();
+            }catch (Exception e){
+                o8s.remove(o8);
+                o8Fail.add(o8);}
+            }
+          }
         }
     }
 
-
-
-
+    public String getSumm (){
+        Double d = 0.0;
+        for (Goods good: this.goods) {
+            d+= Double.parseDouble(good.getPrice()) * Double.parseDouble(good.getQuantity());
+        }
+        return String.valueOf(d);
+    }
 
 
 

@@ -1,7 +1,10 @@
+import controller.BrowserController;
 import controller.Controller;
+import controller.Task;
 import org.apache.log4j.Logger;
+import view.View;
 
-import java.util.concurrent.TimeUnit;
+import javax.swing.*;
 
 public class Dispatcher {
     private final static Logger log;
@@ -11,23 +14,21 @@ public class Dispatcher {
         log.info("Старт программы");
         Controller controller = new Controller();
         controller.getConnect();
-    //    BrowserController browserController = new BrowserController(BrowserController.browsr.CHROME);
-    //    browserController.start();
+        BrowserController browserController = new BrowserController(BrowserController.browsr.CHROME);
+      //  browserController.start();
 
-       Boolean b = true;
-        while (b){
-            controller.getMesssages();
-            if (controller.getMess().size()>0){
-                controller.getLines();
-                controller.makeO8();
-                controller.o8Validation();
-               // browserController.createO8(controller.getString());
+        Task task = new Task(controller,browserController);
+        new Thread(task).start();
+        try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());} catch (Exception e) {}
+        SwingUtilities.invokeLater(new View(task));
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                controller.disconnect();
+                browserController.disconnect();
+                log.info("Конец работы программы");
             }
-
-            try {TimeUnit.SECONDS.sleep(10);} catch (InterruptedException e) {e.printStackTrace();}
-        }
-        controller.disconnect();
-    //    browserController.disconnect();
-        log.info("Конец работы программы");
+        });
     }
 }

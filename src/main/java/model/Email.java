@@ -31,7 +31,7 @@ public class Email {
     }
 
 
-// TODO скрыть логин и пароль
+
     public void connect() {
         try {store.connect(ConfigProperties.getProperty("emailHost"), ConfigProperties.getProperty("emailUser"), ConfigProperties.getProperty("emailPassword"));
              folder = store.getFolder("INBOX");
