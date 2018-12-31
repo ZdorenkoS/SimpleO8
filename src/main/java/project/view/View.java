@@ -1,8 +1,7 @@
-package view;
+package project.view;
 
-import controller.Controller;
-import controller.Task;
-import model.O8;
+import project.Dispatcher;
+import project.model.O8;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,24 +10,22 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class View implements Runnable{
-    private Task task;
     private JFrame frame;
     private JPanel panel;
     private JButton button;
-    private JLabel labelOk;
-    private JLabel labelFail;
     private JTextArea o8Done;
     private JTextArea o8Crash;
-    private JProgressBar progressBar1;
+    private JProgressBar progressBar;
     private final String PAUSE_TEXT = "Остановить";
     private final String START_TEXT = "Запустить";
     private int screenWidth;
     private int screenHeight;
-    private Controller controller;
+    private StringBuilder stringBuilderOk = new StringBuilder();
+    private StringBuilder stringBuilderFail = new StringBuilder();
+    private Dispatcher dispatcher;
 
-    public View(Task task) throws HeadlessException {
-        this.task = task;
-        controller = task.getController();
+
+    public View()  {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = screenSize.width;
         screenHeight = screenSize.height;
@@ -36,16 +33,20 @@ public class View implements Runnable{
         button = new JButton(PAUSE_TEXT);
         panel = new JPanel();
         frame.setContentPane(panel);
-        frame.setSize(screenWidth/4, screenHeight/3*2);
+        frame.setSize(screenWidth/5, screenHeight/3*2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
     }
 
+    public void setDispatcher(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
+    }
+
     @Override
     public void run() {
         panel.setLayout(new GridBagLayout());
-        Font panelFont = new Font("Bookman Old Style", Font.PLAIN, 18);
+        Font panelFont = new Font("Bookman Old Style", Font.PLAIN, 14);
         panel.setFont(panelFont);
         panel.setOpaque(false);
 
@@ -79,19 +80,22 @@ public class View implements Runnable{
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel.add(button, gbc);
 
-        labelOk = new JLabel("До следующей итерации осталось:");
+        final JLabel label1= new JLabel("До следующей итерации осталось:");
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.CENTER;
-        panel.add(labelOk, gbc);
+        panel.add(label1, gbc);
 
-        progressBar1 = new JProgressBar();
+        progressBar = new JProgressBar();
         gbc = new GridBagConstraints();
+        progressBar.setStringPainted(true);
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        panel.add(progressBar1, gbc);
+        panel.add(progressBar, gbc);
+
+
 
         final JPanel spacer3 = new JPanel();
         gbc = new GridBagConstraints();
@@ -110,7 +114,6 @@ public class View implements Runnable{
         o8Done.setColumns(50);
         o8Done.setEditable(false);
         o8Done.setFont(panelFont);
-        o8Done.setText(o8ToString(controller.getO8s()));
         o8Done.setRows(100);
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -119,7 +122,8 @@ public class View implements Runnable{
         gbc.weightx = 1;
         gbc.weighty = 0.8f;
         gbc.gridwidth = 2;
-        panel.add(o8Done, gbc);
+        JScrollPane scrollPane = new JScrollPane(o8Done);
+        panel.add(scrollPane, gbc);
 
         final JLabel label3 = new JLabel();
         label3.setText("О8 с ошибками:");
@@ -132,7 +136,6 @@ public class View implements Runnable{
         o8Crash.setColumns(50);
         o8Crash.setEditable(false);
         o8Crash.setFont(panelFont);
-        o8Done.setText(o8ToString(controller.getO8sFail()));
         o8Crash.setLineWrap(false);
         o8Crash.setRows(20);
         gbc = new GridBagConstraints();
@@ -142,14 +145,15 @@ public class View implements Runnable{
         gbc.weighty = 0.2f;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.BOTH;
-        panel.add(o8Crash, gbc);
+        JScrollPane scrollPane2= new JScrollPane(o8Crash);
+        panel.add(scrollPane2, gbc);
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                task.changeThreadState();
+                dispatcher.changeThreadState();
                 button = (JButton) e.getSource();
-                if (task.isRunning()) {
+                if (dispatcher.isRunning()) {
                     button.setText(PAUSE_TEXT);
                 } else {
                     button.setText(START_TEXT);
@@ -158,12 +162,16 @@ public class View implements Runnable{
         });
     }
 
-    private String o8ToString(ArrayList<O8> list){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (O8 o8: list) {
-            stringBuilder.append(o8.getSupplier()+ "  " + o8.getSumm()+ "\n");
-        }
-        return stringBuilder.toString();
-    }
+    public void updateJtextAreas(ArrayList<O8> o8sOk, ArrayList<O8> o8sFail){
+        for (O8 o8: o8sOk) {stringBuilderOk.append(o8.o8ForView());}
+        for (O8 o8: o8sFail) {stringBuilderFail.append(o8.o8ForView());}
+        o8Done.setText("");
+        o8Crash.setText("");
+        o8Done.setText(stringBuilderOk.toString());
+        o8Crash.setText(stringBuilderFail.toString());
+        o8Done.repaint();
+        o8Crash.repaint();
+       }
 }
+
 

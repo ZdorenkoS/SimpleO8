@@ -1,6 +1,7 @@
-package model;
+package project.model;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class O8 {
     private String stock;                          // Склад
@@ -59,33 +60,47 @@ public class O8 {
     }
 
     public void validation(ArrayList<O8> o8s,ArrayList<O8> o8Fail) {
-        for (O8 o8: o8s) {
-            o8.setParcel(o8.parcel.trim());
-          for (int i = 1; i < o8.goods.size(); i++) {
-              if (o8.goods.get(0).getSku().equals(o8.goods.get(i).getSku())
-                    && o8.goods.get(0).getPrice().equals(o8.goods.get(i).getPrice())) {
-                o8.goods.get(0).setQuantity(String.valueOf(Integer.parseInt(o8.goods.get(0).getQuantity()) + Integer.parseInt(o8.goods.get(i).getQuantity())));
-                o8.goods.remove(i);
-            try {
-                Integer.parseInt(o8.goods.get(i).getSku());
-                Double.parseDouble(o8.goods.get(i).getPrice());
-                if (Integer.parseInt(o8.goods.get(i).getQuantity())<1) throw new Exception();
-            }catch (Exception e){
-                o8s.remove(o8);
-                o8Fail.add(o8);}
+        ListIterator<O8> iterator = o8s.listIterator();
+        O8 o8;
+        while (iterator.hasNext()){
+            o8 = iterator.next();
+
+            if (o8.parcel != null) o8.setParcel(o8.parcel.replaceAll(" ", ""));
+            for (int i = 1; i < o8.goods.size(); i++) {
+                if (o8.goods.get(i).getPrice().contains(" ")) o8.goods.get(i).setPrice(o8.goods.get(i).getPrice().replaceAll(" ",""));
             }
-          }
+            for (int i = 1; i < o8.goods.size(); i++) {
+                if (o8.goods.get(0).getSku().equals(o8.goods.get(i).getSku()) && o8.goods.get(0).getPrice().equals(o8.goods.get(i).getPrice())) {
+                    o8.goods.get(0).setQuantity(String.valueOf(Integer.parseInt(o8.goods.get(0).getQuantity()) + Integer.parseInt(o8.goods.get(i).getQuantity())));
+                    o8.goods.remove(i);
+                    try {
+                        Integer.parseInt(o8.goods.get(i).getSku());
+                        Double.parseDouble(o8.goods.get(i).getPrice());
+                        if (Integer.parseInt(o8.goods.get(i).getQuantity()) < 1) throw new Exception();
+                    } catch (Exception e) {
+                        iterator.remove();
+                        o8Fail.add(o8);
+                    }
+                }
+            }
         }
     }
 
-    public String getSumm (){
-        Double d = 0.0;
+    private float getSumm (){
+        float f = 0.0f;
         for (Goods good: this.goods) {
-            d+= Double.parseDouble(good.getPrice()) * Double.parseDouble(good.getQuantity());
+           try {
+               f += Float.parseFloat(good.getPrice().replaceAll(",",".")) * Float.parseFloat(good.getQuantity());
+           } catch (NumberFormatException ex){
+               System.out.println("ошибка при расчете суммы по О8, исходные данные-> код товара: " + good.getSku()+ " цена: " + good.getPrice()+" количество: "+ good.getQuantity());
+           }
         }
-        return String.valueOf(d);
+        return f;
     }
 
+    public String o8ForView() {
+       return String.format("Поставщик: %6s \tСумма: %.2f\n", supplier, this.getSumm());
+    }
 
 
     @Override

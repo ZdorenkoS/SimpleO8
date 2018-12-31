@@ -1,24 +1,38 @@
-package controller;
+package project.controller;
 
-import model.Email;
-import model.Goods;
-import model.O8;
 import org.apache.log4j.Logger;
+import project.model.Email;
+import project.model.Goods;
+import project.model.O8;
+import project.view.View;
 
 import javax.mail.Message;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Controller extends Thread{
     private final static Logger log = Logger.getLogger(Controller.class.getName());
-    private ArrayList<String> lines = new ArrayList<>();
-    private ArrayList<O8> o8s = new ArrayList<>();
-    private ArrayList<O8> o8sFail = new ArrayList<>();
-    private ArrayList<Message> messages;
+    private volatile ArrayList<String> lines = new ArrayList<>();
+    private volatile ArrayList<O8> o8s = new ArrayList<>();
+    private volatile ArrayList<O8> o8sFail = new ArrayList<>();
+    private volatile ArrayList<Message> messages;
     private Email email;
+    private View view;
+
 
     public Controller() {
         email = new Email();
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+        }
+        view = new View();
+        SwingUtilities.invokeLater(view);
+    }
+
+    public View getView() {
+        return view;
     }
 
     public void getConnect(){
@@ -79,8 +93,7 @@ public class Controller extends Thread{
                      try{
                      if (str.length > 10) o8s.get(x).setParcel(str[11]);
                      if (str.length > 10) o8s.get(x).setDeferment(str[12]);
-                     } catch(IndexOutOfBoundsException ex ){
-                 }
+                     } catch(IndexOutOfBoundsException ex ){ }
                      o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
                      log.info("Создан О8 № " + (x + 1));
                  }
@@ -91,10 +104,7 @@ public class Controller extends Thread{
     public void o8Validation(){
         O8 o8 = new O8();
         o8.validation(o8s, o8sFail);
-    }
-
-    public void updateView(){
-
+        view.updateJtextAreas(o8s,o8sFail);
     }
 
     public String getString(){
@@ -109,8 +119,4 @@ public class Controller extends Thread{
         System.out.println(sb.toString());
         return sb.toString();
     }
-
-
-
-
 }

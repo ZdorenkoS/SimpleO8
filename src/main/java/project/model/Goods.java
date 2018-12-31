@@ -1,4 +1,4 @@
-package model;
+package project.model;
 
 public class Goods {
     private String sku;        // Код товара
@@ -26,6 +26,10 @@ public class Goods {
 
     public String getPrice() {
         return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     @Override

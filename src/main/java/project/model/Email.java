@@ -1,7 +1,7 @@
-package model;
+package project.model;
 
 import org.apache.log4j.Logger;
-import utils.ConfigProperties;
+import project.utils.ConfigProperties;
 
 import javax.mail.*;
 import javax.mail.internet.MimeMultipart;
@@ -48,11 +48,9 @@ public class Email {
             folder.open(Folder.READ_WRITE);
             messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
             if (messages.size()<1) {
-                log.info("================");
                 log.info("Новых писем нет");
             }
             else {
-                log.info("================");
                 log.info("Получено писем: " + messages.size());}
 
         } catch (MessagingException ex) {

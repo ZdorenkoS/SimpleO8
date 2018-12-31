@@ -1,4 +1,4 @@
-package controller;
+package project.controller;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.ConfigProperties;
+import project.utils.ConfigProperties;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -23,11 +23,11 @@ public class BrowserController extends Thread{
     public BrowserController() {}
     public BrowserController(browsr b) {
         if (b.equals(browsr.CHROME)){
-            System.setProperty("chromedriver.chrome.driver", "G:\\Java Project\\SimpleO8");
+            System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
             driver = new ChromeDriver();
         }
         if (b.equals(browsr.FIREFOX)){
-            System.setProperty("webdriver.firefox.driver", "G:\\Java Project\\SimpleO8");
+            System.setProperty("webdriver.firefox.driver", "G:\\Java project\\SimpleO8");
             driver = new FirefoxDriver();
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
