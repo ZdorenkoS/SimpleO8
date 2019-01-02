@@ -1,7 +1,12 @@
 package project.model;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Properties;
 
 public class O8 {
     private String stock;                          // Склад
@@ -60,31 +65,39 @@ public class O8 {
     }
 
     public void validation(ArrayList<O8> o8s,ArrayList<O8> o8Fail) {
+        ArrayList<O8> o8ToRemove = new ArrayList<>();
         ListIterator<O8> iterator = o8s.listIterator();
         O8 o8;
         while (iterator.hasNext()){
             o8 = iterator.next();
 
-            if (o8.parcel != null) o8.setParcel(o8.parcel.replaceAll(" ", ""));
-            for (int i = 1; i < o8.goods.size(); i++) {
-                if (o8.goods.get(i).getPrice().contains(" ")) o8.goods.get(i).setPrice(o8.goods.get(i).getPrice().replaceAll(" ",""));
-            }
-            for (int i = 1; i < o8.goods.size(); i++) {
-                if (o8.goods.get(0).getSku().equals(o8.goods.get(i).getSku()) && o8.goods.get(0).getPrice().equals(o8.goods.get(i).getPrice())) {
-                    o8.goods.get(0).setQuantity(String.valueOf(Integer.parseInt(o8.goods.get(0).getQuantity()) + Integer.parseInt(o8.goods.get(i).getQuantity())));
-                    o8.goods.remove(i);
-                    try {
-                        Integer.parseInt(o8.goods.get(i).getSku());
-                        Double.parseDouble(o8.goods.get(i).getPrice());
-                        if (Integer.parseInt(o8.goods.get(i).getQuantity()) < 1) throw new Exception();
-                    } catch (Exception e) {
-                        iterator.remove();
-                        o8Fail.add(o8);
+            if (o8.parcel != null) o8.setParcel(o8.parcel.replaceAll(" ", ""));                  // удаляем пробелы из номера ТТН
+
+            o8.goods.trimToSize();
+            for (int i = o8.goods.size()-2; i >= 0; i--) {                                                         // группируем одинаковые товары с одинаковыми ценами
+                for (int j = o8.goods.size()-1; j > 0; j--) {
+                    Goods goods1 = o8.goods.get(i);
+                    Goods goods2 = o8.goods.get(j);
+
+                    if (goods1.equals(goods2)) {
+                        goods2.setQuantity(String.valueOf(Integer.parseInt(goods1.getQuantity()) + Integer.parseInt(goods2.getQuantity())));
+                        o8.goods.remove(goods1);
+                        i--;
                     }
                 }
             }
+
+            for (int i = 0; i <o8.goods.size() ; i++) {
+                if (!o8.goods.get(i).goodsValidate()) {
+                    o8Fail.add(o8);
+                    o8ToRemove.add(o8);
+                    break;
+                }
+            }
         }
+        o8s.removeAll(o8ToRemove);
     }
+
 
     private float getSumm (){
         float f = 0.0f;
@@ -97,9 +110,34 @@ public class O8 {
         }
         return f;
     }
-
+    // TODO написать проверку и добавление новых поставщиков
     public String o8ForView() {
-       return String.format("Поставщик: %6s \tСумма: %.2f\n", supplier, this.getSumm());
+        Properties properties = new Properties();
+        try {
+            properties.load(new InputStreamReader(new FileInputStream("src/main/resources/supplier.properties"),"cp1251"));}
+        catch (IOException ex){
+            System.out.println("Не удалось загрузить список поставщиков");
+        }
+        DecimalFormat myFormatter = new DecimalFormat("###,###.##");
+        String summ = myFormatter.format(this.getSumm());
+        String supp = properties.getProperty(supplier);
+
+        StringBuilder sb = new StringBuilder();
+        if (supp.length()<25) {
+            sb.append(supp);
+            for (int i = 0; i <24 - supp.length() ; i++) {
+                sb.append(" ");
+            }
+        } else sb.append(supp.substring(0,24));
+        sb.append("\t");
+        if (summ.length()<15){
+            for (int i = 0; i <15-summ.length() ; i++) {
+                sb.append(" ");
+            }
+            sb.append(summ);
+        }else sb.append(summ);
+        sb.append("\n");
+       return sb.toString();
     }
 
 

@@ -1,5 +1,7 @@
 package project.model;
 
+import java.util.Objects;
+
 public class Goods {
     private String sku;        // Код товара
     private String quantity;   // Количество
@@ -30,6 +32,32 @@ public class Goods {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Goods)) return false;
+        Goods goods = (Goods) o;
+        return Objects.equals(getSku(), goods.getSku()) &&
+                Objects.equals(getPrice(), goods.getPrice());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSku(), getPrice());
+    }
+
+    public boolean goodsValidate(){
+            if (price.contains(" "))  price = price.replaceAll(" ", "");                      // удаляем пробелы из цен
+            try {                                                                                              // проверяем корректность скю, количества и цены
+                Integer.parseInt(sku);
+                Float.parseFloat(price.replaceAll(",", "."));
+                if (Integer.parseInt(quantity) < 1) throw new Exception();
+            } catch (Exception ex) {
+                return false;
+            }
+            return true;
     }
 
     @Override

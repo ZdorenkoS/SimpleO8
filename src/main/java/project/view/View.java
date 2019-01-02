@@ -123,6 +123,7 @@ public class View implements Runnable{
         gbc.weighty = 0.8f;
         gbc.gridwidth = 2;
         JScrollPane scrollPane = new JScrollPane(o8Done);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         panel.add(scrollPane, gbc);
 
         final JLabel label3 = new JLabel();
@@ -146,6 +147,7 @@ public class View implements Runnable{
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.BOTH;
         JScrollPane scrollPane2= new JScrollPane(o8Crash);
+        scrollPane2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         panel.add(scrollPane2, gbc);
 
         button.addActionListener(new ActionListener() {
