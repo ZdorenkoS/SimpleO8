@@ -74,15 +74,15 @@ public class O8 {
             if (o8.parcel != null) o8.setParcel(o8.parcel.replaceAll(" ", ""));                  // удаляем пробелы из номера ТТН
 
             o8.goods.trimToSize();
-            for (int i = o8.goods.size()-2; i >= 0; i--) {                                                         // группируем одинаковые товары с одинаковыми ценами
-                for (int j = o8.goods.size()-1; j > 0; j--) {
+            for (int i = o8.goods.size()-1; i > 0; i--) {                                                         // группируем одинаковые товары с одинаковыми ценами
+                for (int j = i-1; j >= 0; j--) {
                     Goods goods1 = o8.goods.get(i);
                     Goods goods2 = o8.goods.get(j);
 
                     if (goods1.equals(goods2)) {
                         goods2.setQuantity(String.valueOf(Integer.parseInt(goods1.getQuantity()) + Integer.parseInt(goods2.getQuantity())));
-                        o8.goods.remove(goods1);
-                        i--;
+                        o8.goods.remove(i);
+                        break;
                     }
                 }
             }

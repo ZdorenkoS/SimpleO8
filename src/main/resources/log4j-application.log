@@ -8310,3 +8310,139 @@ javax.mail.FolderClosedException
 2019-01-03 13:11:41 INFO  Controller:98 - Создан О8 № 3
 2019-01-03 13:11:41 INFO  Controller:118 - Данные для ерп сформированы
 2019-01-03 13:12:05 INFO  BrowserController:97 - О8 созданы
+2019-01-03 19:30:18 INFO  Dispatcher:18 - Старт программы
+2019-01-03 19:30:22 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 19:30:27 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 19:30:49 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 19:30:49 INFO  Email:54 - Получено писем: 1
+2019-01-03 19:30:50 INFO  Email:88 - Строки прочитаны
+2019-01-03 19:30:50 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 19:31:26 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 19:32:00 INFO  Dispatcher:18 - Старт программы
+2019-01-03 19:32:02 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 19:32:06 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 19:32:26 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 19:32:26 INFO  Email:54 - Получено писем: 1
+2019-01-03 19:34:40 INFO  Email:88 - Строки прочитаны
+2019-01-03 19:34:59 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 19:35:47 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 21:59:29 INFO  Dispatcher:18 - Старт программы
+2019-01-03 21:59:31 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 21:59:35 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 21:59:55 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 21:59:56 INFO  Email:54 - Получено писем: 1
+2019-01-03 22:37:39 INFO  Email:86 - Ошибка при парсинге строк
+javax.mail.FolderClosedException: * BYE JavaMail Exception: java.io.IOException: Connection dropped by server?
+	at com.sun.mail.imap.IMAPMessage.loadBODYSTRUCTURE(IMAPMessage.java:1554)
+	at com.sun.mail.imap.IMAPMessage.getContentType(IMAPMessage.java:599)
+	at javax.mail.internet.MimeBodyPart.isMimeType(MimeBodyPart.java:1200)
+	at javax.mail.internet.MimeMessage.isMimeType(MimeMessage.java:1055)
+	at project.model.Email.getTextFromMessage(Email.java:95)
+	at project.model.Email.getLines(Email.java:70)
+	at project.controller.Controller.getLines(Controller.java:53)
+	at project.Dispatcher.run(Dispatcher.java:46)
+	at java.lang.Thread.run(Thread.java:748)
+2019-01-03 22:37:40 INFO  Email:88 - Строки прочитаны
+2019-01-03 22:37:41 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 22:38:07 INFO  Dispatcher:18 - Старт программы
+2019-01-03 22:38:08 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 22:38:12 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 22:38:33 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 22:38:33 INFO  Email:54 - Получено писем: 1
+2019-01-03 22:38:34 INFO  Email:88 - Строки прочитаны
+2019-01-03 22:38:34 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 22:47:44 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 22:48:07 INFO  Dispatcher:18 - Старт программы
+2019-01-03 22:48:09 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 22:48:13 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 22:48:33 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 22:48:33 INFO  Email:54 - Получено писем: 2
+2019-01-03 22:48:34 INFO  Email:88 - Строки прочитаны
+2019-01-03 22:48:34 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 22:48:34 INFO  Controller:98 - Создан О8 № 2
+2019-01-03 22:48:34 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 22:48:58 INFO  BrowserController:97 - О8 созданы
+2019-01-03 22:51:44 INFO  Dispatcher:18 - Старт программы
+2019-01-03 22:51:46 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 22:51:50 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 22:52:10 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 22:52:10 INFO  Email:54 - Получено писем: 2
+2019-01-03 22:52:10 INFO  Email:88 - Строки прочитаны
+2019-01-03 22:52:10 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 22:52:10 INFO  Controller:98 - Создан О8 № 2
+2019-01-03 22:52:11 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 22:52:34 INFO  BrowserController:97 - О8 созданы
+2019-01-03 22:53:24 INFO  BrowserController:102 - Браузер закрыт
+2019-01-03 22:53:24 INFO  Dispatcher:36 - Конец работы программы
+2019-01-03 22:53:59 INFO  Dispatcher:18 - Старт программы
+2019-01-03 22:54:01 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 22:54:05 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 22:54:27 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 22:54:27 INFO  Email:54 - Получено писем: 1
+2019-01-03 22:54:27 INFO  Email:88 - Строки прочитаны
+2019-01-03 22:54:27 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:09:32 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 23:18:26 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:18:30 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:18:34 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:19:05 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:19:06 INFO  Email:54 - Получено писем: 2
+2019-01-03 23:19:07 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:19:07 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:19:07 INFO  Controller:98 - Создан О8 № 2
+2019-01-03 23:22:36 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:22:38 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:22:43 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:23:03 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:23:03 INFO  Email:54 - Получено писем: 1
+2019-01-03 23:23:03 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:23:03 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:26:59 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:27:01 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:27:05 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:27:25 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:27:26 INFO  Email:54 - Получено писем: 1
+2019-01-03 23:27:26 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:27:26 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:36:31 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:36:33 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:36:37 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:36:57 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:36:57 INFO  Email:54 - Получено писем: 1
+2019-01-03 23:36:57 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:36:57 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:40:16 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:40:18 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:40:21 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:40:42 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:40:42 INFO  Email:54 - Получено писем: 2
+2019-01-03 23:40:43 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:40:43 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:40:43 INFO  Controller:98 - Создан О8 № 2
+2019-01-03 23:41:42 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:41:44 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:41:48 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:42:08 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:42:08 INFO  Email:54 - Получено писем: 1
+2019-01-03 23:42:08 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:42:08 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:46:09 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:46:11 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:46:15 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:46:35 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:46:35 INFO  Email:54 - Получено писем: 1
+2019-01-03 23:46:36 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:46:36 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:47:11 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:47:34 INFO  Dispatcher:18 - Старт программы
+2019-01-03 23:47:36 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-03 23:47:39 INFO  BrowserController:37 - Браузер готов к работе
+2019-01-03 23:47:59 INFO  BrowserController:66 - ЕРП готов к работе
+2019-01-03 23:47:59 INFO  Email:54 - Получено писем: 2
+2019-01-03 23:48:00 INFO  Email:88 - Строки прочитаны
+2019-01-03 23:48:00 INFO  Controller:81 - Создан О8 № 1
+2019-01-03 23:48:00 INFO  Controller:98 - Создан О8 № 2
+2019-01-03 23:48:00 INFO  Controller:118 - Данные для ерп сформированы
+2019-01-03 23:48:24 INFO  BrowserController:97 - О8 созданы
+2019-01-03 23:50:09 INFO  BrowserController:102 - Браузер закрыт
+2019-01-03 23:50:09 INFO  Dispatcher:36 - Конец работы программы
