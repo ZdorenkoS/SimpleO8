@@ -83,7 +83,10 @@ public class Controller extends Thread{
              // для всех строк кроме 1
              else {
                  // проверяем линия от нового О8 или продолжает уже созданный
-                 if (parts.get(i)[0].equals(parts.get(i-1)[0]) && parts.get(i)[2].equals(parts.get(i - 1)[2]) && parts.get(i)[3].equals(parts.get(i - 1)[3])){
+                 String[] s1 = parts.get(i);
+                 String[] s2 = parts.get(i-1);
+
+                 if (s1[0].equals(s2[0]) && s1[2].equals(s2[2]) && s1[3].equals(s2[3]) && s1[4].equals(s2[4])){
                   o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));      // добавляем товары
                  }
                  // создаем новый О8
