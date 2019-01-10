@@ -38,8 +38,8 @@ public class O8 {
                 if (stock.equals("3001")) sb.append("P3001\t");
                 if (stock.equals("5005")) sb.append("M5005\t");
                 if (currency.equalsIgnoreCase("БЕЗНАЛ")) sb.append("UAH\t");
-                if (currency.equalsIgnoreCase("НАЛ")) sb.append("UA2\t");
-                if (currency.equalsIgnoreCase("USD")) sb.append("USD\t");
+                else if (currency.equalsIgnoreCase("USD")) sb.append("USD\t");
+                else sb.append("UA2\t");
                 sb.append(supplier + "\t");
                 sb.append(goods.get(j).getSku() + "\t");
                 sb.append(goods.get(j).getQuantity() + "\t");
@@ -123,12 +123,16 @@ public class O8 {
         String supp = properties.getProperty(supplier);
 
         StringBuilder sb = new StringBuilder();
+        try {
         if (supp.length()<25) {
             sb.append(supp);
             for (int i = 0; i <24 - supp.length() ; i++) {
                 sb.append(" ");
             }
-        } else sb.append(supp.substring(0,24));
+        } else sb.append(supp.substring(0,24));}
+        catch (NullPointerException ex){
+            sb.append(supplier);
+        }
         sb.append("\t");
         if (summ.length()<15){
             for (int i = 0; i <15-summ.length() ; i++) {

@@ -53,14 +53,6 @@ public class Controller extends Thread{
         lines = email.getLines(messages);
     }
 
-    public ArrayList<O8> getO8s() {
-        return o8s;
-    }
-
-    public ArrayList<O8> getO8sFail() {
-        return o8sFail;
-    }
-
     public void makeO8(){
         ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
         Collections.sort(lines);                                                        // сортируем линии, получим нужные строки подряд
@@ -76,7 +68,7 @@ public class Controller extends Thread{
                            if (str.length > 10) o8s.get(0).setParcel(str[11]);              // может отсутствовать
                            if (str.length > 10) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
                        } catch (IndexOutOfBoundsException ex ){}
-                        o8s.get(0).getGoods().add(new Goods(str[7],str[8], str[9]));     // добавляем товары из первой линии
+                        o8s.get(0).getGoods().add(new Goods(str[7],str[8], str[9]));        // добавляем товары из первой линии
 
                  log.info("Создан О8 № "+(x+1));
              }
@@ -87,16 +79,18 @@ public class Controller extends Thread{
                  String[] s2 = parts.get(i-1);
 
                  if (s1[0].equals(s2[0]) && s1[2].equals(s2[2]) && s1[3].equals(s2[3]) && s1[4].equals(s2[4])){
-                  o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));      // добавляем товары
+                 o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));      // добавляем товары
                  }
                  // создаем новый О8
                  else {
+                     try {
                      o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
                      x++;
-                     try{
                      if (str.length > 10) o8s.get(x).setParcel(str[11]);
                      if (str.length > 10) o8s.get(x).setDeferment(str[12]);
-                     } catch(IndexOutOfBoundsException ex ){ }
+                     } catch(ArrayIndexOutOfBoundsException ex ){
+                         System.out.println(str[0]+str[1]);
+                     }
                      o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
                      log.info("Создан О8 № " + (x + 1));
                  }
