@@ -67,19 +67,20 @@ public class Email {
        ArrayList<String> lines = new ArrayList<>();
         try {
             for (Message m : messages) {
-                s = getTextFromMessage(m)
-                        .replaceAll("\\p{Cntrl}", "@")
-                        .replaceAll("@.3001", "#3001")
-                        .replaceAll("@.5005", "#5005")
-                        .replaceAll("@@@@@@@@@@@@", "_ _")
-                        .replaceAll("@@@@@@@@", "_ _")
-                        .replaceAll("@@@@@@", "_")
-                        .replaceAll("@@@@", "_")
+                s = getTextFromMessage(m).replaceAll("\\p{Cntrl}", "@")
+                        .replaceAll("P3001", "%3001")
+                        .replaceAll("Р3001", "%3001")
+                        .replaceAll("M5005", "%5005")
+                        .replaceAll("М5005", "%5005")
+                        .replaceAll("@@@@@@@@@@@@", "# #")
+                        .replaceAll("@@@@@@@@", "# #")
+                        .replaceAll("@@@@@@", "#")
+                        .replaceAll("@@@@", "#")
                         .replaceAll("@", "");
-                lines.addAll(Arrays.asList(s.split("#")));
+                lines.addAll(Arrays.asList(s.split("%")));
 
                 for (int i = 0; i < lines.size(); i++) {
-                    if (lines.get(i).startsWith("_") || lines.get(i).equals("")) lines.remove(i);
+                    if (lines.get(i).startsWith("#") || lines.get(i).equals("")) lines.remove(i);
                 }
             }
         } catch (MessagingException | IOException ex) {

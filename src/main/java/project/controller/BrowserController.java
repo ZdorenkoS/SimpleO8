@@ -19,6 +19,7 @@ public class BrowserController extends Thread{
     public enum browsr{CHROME,FIREFOX}
     private static WebDriver driver;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
+    private static String temp;
 
     public BrowserController() {}
     public BrowserController(browsr b) {
@@ -35,6 +36,10 @@ public class BrowserController extends Thread{
         driver.manage().window().setPosition(new Point(0,0));
     //  driver.manage().window().maximize();
         log.info("Браузер готов к работе");
+    }
+
+    public void setTemp(String temp) {
+        this.temp = temp;
     }
 
     public void start(){
@@ -66,11 +71,11 @@ public class BrowserController extends Thread{
         log.info("ЕРП готов к работе");
     }
 
-    public void createO8(String s){
+    public void createO8(){
         Toolkit.getDefaultToolkit()
                 .getSystemClipboard()
                 .setContents(
-                        new StringSelection(s),
+                        new StringSelection(temp),
                         null);
         new WebDriverWait (driver, 2);
         driver.findElement(By.id("listOCL_1")).click();
@@ -94,6 +99,8 @@ public class BrowserController extends Thread{
         driver.findElement(By.id("selectAll0_1")).click();
         driver.findElement(By.xpath("(//div[@id='div']/font)[2]")).click();
         driver.findElement(By.xpath("//table[@id='HE0_117']/tbody/tr/td[2]/span/nobr")).click();
+        driver.switchTo().parentFrame();
+        temp = new String();
         log.info("О8 созданы");
     }
 

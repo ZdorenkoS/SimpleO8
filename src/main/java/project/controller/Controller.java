@@ -1,5 +1,7 @@
 package project.controller;
 
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import project.model.Email;
 import project.model.Goods;
@@ -10,6 +12,7 @@ import javax.mail.Message;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Controller extends Thread{
     private final static Logger log = Logger.getLogger(Controller.class.getName());
@@ -55,9 +58,16 @@ public class Controller extends Thread{
 
     public void makeO8(){
         ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
-        Collections.sort(lines);                                                        // сортируем линии, получим нужные строки подряд
+        Collections.sort(lines, new Comparator<String>() {                              // сортируем линии, получим нужные строки подряд
+            @Override
+            public int compare(String o1, String o2) {
+                int s1 = StringUtils.ordinalIndexOf(o1,"#",5) + 1;
+                int s2 = StringUtils.ordinalIndexOf(o2,"#",5) + 1;
+                return o1.substring(0,s1).compareTo(o2.substring(0,s2));
+            }
+        });
         for (String s :lines) {
-            parts.add(s.split("_"));                                              // разделяем линию на составляющие
+            parts.add(s.split("#"));                                              // разделяем линию на составляющие
         }
         int x = 0;                                                                      // счетчик количества О8
         for (int i = 0; i <parts.size() ; i++) {

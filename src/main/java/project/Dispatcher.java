@@ -46,9 +46,16 @@ public class Dispatcher implements Runnable{
                 controller.getLines();
                 controller.makeO8();
                 controller.o8Validation();
-                browserController.createO8(controller.getString());
+                try{browserController.setTemp(controller.getString());
+                    browserController.createO8();}
+                catch (Exception ex){
+                    browserController.disconnect();
+                    browserController = new BrowserController(BrowserController.browsr.CHROME);
+                    browserController.start();
+                    browserController.createO8();
+                    }
+                }
 
-            }
             try {
                 TimeUnit.SECONDS.sleep(Long.parseLong(ConfigProperties.getProperty("sleepTime")));
             } catch (InterruptedException e) {
