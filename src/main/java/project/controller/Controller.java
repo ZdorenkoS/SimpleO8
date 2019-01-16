@@ -98,9 +98,7 @@ public class Controller extends Thread{
                      x++;
                      if (str.length > 10) o8s.get(x).setParcel(str[11]);
                      if (str.length > 10) o8s.get(x).setDeferment(str[12]);
-                     } catch(ArrayIndexOutOfBoundsException ex ){
-                         System.out.println(str[0]+str[1]);
-                     }
+                     } catch(ArrayIndexOutOfBoundsException ex ){}
                      o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
                      log.info("Создан О8 № " + (x + 1));
                  }

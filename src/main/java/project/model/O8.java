@@ -47,7 +47,7 @@ public class O8 {
                 sb.append(" \t");
                 try {
                     if (delivery.equalsIgnoreCase("КУРЬЕР")) sb.append("01\t");
-                    else if (Long.parseLong(parcel) > 0) sb.append("02" + "\t").append(parcel + "\t");
+                    else if (parcel != null) sb.append("02" + "\t").append(parcel + "\t");
                     else sb.append("\t");
                 } catch (NumberFormatException ex) {
                     sb.append(" \t \t");

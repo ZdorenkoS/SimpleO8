@@ -9834,3 +9834,768 @@ javax.mail.FolderClosedException: * BYE JavaMail Exception: java.io.IOException:
 2019-01-14 22:09:00 INFO  Controller:83 - Создан О8 № 1
 2019-01-14 22:09:02 INFO  Controller:125 - Данные для ерп сформированы
 2019-01-14 22:10:26 INFO  BrowserController:104 - О8 созданы
+2019-01-15 09:20:58 INFO  Dispatcher:18 - Старт программы
+2019-01-15 09:21:01 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 09:21:05 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 09:21:25 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 09:21:25 INFO  Email:54 - Получено писем: 10
+2019-01-15 09:21:29 INFO  Email:89 - Строки прочитаны
+2019-01-15 09:21:29 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 7
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 8
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 9
+2019-01-15 09:21:29 INFO  Controller:105 - Создан О8 № 10
+2019-01-15 09:21:29 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 09:21:54 INFO  BrowserController:104 - О8 созданы
+2019-01-15 09:23:24 INFO  Email:54 - Получено писем: 1
+2019-01-15 09:23:25 INFO  Email:89 - Строки прочитаны
+2019-01-15 09:23:25 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 09:23:25 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 09:23:35 INFO  BrowserController:109 - Браузер закрыт
+2019-01-15 09:23:38 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 09:24:00 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 09:24:30 INFO  BrowserController:109 - Браузер закрыт
+2019-01-15 09:24:30 INFO  Dispatcher:36 - Конец работы программы
+2019-01-15 09:43:40 INFO  Dispatcher:18 - Старт программы
+2019-01-15 09:43:43 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 09:43:47 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 09:44:07 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 09:44:08 INFO  Email:54 - Получено писем: 9
+2019-01-15 09:44:10 INFO  Email:89 - Строки прочитаны
+2019-01-15 09:44:10 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 7
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 8
+2019-01-15 09:44:10 INFO  Controller:105 - Создан О8 № 9
+2019-01-15 09:44:10 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 09:44:35 INFO  BrowserController:105 - О8 созданы
+2019-01-15 09:46:05 INFO  Email:51 - Новых писем нет
+2019-01-15 09:47:35 INFO  Email:51 - Новых писем нет
+2019-01-15 09:49:05 INFO  Email:51 - Новых писем нет
+2019-01-15 10:00:12 INFO  Dispatcher:18 - Старт программы
+2019-01-15 10:00:14 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 10:00:18 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 10:00:48 INFO  Dispatcher:18 - Старт программы
+2019-01-15 10:00:49 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 10:00:53 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 10:01:14 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 10:01:14 INFO  Email:54 - Получено писем: 5
+2019-01-15 10:01:15 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:01:15 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:01:15 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 10:01:15 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 10:01:15 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 10:01:15 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 10:01:15 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:01:40 INFO  BrowserController:105 - О8 созданы
+2019-01-15 10:03:10 INFO  Email:54 - Получено писем: 2
+2019-01-15 10:03:11 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:03:11 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:03:11 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 10:03:11 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:03:25 INFO  BrowserController:105 - О8 созданы
+2019-01-15 10:04:55 INFO  Email:54 - Получено писем: 1
+2019-01-15 10:04:55 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:04:55 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:04:55 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:05:10 INFO  BrowserController:105 - О8 созданы
+2019-01-15 10:06:40 INFO  Email:54 - Получено писем: 2
+2019-01-15 10:06:40 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:06:40 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:06:40 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 10:06:40 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:06:54 INFO  BrowserController:105 - О8 созданы
+2019-01-15 10:08:25 INFO  Email:51 - Новых писем нет
+2019-01-15 10:09:55 INFO  Email:51 - Новых писем нет
+2019-01-15 10:11:25 INFO  Email:51 - Новых писем нет
+2019-01-15 10:12:55 INFO  Email:51 - Новых писем нет
+2019-01-15 10:14:25 INFO  Email:51 - Новых писем нет
+2019-01-15 10:15:55 INFO  Email:57 - Сбой при попытке доступа к папкам
+javax.mail.MessagingException: * BYE JavaMail Exception: java.net.SocketException: Connection reset by peer: socket write error;
+  nested exception is:
+	com.sun.mail.iap.ConnectionException: * BYE JavaMail Exception: java.net.SocketException: Connection reset by peer: socket write error
+	at com.sun.mail.imap.IMAPFolder.logoutAndThrow(IMAPFolder.java:1180)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1087)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1001)
+	at project.model.Email.getMessages(Email.java:48)
+	at project.controller.Controller.getMesssages(Controller.java:52)
+	at project.Dispatcher.run(Dispatcher.java:44)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.sun.mail.iap.ConnectionException: * BYE JavaMail Exception: java.net.SocketException: Connection reset by peer: socket write error
+	at com.sun.mail.iap.Protocol.handleResult(Protocol.java:442)
+	at com.sun.mail.imap.protocol.IMAPProtocol.select(IMAPProtocol.java:1252)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1058)
+	... 5 more
+2019-01-15 10:38:48 INFO  Dispatcher:18 - Старт программы
+2019-01-15 10:38:50 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 10:38:54 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 10:39:13 INFO  Dispatcher:18 - Старт программы
+2019-01-15 10:39:14 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 10:39:18 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 10:39:39 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 10:39:40 INFO  Email:54 - Получено писем: 16
+2019-01-15 10:39:45 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:40:39 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 10:40:39 INFO  Dispatcher:36 - Конец работы программы
+2019-01-15 10:40:43 INFO  Dispatcher:18 - Старт программы
+2019-01-15 10:40:45 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 10:40:49 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 10:41:10 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 10:41:10 INFO  Email:54 - Получено писем: 5
+2019-01-15 10:41:12 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:41:12 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:41:12 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 10:41:12 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 10:41:12 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 10:41:12 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 10:41:12 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:41:37 INFO  BrowserController:105 - О8 созданы
+2019-01-15 10:43:07 INFO  Email:54 - Получено писем: 5
+2019-01-15 10:43:08 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:43:08 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:43:08 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 10:43:08 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 10:43:08 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 10:43:08 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 10:43:08 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:43:23 INFO  BrowserController:105 - О8 созданы
+2019-01-15 10:44:53 INFO  Email:54 - Получено писем: 3
+2019-01-15 10:44:53 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:54:22 INFO  Dispatcher:18 - Старт программы
+2019-01-15 10:54:24 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 10:54:28 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 10:54:50 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 10:54:50 INFO  Email:54 - Получено писем: 1
+2019-01-15 10:54:51 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:54:51 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:54:51 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:55:20 INFO  BrowserController:105 - О8 созданы
+2019-01-15 10:56:50 INFO  Email:54 - Получено писем: 1
+2019-01-15 10:56:51 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:58:33 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 10:58:33 INFO  Dispatcher:36 - Конец работы программы
+2019-01-15 10:58:38 INFO  Dispatcher:18 - Старт программы
+2019-01-15 10:58:39 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 10:58:43 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 10:59:04 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 10:59:05 INFO  Email:54 - Получено писем: 4
+2019-01-15 10:59:06 INFO  Email:89 - Строки прочитаны
+2019-01-15 10:59:06 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 10:59:06 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 10:59:06 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 10:59:06 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 10:59:06 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 10:59:31 INFO  BrowserController:105 - О8 созданы
+2019-01-15 11:01:01 INFO  Email:54 - Получено писем: 9
+2019-01-15 11:01:04 INFO  Email:89 - Строки прочитаны
+2019-01-15 11:01:04 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 7
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 8
+2019-01-15 11:01:04 INFO  Controller:105 - Создан О8 № 9
+2019-01-15 11:01:04 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 11:01:18 INFO  BrowserController:105 - О8 созданы
+2019-01-15 11:02:48 INFO  Email:54 - Получено писем: 8
+2019-01-15 11:02:51 INFO  Email:89 - Строки прочитаны
+2019-01-15 11:02:51 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 7
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 8
+2019-01-15 11:02:51 INFO  Controller:105 - Создан О8 № 9
+2019-01-15 11:02:51 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 11:03:06 INFO  BrowserController:105 - О8 созданы
+2019-01-15 11:04:18 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 11:04:18 INFO  Dispatcher:36 - Конец работы программы
+2019-01-15 12:00:08 INFO  Dispatcher:18 - Старт программы
+2019-01-15 12:00:10 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 12:00:14 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 12:00:36 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 12:00:36 INFO  Email:54 - Получено писем: 19
+2019-01-15 12:00:42 INFO  Email:89 - Строки прочитаны
+2019-01-15 12:00:42 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 7
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 8
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 9
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 10
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 11
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 12
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 13
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 14
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 15
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 16
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 17
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 18
+2019-01-15 12:00:42 INFO  Controller:105 - Создан О8 № 19
+2019-01-15 12:00:42 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 12:01:03 INFO  BrowserController:105 - О8 созданы
+2019-01-15 12:02:33 INFO  Email:51 - Новых писем нет
+2019-01-15 12:04:03 INFO  Email:51 - Новых писем нет
+2019-01-15 12:05:33 INFO  Email:51 - Новых писем нет
+2019-01-15 12:07:03 INFO  Email:51 - Новых писем нет
+2019-01-15 12:08:34 INFO  Email:51 - Новых писем нет
+2019-01-15 12:10:04 INFO  Email:51 - Новых писем нет
+2019-01-15 12:11:34 INFO  Email:51 - Новых писем нет
+2019-01-15 12:13:04 INFO  Email:51 - Новых писем нет
+2019-01-15 12:14:34 INFO  Email:51 - Новых писем нет
+2019-01-15 12:16:04 INFO  Email:51 - Новых писем нет
+2019-01-15 12:17:34 INFO  Email:51 - Новых писем нет
+2019-01-15 12:19:05 INFO  Email:51 - Новых писем нет
+2019-01-15 12:20:35 INFO  Email:51 - Новых писем нет
+2019-01-15 12:22:05 INFO  Email:51 - Новых писем нет
+2019-01-15 12:23:35 INFO  Email:51 - Новых писем нет
+2019-01-15 12:25:05 INFO  Email:51 - Новых писем нет
+2019-01-15 12:26:35 INFO  Email:54 - Получено писем: 5
+2019-01-15 12:26:37 INFO  Email:89 - Строки прочитаны
+2019-01-15 12:26:37 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 12:26:37 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 12:26:37 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 12:26:37 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 12:26:37 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 12:26:37 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 12:26:37 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 12:26:37 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 12:26:41 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 12:27:03 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 12:32:07 INFO  Dispatcher:18 - Старт программы
+2019-01-15 12:32:09 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 12:32:12 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 12:32:34 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 12:32:34 INFO  Email:54 - Получено писем: 5
+2019-01-15 12:32:36 INFO  Email:89 - Строки прочитаны
+2019-01-15 12:32:36 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 12:32:36 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 12:32:36 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 12:32:36 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 12:32:36 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 12:32:36 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 12:33:01 INFO  BrowserController:105 - О8 созданы
+2019-01-15 12:34:31 INFO  Email:54 - Получено писем: 2
+2019-01-15 12:34:31 INFO  Email:89 - Строки прочитаны
+2019-01-15 12:34:31 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 12:34:31 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 12:34:31 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 12:34:46 INFO  BrowserController:105 - О8 созданы
+2019-01-15 12:36:16 INFO  Email:51 - Новых писем нет
+2019-01-15 12:37:46 INFO  Email:51 - Новых писем нет
+2019-01-15 12:39:16 INFO  Email:51 - Новых писем нет
+2019-01-15 12:40:46 INFO  Email:51 - Новых писем нет
+2019-01-15 12:42:16 INFO  Email:51 - Новых писем нет
+2019-01-15 12:43:46 INFO  Email:51 - Новых писем нет
+2019-01-15 12:45:17 INFO  Email:51 - Новых писем нет
+2019-01-15 12:46:47 INFO  Email:51 - Новых писем нет
+2019-01-15 12:48:17 INFO  Email:51 - Новых писем нет
+2019-01-15 12:49:47 INFO  Email:57 - Сбой при попытке доступа к папкам
+javax.mail.MessagingException: * BYE JavaMail Exception: java.io.IOException: Connection dropped by server?;
+  nested exception is:
+	com.sun.mail.iap.ConnectionException: * BYE JavaMail Exception: java.io.IOException: Connection dropped by server?
+	at com.sun.mail.imap.IMAPFolder.logoutAndThrow(IMAPFolder.java:1180)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1087)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1001)
+	at project.model.Email.getMessages(Email.java:48)
+	at project.controller.Controller.getMesssages(Controller.java:52)
+	at project.Dispatcher.run(Dispatcher.java:44)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.sun.mail.iap.ConnectionException: * BYE JavaMail Exception: java.io.IOException: Connection dropped by server?
+	at com.sun.mail.iap.Protocol.handleResult(Protocol.java:442)
+	at com.sun.mail.imap.protocol.IMAPProtocol.select(IMAPProtocol.java:1252)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1058)
+	... 5 more
+2019-01-15 13:21:06 INFO  Dispatcher:18 - Старт программы
+2019-01-15 13:21:08 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 13:21:12 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 13:21:33 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 13:21:33 INFO  Email:54 - Получено писем: 10
+2019-01-15 13:21:38 INFO  Email:89 - Строки прочитаны
+2019-01-15 13:21:39 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 7
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 8
+2019-01-15 13:21:39 INFO  Controller:105 - Создан О8 № 9
+2019-01-15 13:21:39 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 13:22:03 INFO  BrowserController:105 - О8 созданы
+2019-01-15 13:42:29 INFO  Dispatcher:18 - Старт программы
+2019-01-15 13:42:31 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 13:42:35 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 13:42:56 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 13:42:56 INFO  Email:54 - Получено писем: 5
+2019-01-15 13:42:58 INFO  Email:89 - Строки прочитаны
+2019-01-15 13:42:58 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 13:42:58 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 13:42:58 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 13:42:58 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 13:42:58 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 13:42:58 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 13:43:13 INFO  BrowserController:105 - О8 созданы
+2019-01-15 13:44:43 INFO  Email:51 - Новых писем нет
+2019-01-15 13:46:13 INFO  Email:51 - Новых писем нет
+2019-01-15 13:47:43 INFO  Email:51 - Новых писем нет
+2019-01-15 13:49:13 INFO  Email:51 - Новых писем нет
+2019-01-15 13:50:43 INFO  Email:51 - Новых писем нет
+2019-01-15 13:52:10 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 13:52:10 INFO  Dispatcher:36 - Конец работы программы
+2019-01-15 13:58:42 INFO  Dispatcher:18 - Старт программы
+2019-01-15 13:58:44 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 13:58:48 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 13:59:09 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 13:59:09 INFO  Email:54 - Получено писем: 5
+2019-01-15 13:59:11 INFO  Email:89 - Строки прочитаны
+2019-01-15 13:59:11 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 13:59:11 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 13:59:11 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 13:59:11 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 13:59:11 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 13:59:11 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 13:59:36 INFO  BrowserController:105 - О8 созданы
+2019-01-15 14:01:06 INFO  Email:51 - Новых писем нет
+2019-01-15 14:02:36 INFO  Email:51 - Новых писем нет
+2019-01-15 14:04:06 INFO  Email:51 - Новых писем нет
+2019-01-15 14:05:36 INFO  Email:51 - Новых писем нет
+2019-01-15 14:07:06 INFO  Email:51 - Новых писем нет
+2019-01-15 14:08:36 INFO  Email:51 - Новых писем нет
+2019-01-15 14:10:06 INFO  Email:51 - Новых писем нет
+2019-01-15 14:11:37 INFO  Email:51 - Новых писем нет
+2019-01-15 14:13:07 INFO  Email:51 - Новых писем нет
+2019-01-15 14:14:37 INFO  Email:51 - Новых писем нет
+2019-01-15 14:16:07 INFO  Email:51 - Новых писем нет
+2019-01-15 14:17:37 INFO  Email:51 - Новых писем нет
+2019-01-15 14:19:07 INFO  Email:51 - Новых писем нет
+2019-01-15 14:20:37 INFO  Email:51 - Новых писем нет
+2019-01-15 14:22:07 INFO  Email:54 - Получено писем: 2
+2019-01-15 14:22:08 INFO  Email:89 - Строки прочитаны
+2019-01-15 14:22:08 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 14:22:08 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 14:22:09 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 14:22:21 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 14:22:25 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 14:22:47 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 15:22:54 INFO  Dispatcher:18 - Старт программы
+2019-01-15 15:22:56 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 15:23:00 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 15:23:21 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 15:23:21 INFO  Email:54 - Получено писем: 3
+2019-01-15 15:23:32 INFO  Email:89 - Строки прочитаны
+2019-01-15 15:23:32 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 15:23:32 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 15:23:32 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 15:23:32 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 15:23:46 INFO  BrowserController:105 - О8 созданы
+2019-01-15 15:25:17 INFO  Email:54 - Получено писем: 1
+2019-01-15 15:25:17 INFO  Email:89 - Строки прочитаны
+2019-01-15 15:25:17 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 15:25:17 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 15:25:31 INFO  BrowserController:105 - О8 созданы
+2019-01-15 15:27:01 INFO  Email:51 - Новых писем нет
+2019-01-15 15:28:31 INFO  Email:54 - Получено писем: 1
+2019-01-15 15:28:32 INFO  Email:89 - Строки прочитаны
+2019-01-15 15:28:32 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 15:28:32 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 15:29:42 INFO  BrowserController:105 - О8 созданы
+2019-01-15 15:31:12 INFO  Email:51 - Новых писем нет
+2019-01-15 15:32:42 INFO  Email:51 - Новых писем нет
+2019-01-15 15:34:12 INFO  Email:51 - Новых писем нет
+2019-01-15 15:35:42 INFO  Email:51 - Новых писем нет
+2019-01-15 15:37:12 INFO  Email:51 - Новых писем нет
+2019-01-15 15:38:42 INFO  Email:51 - Новых писем нет
+2019-01-15 15:40:13 INFO  Email:54 - Получено писем: 2
+2019-01-15 15:40:13 INFO  Email:89 - Строки прочитаны
+2019-01-15 15:40:13 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 15:40:13 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 15:40:13 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 15:40:58 INFO  BrowserController:105 - О8 созданы
+2019-01-15 15:42:28 INFO  Email:51 - Новых писем нет
+2019-01-15 15:43:58 INFO  Email:51 - Новых писем нет
+2019-01-15 15:45:29 INFO  Email:51 - Новых писем нет
+2019-01-15 15:46:59 INFO  Email:54 - Получено писем: 3
+2019-01-15 15:47:00 INFO  Email:89 - Строки прочитаны
+2019-01-15 15:47:00 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 15:47:00 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 15:47:00 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 15:47:00 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 15:48:09 INFO  BrowserController:105 - О8 созданы
+2019-01-15 15:49:39 INFO  Email:57 - Сбой при попытке доступа к папкам
+javax.mail.MessagingException: * BYE JavaMail Exception: java.io.IOException: Connection dropped by server?;
+  nested exception is:
+	com.sun.mail.iap.ConnectionException: * BYE JavaMail Exception: java.io.IOException: Connection dropped by server?
+	at com.sun.mail.imap.IMAPFolder.logoutAndThrow(IMAPFolder.java:1180)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1087)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1001)
+	at project.model.Email.getMessages(Email.java:48)
+	at project.controller.Controller.getMesssages(Controller.java:52)
+	at project.Dispatcher.run(Dispatcher.java:44)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.sun.mail.iap.ConnectionException: * BYE JavaMail Exception: java.io.IOException: Connection dropped by server?
+	at com.sun.mail.iap.Protocol.handleResult(Protocol.java:442)
+	at com.sun.mail.imap.protocol.IMAPProtocol.select(IMAPProtocol.java:1252)
+	at com.sun.mail.imap.IMAPFolder.open(IMAPFolder.java:1058)
+	... 5 more
+2019-01-15 16:32:24 INFO  Dispatcher:18 - Старт программы
+2019-01-15 16:32:26 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 16:32:30 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 16:32:53 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 16:32:53 INFO  Email:54 - Получено писем: 2
+2019-01-15 16:32:54 INFO  Email:89 - Строки прочитаны
+2019-01-15 16:32:54 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 16:32:54 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 16:32:54 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 16:33:19 INFO  BrowserController:105 - О8 созданы
+2019-01-15 16:34:49 INFO  Email:54 - Получено писем: 1
+2019-01-15 16:34:49 INFO  Email:89 - Строки прочитаны
+2019-01-15 16:34:49 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 16:34:49 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 16:35:02 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 16:35:05 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 16:35:27 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 16:39:04 INFO  Dispatcher:18 - Старт программы
+2019-01-15 16:39:05 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 16:39:09 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 16:39:36 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 16:39:36 INFO  Email:54 - Получено писем: 1
+2019-01-15 16:39:37 INFO  Email:89 - Строки прочитаны
+2019-01-15 16:39:37 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 16:39:37 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 16:39:49 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 16:39:53 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 16:40:14 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 16:40:39 INFO  BrowserController:105 - О8 созданы
+2019-01-15 16:42:09 INFO  Email:51 - Новых писем нет
+2019-01-15 16:43:39 INFO  Email:51 - Новых писем нет
+2019-01-15 16:45:09 INFO  Email:54 - Получено писем: 3
+2019-01-15 16:45:10 INFO  Email:89 - Строки прочитаны
+2019-01-15 16:45:10 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 16:45:10 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 16:45:10 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 16:45:10 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 16:45:24 INFO  BrowserController:105 - О8 созданы
+2019-01-15 16:46:54 INFO  Email:51 - Новых писем нет
+2019-01-15 16:48:25 INFO  Email:51 - Новых писем нет
+2019-01-15 16:49:55 INFO  Email:51 - Новых писем нет
+2019-01-15 16:51:25 INFO  Email:51 - Новых писем нет
+2019-01-15 16:52:55 INFO  Email:54 - Получено писем: 3
+2019-01-15 16:52:56 INFO  Email:89 - Строки прочитаны
+2019-01-15 16:52:56 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 16:52:56 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 16:52:56 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 16:52:56 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 16:53:10 INFO  BrowserController:105 - О8 созданы
+2019-01-15 16:54:40 INFO  Email:51 - Новых писем нет
+2019-01-15 16:56:10 INFO  Email:51 - Новых писем нет
+2019-01-15 16:56:17 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 16:56:17 INFO  Dispatcher:36 - Конец работы программы
+2019-01-15 16:59:07 INFO  Dispatcher:18 - Старт программы
+2019-01-15 16:59:08 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 16:59:12 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 16:59:33 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 16:59:33 INFO  Email:54 - Получено писем: 2
+2019-01-15 16:59:34 INFO  Email:89 - Строки прочитаны
+2019-01-15 16:59:34 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 16:59:34 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 16:59:34 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 16:59:59 INFO  BrowserController:105 - О8 созданы
+2019-01-15 17:01:29 INFO  Email:51 - Новых писем нет
+2019-01-15 17:02:59 INFO  Email:51 - Новых писем нет
+2019-01-15 17:04:29 INFO  Email:51 - Новых писем нет
+2019-01-15 17:05:59 INFO  Email:51 - Новых писем нет
+2019-01-15 17:07:29 INFO  Email:51 - Новых писем нет
+2019-01-15 17:08:59 INFO  Email:51 - Новых писем нет
+2019-01-15 17:10:29 INFO  Email:51 - Новых писем нет
+2019-01-15 17:12:00 INFO  Email:51 - Новых писем нет
+2019-01-15 17:13:30 INFO  Email:51 - Новых писем нет
+2019-01-15 17:15:00 INFO  Email:54 - Получено писем: 1
+2019-01-15 17:15:00 INFO  Email:89 - Строки прочитаны
+2019-01-15 17:15:00 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 17:15:00 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 17:15:00 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 17:15:00 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 17:15:14 INFO  BrowserController:105 - О8 созданы
+2019-01-15 17:16:45 INFO  Email:54 - Получено писем: 1
+2019-01-15 17:16:45 INFO  Email:89 - Строки прочитаны
+2019-01-15 17:16:45 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 17:16:45 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 17:16:59 INFO  BrowserController:105 - О8 созданы
+2019-01-15 17:18:29 INFO  Email:51 - Новых писем нет
+2019-01-15 17:19:59 INFO  Email:51 - Новых писем нет
+2019-01-15 17:21:29 INFO  Email:51 - Новых писем нет
+2019-01-15 17:22:59 INFO  Email:51 - Новых писем нет
+2019-01-15 17:24:30 INFO  Email:51 - Новых писем нет
+2019-01-15 17:26:00 INFO  Email:51 - Новых писем нет
+2019-01-15 17:27:30 INFO  Email:51 - Новых писем нет
+2019-01-15 17:29:00 INFO  Email:54 - Получено писем: 2
+2019-01-15 17:29:01 INFO  Email:89 - Строки прочитаны
+2019-01-15 17:29:01 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 17:29:01 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 17:29:01 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 17:29:15 INFO  BrowserController:105 - О8 созданы
+2019-01-15 17:30:45 INFO  Email:51 - Новых писем нет
+2019-01-15 17:32:15 INFO  Email:51 - Новых писем нет
+2019-01-15 17:33:45 INFO  Email:51 - Новых писем нет
+2019-01-15 17:35:15 INFO  Email:51 - Новых писем нет
+2019-01-15 17:36:45 INFO  Email:51 - Новых писем нет
+2019-01-15 17:38:16 INFO  Email:51 - Новых писем нет
+2019-01-15 17:39:46 INFO  Email:51 - Новых писем нет
+2019-01-15 17:41:16 INFO  Email:51 - Новых писем нет
+2019-01-15 17:42:46 INFO  Email:51 - Новых писем нет
+2019-01-15 17:44:16 INFO  Email:51 - Новых писем нет
+2019-01-15 17:45:46 INFO  Email:51 - Новых писем нет
+2019-01-15 17:47:16 INFO  Email:51 - Новых писем нет
+2019-01-15 17:48:47 INFO  Email:51 - Новых писем нет
+2019-01-15 17:50:17 INFO  Email:51 - Новых писем нет
+2019-01-15 17:51:47 INFO  Email:51 - Новых писем нет
+2019-01-15 17:53:17 INFO  Email:51 - Новых писем нет
+2019-01-15 17:54:47 INFO  Email:51 - Новых писем нет
+2019-01-15 17:56:17 INFO  Email:54 - Получено писем: 2
+2019-01-15 17:56:19 INFO  Email:89 - Строки прочитаны
+2019-01-15 17:56:19 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 17:56:19 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 17:56:19 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 17:56:19 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 17:56:23 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 17:56:45 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 17:57:09 INFO  BrowserController:105 - О8 созданы
+2019-01-15 18:27:57 INFO  Dispatcher:18 - Старт программы
+2019-01-15 18:27:59 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 18:28:03 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 18:28:24 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 18:28:24 INFO  Email:54 - Получено писем: 20
+2019-01-15 18:28:31 INFO  Email:89 - Строки прочитаны
+2019-01-15 18:28:31 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 7
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 8
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 9
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 10
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 11
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 12
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 13
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 14
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 15
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 16
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 17
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 18
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 19
+2019-01-15 18:28:31 INFO  Controller:105 - Создан О8 № 20
+2019-01-15 18:28:31 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 18:28:51 INFO  BrowserController:105 - О8 созданы
+2019-01-15 23:34:21 INFO  Dispatcher:18 - Старт программы
+2019-01-15 23:34:24 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-15 23:34:28 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-15 23:34:48 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-15 23:34:48 INFO  Email:54 - Получено писем: 6
+2019-01-15 23:34:50 INFO  Email:89 - Строки прочитаны
+2019-01-15 23:34:51 INFO  Controller:83 - Создан О8 № 1
+2019-01-15 23:34:51 INFO  Controller:105 - Создан О8 № 2
+2019-01-15 23:34:51 INFO  Controller:105 - Создан О8 № 3
+2019-01-15 23:34:51 INFO  Controller:105 - Создан О8 № 4
+2019-01-15 23:34:51 INFO  Controller:105 - Создан О8 № 5
+2019-01-15 23:34:51 INFO  Controller:105 - Создан О8 № 6
+2019-01-15 23:34:51 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-15 23:35:15 INFO  BrowserController:105 - О8 созданы
+2019-01-15 23:35:56 INFO  BrowserController:110 - Браузер закрыт
+2019-01-15 23:35:56 INFO  Dispatcher:36 - Конец работы программы
+2019-01-16 08:48:23 INFO  Dispatcher:18 - Старт программы
+2019-01-16 08:48:27 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 08:48:31 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 08:48:52 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 08:48:52 INFO  Email:51 - Новых писем нет
+2019-01-16 08:50:19 INFO  BrowserController:110 - Браузер закрыт
+2019-01-16 08:50:19 INFO  Dispatcher:36 - Конец работы программы
+2019-01-16 09:52:34 INFO  Dispatcher:18 - Старт программы
+2019-01-16 09:52:35 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 09:52:39 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 09:53:00 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 09:53:00 INFO  Email:54 - Получено писем: 14
+2019-01-16 09:53:05 INFO  Email:89 - Строки прочитаны
+2019-01-16 09:53:05 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 2
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 3
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 4
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 5
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 6
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 7
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 8
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 9
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 10
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 11
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 12
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 13
+2019-01-16 09:53:05 INFO  Controller:105 - Создан О8 № 14
+2019-01-16 09:53:05 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 09:53:24 INFO  BrowserController:105 - О8 созданы
+2019-01-16 10:27:49 INFO  Dispatcher:18 - Старт программы
+2019-01-16 10:27:51 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 10:27:55 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 10:28:15 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 10:28:15 INFO  Email:54 - Получено писем: 10
+2019-01-16 10:28:18 INFO  Email:89 - Строки прочитаны
+2019-01-16 10:28:18 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 2
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 3
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 4
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 5
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 6
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 7
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 8
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 9
+2019-01-16 10:28:18 INFO  Controller:105 - Создан О8 № 10
+2019-01-16 10:28:18 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 10:28:43 INFO  BrowserController:105 - О8 созданы
+2019-01-16 10:30:13 INFO  Email:51 - Новых писем нет
+2019-01-16 10:31:43 INFO  Email:51 - Новых писем нет
+2019-01-16 10:33:13 INFO  Email:51 - Новых писем нет
+2019-01-16 10:34:44 INFO  Email:51 - Новых писем нет
+2019-01-16 10:36:14 INFO  Email:51 - Новых писем нет
+2019-01-16 10:37:44 INFO  Email:51 - Новых писем нет
+2019-01-16 10:39:14 INFO  Email:51 - Новых писем нет
+2019-01-16 10:40:44 INFO  Email:51 - Новых писем нет
+2019-01-16 10:42:14 INFO  Email:51 - Новых писем нет
+2019-01-16 10:43:44 INFO  Email:51 - Новых писем нет
+2019-01-16 10:45:15 INFO  Email:54 - Получено писем: 3
+2019-01-16 10:45:16 INFO  Email:89 - Строки прочитаны
+2019-01-16 10:45:16 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 10:45:16 INFO  Controller:105 - Создан О8 № 2
+2019-01-16 10:45:16 INFO  Controller:105 - Создан О8 № 3
+2019-01-16 10:45:16 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 10:45:30 INFO  BrowserController:105 - О8 созданы
+2019-01-16 10:47:00 INFO  Email:54 - Получено писем: 6
+2019-01-16 10:47:02 INFO  Email:89 - Строки прочитаны
+2019-01-16 10:47:02 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 10:47:02 INFO  Controller:105 - Создан О8 № 2
+2019-01-16 10:47:02 INFO  Controller:105 - Создан О8 № 3
+2019-01-16 10:47:02 INFO  Controller:105 - Создан О8 № 4
+2019-01-16 10:47:02 INFO  Controller:105 - Создан О8 № 5
+2019-01-16 10:47:02 INFO  Controller:105 - Создан О8 № 6
+2019-01-16 10:47:02 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 10:47:16 INFO  BrowserController:105 - О8 созданы
+2019-01-16 10:48:46 INFO  Email:51 - Новых писем нет
+2019-01-16 10:50:16 INFO  Email:51 - Новых писем нет
+2019-01-16 10:51:46 INFO  Email:51 - Новых писем нет
+2019-01-16 10:53:16 INFO  Email:51 - Новых писем нет
+2019-01-16 10:54:47 INFO  Email:51 - Новых писем нет
+2019-01-16 10:56:17 INFO  Email:51 - Новых писем нет
+2019-01-16 10:57:47 INFO  Email:51 - Новых писем нет
+2019-01-16 10:59:17 INFO  Email:54 - Получено писем: 1
+2019-01-16 10:59:17 INFO  Email:89 - Строки прочитаны
+2019-01-16 10:59:17 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 10:59:17 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 11:00:27 INFO  BrowserController:105 - О8 созданы
+2019-01-16 11:01:57 INFO  Email:54 - Получено писем: 7
+2019-01-16 11:01:59 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:01:59 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:01:59 INFO  Controller:105 - Создан О8 № 2
+2019-01-16 11:01:59 INFO  Controller:105 - Создан О8 № 3
+2019-01-16 11:01:59 INFO  Controller:105 - Создан О8 № 4
+2019-01-16 11:01:59 INFO  Controller:105 - Создан О8 № 5
+2019-01-16 11:01:59 INFO  Controller:105 - Создан О8 № 6
+2019-01-16 11:01:59 INFO  Controller:105 - Создан О8 № 7
+2019-01-16 11:01:59 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 11:03:09 INFO  BrowserController:105 - О8 созданы
+2019-01-16 11:04:39 INFO  Email:54 - Получено писем: 2
+2019-01-16 11:04:40 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:04:40 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:04:40 INFO  Controller:105 - Создан О8 № 2
+2019-01-16 11:04:40 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 11:05:51 INFO  BrowserController:105 - О8 созданы
+2019-01-16 11:16:23 INFO  Email:54 - Получено писем: 9
+2019-01-16 11:16:26 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:16:26 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 2
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 3
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 4
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 5
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 6
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 7
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 8
+2019-01-16 11:16:26 INFO  Controller:105 - Создан О8 № 9
+2019-01-16 11:16:26 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 11:17:06 INFO  BrowserController:105 - О8 созданы
+2019-01-16 11:22:57 INFO  Dispatcher:18 - Старт программы
+2019-01-16 11:22:59 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 11:23:03 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 11:23:23 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 11:23:23 INFO  Email:54 - Получено писем: 1
+2019-01-16 11:23:23 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:24:43 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:25:17 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 11:26:35 INFO  Dispatcher:18 - Старт программы
+2019-01-16 11:26:38 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 11:26:42 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 11:27:02 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 11:27:03 INFO  Email:54 - Получено писем: 1
+2019-01-16 11:27:03 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:27:03 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:30:11 INFO  Controller:125 - Данные для ерп сформированы
+2019-01-16 11:32:51 INFO  Dispatcher:18 - Старт программы
+2019-01-16 11:32:53 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 11:32:57 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 11:33:18 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 11:33:18 INFO  Email:54 - Получено писем: 9
+2019-01-16 11:33:21 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:33:21 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 2
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 3
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 4
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 5
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 6
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 7
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 8
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 9
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 10
+2019-01-16 11:33:21 INFO  Controller:108 - Создан О8 № 11
+2019-01-16 11:33:21 INFO  Controller:128 - Данные для ерп сформированы
+2019-01-16 11:33:45 INFO  BrowserController:105 - О8 созданы
+2019-01-16 11:35:10 INFO  Dispatcher:18 - Старт программы
+2019-01-16 11:35:12 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 11:35:16 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 11:35:36 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 11:35:36 INFO  Email:54 - Получено писем: 1
+2019-01-16 11:35:36 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:35:36 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:35:36 INFO  Controller:128 - Данные для ерп сформированы
+2019-01-16 11:36:01 INFO  BrowserController:105 - О8 созданы
+2019-01-16 11:37:35 INFO  Dispatcher:18 - Старт программы
+2019-01-16 11:37:37 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 11:37:41 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 11:38:01 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 11:38:01 INFO  Email:54 - Получено писем: 1
+2019-01-16 11:38:01 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:38:02 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:38:02 INFO  Controller:128 - Данные для ерп сформированы
+2019-01-16 11:38:31 INFO  BrowserController:105 - О8 созданы
+2019-01-16 11:40:01 INFO  Email:51 - Новых писем нет
+2019-01-16 11:40:27 INFO  Dispatcher:18 - Старт программы
+2019-01-16 11:40:28 INFO  Email:38 - Соединение с почтовым сервером установлено
+2019-01-16 11:40:32 INFO  BrowserController:38 - Браузер готов к работе
+2019-01-16 11:40:52 INFO  BrowserController:71 - ЕРП готов к работе
+2019-01-16 11:40:52 INFO  Email:54 - Получено писем: 1
+2019-01-16 11:40:53 INFO  Email:89 - Строки прочитаны
+2019-01-16 11:41:37 INFO  Controller:83 - Создан О8 № 1
+2019-01-16 11:42:45 INFO  Controller:128 - Данные для ерп сформированы

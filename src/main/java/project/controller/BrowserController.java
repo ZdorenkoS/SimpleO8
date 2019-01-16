@@ -84,6 +84,7 @@ public class BrowserController extends Thread{
         driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL+"v"));
         new WebDriverWait(driver, 3);
         driver.findElement(By.id("hc_OK")).click();
+        new WebDriverWait(driver, 1);
         driver.findElement(By.id("hc_Find")).click();
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
