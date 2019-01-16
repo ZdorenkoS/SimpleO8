@@ -56,6 +56,7 @@ public class Controller extends Thread{
         lines = email.getLines(messages);
     }
 
+    //TODO может лучше - одно письмо = один О8 ??
     public void makeO8(){
         ArrayList<String[]> parts = new ArrayList<>();                                  // лист для "кусочков" линии
         Collections.sort(lines, new Comparator<String>() {                              // сортируем линии, получим нужные строки подряд
@@ -120,6 +121,7 @@ public class Controller extends Thread{
         messages.clear();
         lines.clear();
         o8s.clear();
+        o8sFail.clear();
         log.info("Данные для ерп сформированы");
         System.out.println(sb.toString());
         return sb.toString();

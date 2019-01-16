@@ -24,6 +24,8 @@ public class View implements Runnable{
     private StringBuilder stringBuilderFail = new StringBuilder();
     private Dispatcher dispatcher;
 
+//TODO добавить лог на вью??
+//TODO отрисовка после создания О8 в ерп...
 
     public View()  {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -72,7 +74,7 @@ public class View implements Runnable{
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        panel.add(spacer1, gbc);
+        panel.add(spacer2, gbc);
 
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
@@ -87,7 +89,7 @@ public class View implements Runnable{
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         panel.add(label1, gbc);
-
+// TODO сделать анимацию прогрессбара
         progressBar = new JProgressBar();
         gbc = new GridBagConstraints();
         progressBar.setStringPainted(true);

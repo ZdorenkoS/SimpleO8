@@ -30,7 +30,7 @@ public class O8 {
         parcel = "";
         deferment = "";
     }
-
+//TODO корректная обработка количества типа 1,00
     public String buildString (int i){
         StringBuilder sb = new StringBuilder();
             for (int j = 0; j < goods.size(); j++) {
@@ -157,34 +157,6 @@ public class O8 {
                 ", deferment='" + deferment + '\'' +
                 ", goods=" + goods +
                 '}';
-    }
-
-    public String getStock() {
-        return stock;
-    }
-
-    public String getDelivery() {
-        return delivery;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public String getInvoice() {
-        return invoice;
-    }
-
-    public String getSupplier() {
-        return supplier;
-    }
-
-    public String getParcel() {
-        return parcel;
-    }
-
-    public String getDeferment() {
-        return deferment;
     }
 
     public ArrayList<Goods> getGoods() {
