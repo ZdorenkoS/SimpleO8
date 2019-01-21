@@ -170,6 +170,7 @@ public class View implements Runnable{
     public void updateJtextAreas(ArrayList<O8> o8sOk, ArrayList<O8> o8sFail){
         for (O8 o8: o8sOk) {stringBuilderOk.append(o8.o8ForView());}
         for (O8 o8: o8sFail) {stringBuilderFail.append(o8.o8ForView());}
+        stringBuilderOk.append("\n");
         o8Done.setText("");
         o8Crash.setText("");
         o8Done.setText(stringBuilderOk.toString());

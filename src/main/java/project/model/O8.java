@@ -47,10 +47,10 @@ public class O8 {
                 sb.append(" \t");
                 try {
                     if (delivery.equalsIgnoreCase("КУРЬЕР")) sb.append("01\t");
-                    else if (parcel != null) sb.append("02" + "\t").append(parcel + "\t");
-                    else sb.append("\t");
+                    else if (parcel.length()>2) sb.append("02" + "\t").append(parcel + "\t");
+                    else sb.append("\t \t");
                 } catch (NumberFormatException ex) {
-                    sb.append(" \t \t");
+                    sb.append("\t \t");
                 }
 
                 sb.append(invoice + "\t");

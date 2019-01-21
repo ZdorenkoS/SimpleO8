@@ -73,6 +73,7 @@ public class Controller extends Thread{
         int x = 0;                                                                      // счетчик количества О8
         for (int i = 0; i <parts.size() ; i++) {
              String [] str = parts.get(i);
+             //TODO отолов коротких строк
              // создаем первый О8
              if (i==0) {o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
                        try {
@@ -94,12 +95,14 @@ public class Controller extends Thread{
                  }
                  // создаем новый О8
                  else {
+                      o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
+                      x++;
                      try {
-                     o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
-                     x++;
-                     if (str.length > 10) o8s.get(x).setParcel(str[11]);
-                     if (str.length > 10) o8s.get(x).setDeferment(str[12]);
-                     } catch(ArrayIndexOutOfBoundsException ex ){}
+                        if (str.length > 10) o8s.get(x).setParcel(str[11]);
+                        if (str.length > 10) o8s.get(x).setDeferment(str[12]);
+                     } catch(ArrayIndexOutOfBoundsException ex ){
+                         System.out.println("ArrayIndexOutOfBoundsException" + o8s.get(x).toString());
+                     }
                      o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
                      log.info("Создан О8 № " + (x + 1));
                  }
