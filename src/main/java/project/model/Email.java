@@ -57,7 +57,9 @@ public class Email {
             log.info("Сбой при попытке доступа к папкам", ex);
         }
         finally {
-            if (messages.size()==0) try {folder.close();} catch (MessagingException e) {e.printStackTrace();}
+            if (messages.size()==0) try {folder.close();}
+            catch (MessagingException e) {e.printStackTrace();}
+            catch (IllegalStateException e) {e.printStackTrace();}
             return messages;
         }
     }
@@ -79,8 +81,8 @@ public class Email {
                         .replaceAll("@", "");
                 lines.addAll(Arrays.asList(s.split("%")));
 
-                for (int i = 0; i < lines.size(); i++) {
-                    if (lines.get(i).startsWith("#") || lines.get(i).equals("")) lines.remove(i);
+                for (int i = lines.size()-1; i >=0; i--) {
+                    if (!(lines.get(i).startsWith("3001")) && !(lines.get(i).startsWith("5005"))) lines.remove(i);
                 }
             }
         } catch (MessagingException | IOException ex) {

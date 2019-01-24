@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import project.controller.BrowserController;
 import project.controller.Controller;
 import project.utils.ConfigProperties;
+import project.view.View;
 
 import java.util.concurrent.TimeUnit;
 
@@ -47,8 +48,8 @@ public class Dispatcher implements Runnable{
                 controller.makeO8();
                 controller.o8Validation();
                 try{browserController.setTemp(controller.getString());
-                    browserController.createO8();}
-                catch (Exception ex){
+                    browserController.createO8();
+                    } catch (Exception ex){
                     browserController.disconnect();
                     browserController = new BrowserController(BrowserController.browsr.CHROME);
                     browserController.start();
@@ -57,6 +58,7 @@ public class Dispatcher implements Runnable{
                 }
 
             try {
+                new View.Countdown(controller.getView()).run();
                 TimeUnit.SECONDS.sleep(Long.parseLong(ConfigProperties.getProperty("sleepTime")));
             } catch (InterruptedException e) {
                 e.printStackTrace();

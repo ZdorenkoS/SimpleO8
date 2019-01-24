@@ -71,43 +71,43 @@ public class Controller extends Thread{
             parts.add(s.split("#"));                                              // разделяем линию на составляющие
         }
         int x = 0;                                                                      // счетчик количества О8
-        for (int i = 0; i <parts.size() ; i++) {
-             String [] str = parts.get(i);
-             //TODO отолов коротких строк
-             // создаем первый О8
-             if (i==0) {o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
-                       try {
-                           if (str.length > 10) o8s.get(0).setParcel(str[11]);              // может отсутствовать
-                           if (str.length > 10) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
-                       } catch (IndexOutOfBoundsException ex ){}
-                        o8s.get(0).getGoods().add(new Goods(str[7],str[8], str[9]));        // добавляем товары из первой линии
 
-                 log.info("Создан О8 № "+(x+1));
-             }
-             // для всех строк кроме 1
-             else {
-                 // проверяем линия от нового О8 или продолжает уже созданный
-                 String[] s1 = parts.get(i);
-                 String[] s2 = parts.get(i-1);
-
-                 if (s1[0].equals(s2[0]) && s1[2].equals(s2[2]) && s1[3].equals(s2[3]) && s1[4].equals(s2[4])){
-                 o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));      // добавляем товары
-                 }
-                 // создаем новый О8
-                 else {
+            for (int i = 0; i < parts.size(); i++) {
+                String[] str = parts.get(i);
+                //TODO отолов коротких строк
+                // создаем первый О8
+                if (i == 0) {
                       o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
-                      x++;
-                     try {
-                        if (str.length > 10) o8s.get(x).setParcel(str[11]);
-                        if (str.length > 10) o8s.get(x).setDeferment(str[12]);
-                     } catch(ArrayIndexOutOfBoundsException ex ){
-                         System.out.println("ArrayIndexOutOfBoundsException" + o8s.get(x).toString());
-                     }
-                     o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
-                     log.info("Создан О8 № " + (x + 1));
+                    try {
+                        if (str.length > 10) o8s.get(0).setParcel(str[11]);              // может отсутствовать
+                        if (str.length > 10) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
+                    } catch (IndexOutOfBoundsException ex) {}
+                    o8s.get(0).getGoods().add(new Goods(str[7], str[8], str[9]));        // добавляем товары из первой линии
+                }
+
+                // для всех строк кроме 1
+                else {
+                    // проверяем линия от нового О8 или продолжает уже созданный
+                    String[] s1 = parts.get(i);
+                    String[] s2 = parts.get(i - 1);
+
+                    if (s1[0].equals(s2[0]) && s1[2].equals(s2[2]) && s1[3].equals(s2[3]) && s1[4].equals(s2[4])) {
+                        o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));      // добавляем товары
+                    }
+                    // создаем новый О8
+                    else {
+                        o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
+                        x++;
+                        try {
+                            if (str.length > 10) o8s.get(x).setParcel(str[11]);
+                            if (str.length > 10) o8s.get(x).setDeferment(str[12]);
+                        } catch (ArrayIndexOutOfBoundsException ex) {}
+                        o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
+                    }
+
                  }
-            }
         }
+        log.info("Сформировано " + (x + 1) + " О8");
     }
 
     public void o8Validation(){
@@ -126,7 +126,6 @@ public class Controller extends Thread{
         o8s.clear();
         o8sFail.clear();
         log.info("Данные для ерп сформированы");
-        System.out.println(sb.toString());
         return sb.toString();
     }
 }

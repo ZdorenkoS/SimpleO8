@@ -2,12 +2,14 @@ package project.view;
 
 import project.Dispatcher;
 import project.model.O8;
+import project.utils.ConfigProperties;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class View implements Runnable{
     private JFrame frame;
@@ -24,6 +26,7 @@ public class View implements Runnable{
     private StringBuilder stringBuilderFail = new StringBuilder();
     private Dispatcher dispatcher;
 
+
 //TODO добавить лог на вью??
 //TODO отрисовка после создания О8 в ерп...
 
@@ -39,14 +42,13 @@ public class View implements Runnable{
         frame.setLocation(screenWidth-screenWidth/5,0);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-
     }
 
     public void setDispatcher(Dispatcher dispatcher) {
         this.dispatcher = dispatcher;
     }
 
-    @Override
+      @Override
     public void run() {
         panel.setLayout(new GridBagLayout());
         Font panelFont = new Font("Bookman Old Style", Font.PLAIN, 14);
@@ -89,10 +91,12 @@ public class View implements Runnable{
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         panel.add(label1, gbc);
-// TODO сделать анимацию прогрессбара
         progressBar = new JProgressBar();
         gbc = new GridBagConstraints();
         progressBar.setStringPainted(true);
+        int i = Integer.parseInt(ConfigProperties.getProperty("sleepTime"));
+        progressBar.setMaximum(i);
+        progressBar.setString("инициализация");
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -178,6 +182,33 @@ public class View implements Runnable{
         o8Done.repaint();
         o8Crash.repaint();
        }
+
+    public static class Countdown implements Runnable{
+        private int x;
+        private View view;
+        private JProgressBar progressBar;
+        public Countdown(View view) {
+            x = Integer.parseInt(ConfigProperties.getProperty("sleepTime"));
+            this.view = view;
+            progressBar = view.progressBar;
+        }
+
+        @Override
+        public void run() {
+            for (int i = x; i >=0 ; i--) {
+                if (view.dispatcher.isRunning()){
+                progressBar.setValue(i);
+                if (i == 0) progressBar.setString("идет обработка");
+                else progressBar.setString(String.valueOf(i));
+                progressBar.repaint();
+                try{TimeUnit.SECONDS.sleep(1);} catch (InterruptedException ex){}}
+                else {
+                    progressBar.setValue(0);
+                    progressBar.setString("-");
+                }
+            }
+        }
+    }
 }
 
 
