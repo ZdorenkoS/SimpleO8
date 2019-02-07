@@ -27,7 +27,7 @@ public class View implements Runnable{
     private Dispatcher dispatcher;
 
 
-//TODO добавить лог на вью??
+
 //TODO отрисовка после создания О8 в ерп...
 
     public View()  {
@@ -42,6 +42,7 @@ public class View implements Runnable{
         frame.setLocation(screenWidth-screenWidth/5,0);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.setAlwaysOnTop(true);
     }
 
     public void setDispatcher(Dispatcher dispatcher) {

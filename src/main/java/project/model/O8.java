@@ -71,7 +71,14 @@ public class O8 {
         while (iterator.hasNext()){
             o8 = iterator.next();
 
-            if (o8.parcel != null) o8.setParcel(o8.parcel.replaceAll(" ", ""));                  // удаляем пробелы из номера ТТН
+            o8.supplier = o8.supplier.replaceAll(" ", "");
+
+            if (o8.parcel != null) {
+                o8.setParcel(o8.parcel.replaceAll(" ", ""));
+                o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
+                o8.setParcel(o8.parcel.replaceAll(",00", ""));
+              if (o8.parcel.substring(0,9).matches("^\\D*$")) o8.parcel = "";
+            }
 
             o8.goods.trimToSize();
             for (int i = o8.goods.size()-1; i > 0; i--) {                                                         // группируем одинаковые товары с одинаковыми ценами

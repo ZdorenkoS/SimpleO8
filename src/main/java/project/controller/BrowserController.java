@@ -72,11 +72,7 @@ public class BrowserController extends Thread{
     }
 
     public void createO8(){
-        Toolkit.getDefaultToolkit()
-                .getSystemClipboard()
-                .setContents(
-                        new StringSelection(temp),
-                        null);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(temp),null);
         new WebDriverWait (driver, 2);
         driver.findElement(By.id("listOCL_1")).click();
         driver.switchTo().frame("e1menuAppIframe");
@@ -85,8 +81,7 @@ public class BrowserController extends Thread{
         new WebDriverWait(driver, 3);
         driver.findElement(By.id("hc_OK")).click();
         new WebDriverWait(driver, 1);
-        try {
-            driver.findElement(By.id("hc_Find")).click();
+        try {driver.findElement(By.id("hc_Find")).click();
         } catch (org.openqa.selenium.NoSuchElementException ex) {
             driver.findElement(By.id("hc_OK")).click();
             driver.findElement(By.id("hc_Find")).click();

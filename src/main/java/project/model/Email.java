@@ -43,7 +43,7 @@ public class Email {
 
 
     public ArrayList<Message> getMessages(){
-        ArrayList<Message> messages = new ArrayList<>();
+        ArrayList<Message> messages = new ArrayList<Message>();
         try {
             folder.open(Folder.READ_WRITE);
             messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
