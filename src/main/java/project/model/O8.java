@@ -32,7 +32,7 @@ public class O8 {
     }
 //TODO корректная обработка количества типа 1,00
     public String buildString (int i){
-        StringBuilder sb = new StringBuilder();
+         StringBuilder sb = new StringBuilder();
             for (int j = 0; j < goods.size(); j++) {
                 sb.append(i + "\t");
                 if (stock.equals("3001")) sb.append("P3001\t");
@@ -46,11 +46,11 @@ public class O8 {
                 sb.append(goods.get(j).getPrice() + "\t");
                 sb.append(" \t");
                 try {
-                    if (delivery.equalsIgnoreCase("КУРЬЕР")) sb.append("01\t");
+                    if (delivery.equalsIgnoreCase("КУРЬЕР")) sb.append("01\t\t");
                     else if (parcel.length()>2) sb.append("02" + "\t").append(parcel + "\t");
-                    else sb.append("\t \t");
+                    else sb.append("\t\t");
                 } catch (NumberFormatException ex) {
-                    sb.append("\t \t");
+                    sb.append("\t\t");
                 }
 
                 sb.append(invoice + "\t");
@@ -70,15 +70,19 @@ public class O8 {
         O8 o8;
         while (iterator.hasNext()){
             o8 = iterator.next();
-
             o8.supplier = o8.supplier.replaceAll(" ", "");
+            o8.invoice = o8.invoice.replaceAll("№", "");
+            o8.invoice = o8.invoice.replaceAll(" ", "");
+            o8.invoice = o8.invoice.replaceAll("Рахунок-фактура", "");
 
-            if (o8.parcel != null) {
                 o8.setParcel(o8.parcel.replaceAll(" ", ""));
                 o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
                 o8.setParcel(o8.parcel.replaceAll(",00", ""));
-              if (o8.parcel.substring(0,9).matches("^\\D*$")) o8.parcel = "";
-            }
+             try{
+              if (o8.parcel.substring(0,6).matches("^\\D*$") && o8.parcel.length()>1) o8.parcel = "";}
+             catch (StringIndexOutOfBoundsException ex) {
+                 System.out.println("Ошибка при работе с ТТН: " + o8.parcel);
+             }
 
             o8.goods.trimToSize();
             for (int i = o8.goods.size()-1; i > 0; i--) {                                                         // группируем одинаковые товары с одинаковыми ценами
