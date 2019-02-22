@@ -133,6 +133,7 @@ public class O8 {
         String summ = myFormatter.format(this.getSumm());
         String supp = properties.getProperty(supplier);
 
+
         StringBuilder sb = new StringBuilder();
         try {
         if (supp.length()<25) {

@@ -6,7 +6,9 @@ import project.utils.ConfigProperties;
 import javax.mail.*;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.search.FlagTerm;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
@@ -17,7 +19,7 @@ public class Email {
     private Session session;
     private Store store;
     private Folder folder;
-
+    Properties supp;
 
     public Email() {
         props = new Properties();
@@ -38,6 +40,13 @@ public class Email {
             log.info("Соединение с почтовым сервером установлено");
         } catch (MessagingException ex) {
             log.error("Сбой при попытке доступа к папкам", ex);
+        }
+
+        supp = new Properties();
+        try {
+            supp.load(new InputStreamReader(new FileInputStream("src/main/resources/supplier.properties"), "cp1251"));
+        } catch (IOException ex) {
+            System.out.println("Не удалось загрузить список поставщиков");
         }
     }
 
@@ -81,9 +90,27 @@ public class Email {
                         .replaceAll("@", "");
                 lines.addAll(Arrays.asList(s.split("%")));
 
-                for (int i = lines.size()-1; i >=0; i--) {
+                for (int i = lines.size() - 1; i >= 0; i--) {
                     if (!(lines.get(i).startsWith("3001")) && !(lines.get(i).startsWith("5005"))) lines.remove(i);
                 }
+
+                for (int i = lines.size()-1; i >=0; i--) {
+                    String [] checkSupp = lines.get(i).split("#");
+                    if (supp.containsKey(checkSupp[3])){
+                    StringBuilder sb = new StringBuilder();
+                        for (int j = 0; j <12; j++) {
+                            if (j==3) sb.append(" #"+ checkSupp[j] + "#");
+                            else {
+                               try{
+                                sb.append(checkSupp[j]+ "#");}
+                               catch (ArrayIndexOutOfBoundsException ex) {break;}
+                                }
+                        }
+                        lines.set(i, sb.toString());
+                    }
+                }
+
+
             }
         } catch (MessagingException | IOException ex) {
             log.info("Ошибка при парсинге строк", ex);
