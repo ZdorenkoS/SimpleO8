@@ -49,10 +49,12 @@ public class Goods {
     }
 
     public boolean goodsValidate(){
-            if (price.contains(" "))  price = price.replaceAll(" ", "");                      // удаляем пробелы из цен
-            try {                                                                                              // проверяем корректность скю, количества и цены
+            if (price.contains(" "))  price = price.replaceAll(" ", "");
+            if (quantity.contains(",")) quantity = quantity.substring(0,quantity.indexOf(","));
+            if (quantity.contains(".")) quantity = quantity.substring(0,quantity.indexOf("."));
+            if (price.contains(".")) price = price.replace(".",",");
+            try {
                 Integer.parseInt(sku);
-                Float.parseFloat(price.replaceAll(",", "."));
                 if (Integer.parseInt(quantity) < 1) throw new Exception();
             } catch (Exception ex) {
                 return false;

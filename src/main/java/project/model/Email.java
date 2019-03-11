@@ -96,7 +96,7 @@ public class Email {
 
                 for (int i = lines.size()-1; i >=0; i--) {
                     String [] checkSupp = lines.get(i).split("#");
-                    if (supp.containsKey(checkSupp[3])){
+                    if (supp.containsKey(checkSupp[3]) && !supp.containsKey(checkSupp[4])){
                     StringBuilder sb = new StringBuilder();
                         for (int j = 0; j <12; j++) {
                             if (j==3) sb.append(" #"+ checkSupp[j] + "#");
@@ -109,8 +109,6 @@ public class Email {
                         lines.set(i, sb.toString());
                     }
                 }
-
-
             }
         } catch (MessagingException | IOException ex) {
             log.info("Ошибка при парсинге строк", ex);

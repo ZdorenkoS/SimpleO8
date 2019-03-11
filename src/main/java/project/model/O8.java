@@ -71,12 +71,9 @@ public class O8 {
         while (iterator.hasNext()){
             o8 = iterator.next();
             o8.supplier = o8.supplier.replaceAll(" ", "");
-            o8.invoice = o8.invoice.replaceAll("№", "");
-            o8.invoice = o8.invoice.replaceAll(" ", "");
-            o8.invoice = o8.invoice.replaceAll("Рахунок-фактура", "");
-
                 o8.setParcel(o8.parcel.replaceAll(" ", ""));
                 o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
+                o8.setParcel(o8.parcel.replaceAll("НП", ""));
                 o8.setParcel(o8.parcel.replaceAll(",00", ""));
              try{
               if (o8.parcel.substring(0,6).matches("^\\D*$") && o8.parcel.length()>1) o8.parcel = "";}

@@ -67,14 +67,17 @@ public class Controller extends Thread{
                 return o1.substring(0,s1).compareTo(o2.substring(0,s2));
             }
         });
+
         for (String s :lines) {
             parts.add(s.split("#"));                                              // разделяем линию на составляющие
         }
+
         int x = 0;                                                                      // счетчик количества О8
 
             for (int i = 0; i < parts.size(); i++) {
                 String[] str = parts.get(i);
-                //TODO отолов коротких строк
+
+                if (str.length<10) continue;
                 // создаем первый О8
                 if (i == 0) {
                       o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));

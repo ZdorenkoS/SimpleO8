@@ -39,7 +39,7 @@ public class View implements Runnable{
         panel = new JPanel();
         frame.setContentPane(panel);
         frame.setSize(screenWidth/5, screenHeight/3*2);
-        frame.setLocation(screenWidth-screenWidth/5,0);
+        frame.setLocation(screenWidth-screenWidth/5, screenHeight/3/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setAlwaysOnTop(true);
