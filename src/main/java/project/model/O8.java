@@ -63,14 +63,26 @@ public class O8 {
             }
         return sb.toString();
     }
-
+//TODO обьединение О8 по счету
     public void validation(ArrayList<O8> o8s,ArrayList<O8> o8Fail) {
         ArrayList<O8> o8ToRemove = new ArrayList<>();
         ListIterator<O8> iterator = o8s.listIterator();
         O8 o8;
         while (iterator.hasNext()){
             o8 = iterator.next();
+
+
+            if (o8.invoice.contains("від")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("від"));
+            if (o8.invoice.contains("от")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("от"));
+            o8.invoice = o8.invoice.replaceAll("№", "");
+            o8.invoice = o8.invoice.replace("Рахунок-фактура", "");
+            o8.invoice = o8.invoice.replace("Рахунок на оплату", "");
+            o8.invoice = o8.invoice.replace("Рахунок", "");
+            o8.invoice = o8.invoice.replace("Счет", "");
+            o8.invoice = o8.invoice.replace(" ", "");
             o8.supplier = o8.supplier.replaceAll(" ", "");
+
+
                 o8.setParcel(o8.parcel.replaceAll(" ", ""));
                 o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
                 o8.setParcel(o8.parcel.replaceAll("НП", ""));
