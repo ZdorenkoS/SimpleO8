@@ -76,6 +76,7 @@ public class O8 {
             if (o8.invoice.contains("от")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("от"));
             o8.invoice = o8.invoice.replaceAll("№", "");
             o8.invoice = o8.invoice.replace("Рахунок-фактура", "");
+            o8.invoice = o8.invoice.replace("Рахунок на оплату по замовленню", "");
             o8.invoice = o8.invoice.replace("Рахунок на оплату", "");
             o8.invoice = o8.invoice.replace("Рахунок", "");
             o8.invoice = o8.invoice.replace("Счет", "");

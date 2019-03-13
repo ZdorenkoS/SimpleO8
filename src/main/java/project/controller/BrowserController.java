@@ -84,7 +84,7 @@ public class BrowserController extends Thread{
         try {driver.findElement(By.id("hc_Find")).click();
         } catch (org.openqa.selenium.NoSuchElementException ex) {
             driver.findElement(By.id("hc_OK")).click();
-            driver.findElement(By.id("hc_Find")).click();
+            driver.findElement(By.id("hc_Find")).click(); //TODO перезапуск после фейла
         }
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
