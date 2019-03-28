@@ -16,6 +16,7 @@ public class O8 {
     private String supplier;                       // Код поставщика
     private String parcel;                         // Номер ТТН (для посылок)
     private String deferment;                      // Отсрочка платежа
+    private String date;                           // Дата прихода
     private ArrayList<Goods> goods;
 
 
@@ -29,6 +30,7 @@ public class O8 {
         goods = new ArrayList<>();
         parcel = "";
         deferment = "";
+        date = "";
     }
 //TODO корректная обработка количества типа 1,00
     public String buildString (int i){
@@ -59,6 +61,11 @@ public class O8 {
                 } catch (NumberFormatException ex) {
                     sb.append("\t");
                 }
+                try {if (!date.equals("")) sb.append(date + "\t");
+                } catch (Exception ex) {
+                    sb.append("\t");
+                }
+
                 sb.append("\n");
             }
         return sb.toString();
@@ -77,6 +84,7 @@ public class O8 {
             o8.invoice = o8.invoice.replaceAll("№", "");
             o8.invoice = o8.invoice.replace("Рахунок-фактура", "");
             o8.invoice = o8.invoice.replace("Рахунок на оплату по замовленню", "");
+            o8.invoice = o8.invoice.replace("Рахунок на оплату за замовленням", "");
             o8.invoice = o8.invoice.replace("Рахунок на оплату", "");
             o8.invoice = o8.invoice.replace("Рахунок", "");
             o8.invoice = o8.invoice.replace("Счет", "");
@@ -84,15 +92,16 @@ public class O8 {
             o8.supplier = o8.supplier.replaceAll(" ", "");
 
 
-                o8.setParcel(o8.parcel.replaceAll(" ", ""));
-                o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
-                o8.setParcel(o8.parcel.replaceAll("НП", ""));
-                o8.setParcel(o8.parcel.replaceAll(",00", ""));
+            o8.setParcel(o8.parcel.replaceAll(" ", ""));
+            o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
+            o8.setParcel(o8.parcel.replaceAll("НП", ""));
+            o8.setParcel(o8.parcel.replaceAll(",00", ""));
              try{
               if (o8.parcel.substring(0,6).matches("^\\D*$") && o8.parcel.length()>1) o8.parcel = "";}
-             catch (StringIndexOutOfBoundsException ex) {
-                 System.out.println("Ошибка при работе с ТТН: " + o8.parcel);
-             }
+             catch (StringIndexOutOfBoundsException ex) { }
+
+             if (o8.date.contains(",")) o8.date = o8.date.replaceAll(",", ".");
+
 
             o8.goods.trimToSize();
             for (int i = o8.goods.size()-1; i > 0; i--) {                                                         // группируем одинаковые товары с одинаковыми ценами
@@ -191,6 +200,10 @@ public class O8 {
 
     public void setDeferment(String deferment) {
         this.deferment = deferment;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
 

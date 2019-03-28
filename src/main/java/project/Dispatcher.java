@@ -63,7 +63,7 @@ public class Dispatcher implements Runnable{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Поток выполняется");
+
 
             synchronized (this) {
                 if (!isRunning) {

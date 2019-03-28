@@ -83,7 +83,8 @@ public class Controller extends Thread{
                       o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
                     try {
                         if (str.length > 10) o8s.get(0).setParcel(str[11]);              // может отсутствовать
-                        if (str.length > 10) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
+                        if (str.length > 11) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
+                        if (str.length > 12) o8s.get(0).setDate(str[13]);                // может отсутствовать
                     } catch (IndexOutOfBoundsException ex) {}
                     o8s.get(0).getGoods().add(new Goods(str[7], str[8], str[9]));        // добавляем товары из первой линии
                 }
@@ -103,7 +104,8 @@ public class Controller extends Thread{
                         x++;
                         try {
                             if (str.length > 10) o8s.get(x).setParcel(str[11]);
-                            if (str.length > 10) o8s.get(x).setDeferment(str[12]);
+                            if (str.length > 11) o8s.get(x).setDeferment(str[12]);
+                            if (str.length > 12) o8s.get(0).setDate(str[13]);
                         } catch (ArrayIndexOutOfBoundsException ex) {}
                         o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
                     }
