@@ -78,8 +78,9 @@ public class Email {
        ArrayList<String> lines = new ArrayList<>();
         try {
             for (Message m : messages) {
-                s = getTextFromMessage(m).replaceAll("\\p{Cntrl}", "@")
-                        .replaceAll("P3001", "%3001")
+
+/*               s = getTextFromMessage(m).replaceAll("\\p{Cntrl}", "@")
+                         .replaceAll("P3001", "%3001")
                         .replaceAll("Р3001", "%3001")
                         .replaceAll("M5005", "%5005")
                         .replaceAll("М5005", "%5005")
@@ -88,13 +89,30 @@ public class Email {
                         .replaceAll("@@@@@@", "#")
                         .replaceAll("@@@@", "#")
                         .replaceAll("@", "");
+                lines.addAll(Arrays.asList(s.split("%")));*/
+
+
+
+               s = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@")
+                        .replaceAll("P3001", "%3001")
+                        .replaceAll("Р3001", "%3001")
+                        .replaceAll("M5005", "%5005")
+                        .replaceAll("М5005", "%5005")
+                        .replaceAll("@@@@@@", "# # #")
+                        .replaceAll("@@@@", "# #")
+                        .replaceAll("@@", "#")
+                        .replaceAll("@", "");
                 lines.addAll(Arrays.asList(s.split("%")));
 
                 for (int i = lines.size() - 1; i >= 0; i--) {
                     if (!(lines.get(i).startsWith("3001")) && !(lines.get(i).startsWith("5005"))) lines.remove(i);
                 }
 
-                for (int i = lines.size()-1; i >=0; i--) {
+                for (int i = 0; i <lines.size() ; i++) {
+                    System.out.println(lines.get(i));
+                }
+
+                /*for (int i = lines.size()-1; i >=0; i--) {
                     String [] checkSupp = lines.get(i).split("#");
                     if (supp.containsKey(checkSupp[3]) && !supp.containsKey(checkSupp[4])){
                     StringBuilder sb = new StringBuilder();
@@ -108,7 +126,7 @@ public class Email {
                         }
                         lines.set(i, sb.toString());
                     }
-                }
+                }*/
             }
         } catch (MessagingException | IOException ex) {
             log.info("Ошибка при парсинге строк", ex);

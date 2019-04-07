@@ -32,7 +32,7 @@ public class O8 {
         deferment = "";
         date = "";
     }
-//TODO корректная обработка количества типа 1,00
+
     public String buildString (int i){
          StringBuilder sb = new StringBuilder();
             for (int j = 0; j < goods.size(); j++) {
@@ -68,6 +68,7 @@ public class O8 {
 
                 sb.append("\n");
             }
+
         return sb.toString();
     }
 //TODO обьединение О8 по счету
@@ -78,9 +79,19 @@ public class O8 {
         while (iterator.hasNext()){
             o8 = iterator.next();
 
+            try {
+                Integer.parseInt(o8.supplier);
+            }catch (NumberFormatException ex) {
+                o8Fail.add(o8);
+                o8ToRemove.add(o8);
+                continue;
+            }
+
+            if (o8.deferment.equals("_")) o8.deferment = "";
 
             if (o8.invoice.contains("від")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("від"));
             if (o8.invoice.contains("от")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("от"));
+            if (o8.invoice.equals("_")) o8.invoice = "";
             o8.invoice = o8.invoice.replaceAll("№", "");
             o8.invoice = o8.invoice.replace("Рахунок-фактура", "");
             o8.invoice = o8.invoice.replace("Рахунок на оплату по замовленню", "");
@@ -91,7 +102,7 @@ public class O8 {
             o8.invoice = o8.invoice.replace(" ", "");
             o8.supplier = o8.supplier.replaceAll(" ", "");
 
-
+            if (o8.parcel.equals("_")) o8.parcel = "";
             o8.setParcel(o8.parcel.replaceAll(" ", ""));
             o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
             o8.setParcel(o8.parcel.replaceAll("НП", ""));
@@ -101,9 +112,10 @@ public class O8 {
              catch (StringIndexOutOfBoundsException ex) { }
 
              if (o8.date.contains(",")) o8.date = o8.date.replaceAll(",", ".");
+             if (!o8.date.matches("^\\s*(3[01]|[12][0-9]|0?[1-9])\\.(1[012]|0?[1-9])\\.((?:19|20)\\d{2})\\s*$")) o8.date = "";
 
 
-            o8.goods.trimToSize();
+                     o8.goods.trimToSize();
             for (int i = o8.goods.size()-1; i > 0; i--) {                                                         // группируем одинаковые товары с одинаковыми ценами
                 for (int j = i-1; j >= 0; j--) {
                     Goods goods1 = o8.goods.get(i);
@@ -116,6 +128,7 @@ public class O8 {
                     }
                 }
             }
+
 
             for (int i = 0; i <o8.goods.size() ; i++) {
                 if (!o8.goods.get(i).goodsValidate()) {
@@ -186,6 +199,7 @@ public class O8 {
                 ", supplier='" + supplier + '\'' +
                 ", parcel='" + parcel + '\'' +
                 ", deferment='" + deferment + '\'' +
+                ", date='" + date + '\'' +
                 ", goods=" + goods +
                 '}';
     }

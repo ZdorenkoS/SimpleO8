@@ -105,8 +105,8 @@ public class Controller extends Thread{
                         try {
                             if (str.length > 10) o8s.get(x).setParcel(str[11]);
                             if (str.length > 11) o8s.get(x).setDeferment(str[12]);
-                            if (str.length > 12) o8s.get(0).setDate(str[13]);
-                        } catch (ArrayIndexOutOfBoundsException ex) {}
+                            if (str.length > 12) o8s.get(x).setDate(str[13]);
+                        } catch (IndexOutOfBoundsException ex) {}
                         o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
                     }
 

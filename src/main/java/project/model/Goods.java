@@ -49,6 +49,8 @@ public class Goods {
     }
 
     public boolean goodsValidate(){
+            if (sku.contains(" "))  sku = sku.replaceAll(" ", "");
+            if (quantity.contains(" "))  quantity = quantity.replaceAll(" ", "");
             if (price.contains(" "))  price = price.replaceAll(" ", "");
             if (quantity.contains(",")) quantity = quantity.substring(0,quantity.indexOf(","));
             if (quantity.contains(".")) quantity = quantity.substring(0,quantity.indexOf("."));
