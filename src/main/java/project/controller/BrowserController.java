@@ -47,7 +47,6 @@ public class BrowserController extends Thread{
         driver.findElement(By.id("User")).sendKeys(ConfigProperties.getProperty("erpUser"));
         driver.findElement(By.id("Password")).sendKeys(ConfigProperties.getProperty("erpPassword"));
         driver.findElement(By.id("F1")).submit();
-//FIXME переписать код чтобы работал и в файрфокс
         driver.findElement(By.id("drop_mainmenu")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Справка'])[1]/following::td[4]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Профиль задачи'])[11]/following::span[2]")).click();
@@ -63,7 +62,6 @@ public class BrowserController extends Thread{
         driver.findElement(By.id("listOCL_0")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.switchTo().frame("wcFrame0");
-//FIXME разобраться откуда такая большая задержка
         driver.findElement(By.id("tileDescription_7")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("hc_Find")).click();
@@ -75,7 +73,9 @@ public class BrowserController extends Thread{
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(temp),null);
         new WebDriverWait (driver, 2);
         driver.findElement(By.id("listOCL_1")).click();
+        new WebDriverWait (driver, 2);
         driver.switchTo().frame("e1menuAppIframe");
+        //FIXME вылетает тут
         driver.findElement(By.id("C0_24")).click();
         driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL+"v"));
         new WebDriverWait(driver, 3);
@@ -84,7 +84,7 @@ public class BrowserController extends Thread{
         try {driver.findElement(By.id("hc_Find")).click();
         } catch (org.openqa.selenium.NoSuchElementException ex) {
             driver.findElement(By.id("hc_OK")).click();
-            driver.findElement(By.id("hc_Find")).click(); //TODO перезапуск после фейла
+            driver.findElement(By.id("hc_Find")).click();
         }
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();

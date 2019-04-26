@@ -46,7 +46,12 @@ public class O8 {
                 sb.append(goods.get(j).getSku() + "\t");
                 sb.append(goods.get(j).getQuantity() + "\t");
                 sb.append(goods.get(j).getPrice() + "\t");
-                sb.append(" \t");
+
+                if (supplier.equals("1669419") || supplier.equals("1400434")) {
+                    if (invoice.contains("52/")) sb.append("DP");
+                    else sb.append("CP");
+                }
+                sb.append("\t");
                 try {
                     if (delivery.equalsIgnoreCase("КУРЬЕР")) sb.append("01\t\t");
                     else if (parcel.length()>2) sb.append("02" + "\t").append(parcel + "\t");
@@ -92,7 +97,9 @@ public class O8 {
             if (o8.invoice.contains("від")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("від"));
             if (o8.invoice.contains("от")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("от"));
             if (o8.invoice.equals("_")) o8.invoice = "";
+            o8.invoice = o8.invoice.replaceAll("_", "");
             o8.invoice = o8.invoice.replaceAll("№", "");
+            o8.invoice = o8.invoice.replaceAll("No", "");
             o8.invoice = o8.invoice.replace("Рахунок-фактура", "");
             o8.invoice = o8.invoice.replace("Рахунок на оплату по замовленню", "");
             o8.invoice = o8.invoice.replace("Рахунок на оплату за замовленням", "");
@@ -104,9 +111,10 @@ public class O8 {
 
             if (o8.parcel.equals("_")) o8.parcel = "";
             o8.setParcel(o8.parcel.replaceAll(" ", ""));
-            o8.setParcel(o8.parcel.replaceAll("ТТН", ""));
-            o8.setParcel(o8.parcel.replaceAll("НП", ""));
-            o8.setParcel(o8.parcel.replaceAll(",00", ""));
+            o8.setParcel(o8.parcel.replace("_", ""));
+            o8.setParcel(o8.parcel.replace("ТТН", ""));
+            o8.setParcel(o8.parcel.replace("НП", ""));
+            o8.setParcel(o8.parcel.replace(",00", ""));
              try{
               if (o8.parcel.substring(0,6).matches("^\\D*$") && o8.parcel.length()>1) o8.parcel = "";}
              catch (StringIndexOutOfBoundsException ex) { }

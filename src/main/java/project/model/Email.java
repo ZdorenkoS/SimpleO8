@@ -78,21 +78,6 @@ public class Email {
        ArrayList<String> lines = new ArrayList<>();
         try {
             for (Message m : messages) {
-
-/*               s = getTextFromMessage(m).replaceAll("\\p{Cntrl}", "@")
-                         .replaceAll("P3001", "%3001")
-                        .replaceAll("Р3001", "%3001")
-                        .replaceAll("M5005", "%5005")
-                        .replaceAll("М5005", "%5005")
-                        .replaceAll("@@@@@@@@@@@@", "# #")
-                        .replaceAll("@@@@@@@@", "# #")
-                        .replaceAll("@@@@@@", "#")
-                        .replaceAll("@@@@", "#")
-                        .replaceAll("@", "");
-                lines.addAll(Arrays.asList(s.split("%")));*/
-
-
-
                s = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@")
                         .replaceAll("P3001", "%3001")
                         .replaceAll("Р3001", "%3001")
@@ -111,22 +96,6 @@ public class Email {
                 for (int i = 0; i <lines.size() ; i++) {
                     System.out.println(lines.get(i));
                 }
-
-                /*for (int i = lines.size()-1; i >=0; i--) {
-                    String [] checkSupp = lines.get(i).split("#");
-                    if (supp.containsKey(checkSupp[3]) && !supp.containsKey(checkSupp[4])){
-                    StringBuilder sb = new StringBuilder();
-                        for (int j = 0; j <12; j++) {
-                            if (j==3) sb.append(" #"+ checkSupp[j] + "#");
-                            else {
-                               try{
-                                sb.append(checkSupp[j]+ "#");}
-                               catch (ArrayIndexOutOfBoundsException ex) {break;}
-                                }
-                        }
-                        lines.set(i, sb.toString());
-                    }
-                }*/
             }
         } catch (MessagingException | IOException ex) {
             log.info("Ошибка при парсинге строк", ex);

@@ -28,7 +28,7 @@ public class View implements Runnable{
 
 
 
-//TODO отрисовка после создания О8 в ерп...
+// TODO отрисовка после создания О8 в ерп...
 
     public View()  {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
