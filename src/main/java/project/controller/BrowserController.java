@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class BrowserController extends Thread{
     public enum browsr{CHROME,FIREFOX}
     private static WebDriver driver;
+    private static WebDriverWait wait;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
     private static String temp;
 
@@ -33,8 +34,9 @@ public class BrowserController extends Thread{
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver,10);
         driver.manage().window().setPosition(new Point(0,0));
-    //  driver.manage().window().maximize();
+        driver.manage().window().maximize();
         log.info("Браузер готов к работе");
     }
 
@@ -71,29 +73,30 @@ public class BrowserController extends Thread{
 
     public void createO8(){
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(temp),null);
-        new WebDriverWait (driver, 2);
+        pause(2);
         driver.findElement(By.id("listOCL_1")).click();
-        new WebDriverWait (driver, 2);
+        pause(2);
         driver.switchTo().frame("e1menuAppIframe");
         //FIXME вылетает тут
         driver.findElement(By.id("C0_24")).click();
         driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL+"v"));
-        new WebDriverWait(driver, 3);
+        pause(3);
         driver.findElement(By.id("hc_OK")).click();
-        new WebDriverWait(driver, 1);
+        pause(1);
         try {driver.findElement(By.id("hc_Find")).click();
         } catch (org.openqa.selenium.NoSuchElementException ex) {
             driver.findElement(By.id("hc_OK")).click();
             driver.findElement(By.id("hc_Find")).click();
         }
+        pause(1);
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
         driver.switchTo().parentFrame();
-        new WebDriverWait(driver, 1);
+        pause(1);
         driver.findElement(By.id("listOCL_2")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("hc_Find")).click();
-        new WebDriverWait(driver, 2);
+        pause(1);
         try {WebElement element = driver.findElement(By.id("GOTOLAST0_1"));
             if (element.isDisplayed()) element.click();}
         catch (Exception ex){}
@@ -103,6 +106,10 @@ public class BrowserController extends Thread{
         driver.switchTo().parentFrame();
         temp = new String();
         log.info("О8 созданы");
+    }
+
+    private void pause(int i ){
+        try {wait.wait(i*1000);} catch (InterruptedException ex){}
     }
 
     public void disconnect() {

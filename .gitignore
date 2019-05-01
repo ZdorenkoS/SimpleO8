@@ -25,6 +25,8 @@
 hs_err_pid*
 ### Maven template
 target/
+.idea
+*log4j-application.log
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
