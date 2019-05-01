@@ -47,6 +47,7 @@ public class Dispatcher implements Runnable{
                 controller.getLines();
                 controller.makeO8();
                 controller.o8Validation();
+                controller.o8Merge();
 
                 try{browserController.setTemp(controller.getString());
                     browserController.createO8();

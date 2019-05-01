@@ -121,6 +121,18 @@ public class Controller extends Thread{
         view.updateJtextAreas(o8s,o8sFail);
     }
 
+    public void o8Merge(){
+        for (int i = o8s.size()-1; i > 0; i--) {
+            for (int j = i-1; j >= 0; j--) {
+                if (o8s.get(i).equals(o8s.get(j))) {
+                    o8s.get(i).getGoods().addAll(o8s.get(j).getGoods());
+                    o8s.remove(o8s.get(j));
+                }
+            }
+        }
+    }
+
+
     public String getString(){
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < o8s.size() ; i++) {
