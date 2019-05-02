@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
 public class BrowserController extends Thread{
     public enum browsr{CHROME,FIREFOX}
     private static WebDriver driver;
-    private static WebDriverWait wait;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
     private static String temp;
 
@@ -34,9 +33,9 @@ public class BrowserController extends Thread{
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver,10);
+        driver.manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
         driver.manage().window().setPosition(new Point(0,0));
-        driver.manage().window().maximize();
+    //  driver.manage().window().maximize();
         log.info("Браузер готов к работе");
     }
 
@@ -88,7 +87,6 @@ public class BrowserController extends Thread{
             driver.findElement(By.id("hc_OK")).click();
             driver.findElement(By.id("hc_Find")).click();
         }
-        pause(1);
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
         driver.switchTo().parentFrame();
@@ -96,7 +94,7 @@ public class BrowserController extends Thread{
         driver.findElement(By.id("listOCL_2")).click();
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("hc_Find")).click();
-        pause(1);
+        pause(2);
         try {WebElement element = driver.findElement(By.id("GOTOLAST0_1"));
             if (element.isDisplayed()) element.click();}
         catch (Exception ex){}
@@ -108,13 +106,12 @@ public class BrowserController extends Thread{
         log.info("О8 созданы");
     }
 
-    private void pause(int i ){
-        try {wait.wait(i*1000);} catch (InterruptedException ex){}
-    }
-
     public void disconnect() {
         driver.close();
         log.info("Браузер закрыт");
     }
 
+    private void pause(int i){
+        try {driver.manage().timeouts().wait(i*1000);} catch (InterruptedException e) {}
+    }
 }

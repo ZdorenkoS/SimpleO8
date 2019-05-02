@@ -90,11 +90,9 @@ public class Email {
                 lines.addAll(Arrays.asList(s.split("%")));
 
                 for (int i = lines.size() - 1; i >= 0; i--) {
+                    if (lines.get(i).length() < 9) {lines.remove(i); continue;}
                     if (!(lines.get(i).startsWith("3001")) && !(lines.get(i).startsWith("5005"))) lines.remove(i);
-                }
 
-                for (int i = 0; i <lines.size() ; i++) {
-                    System.out.println(lines.get(i));
                 }
             }
         } catch (MessagingException | IOException ex) {
