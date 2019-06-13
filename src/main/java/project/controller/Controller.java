@@ -72,12 +72,16 @@ public class Controller extends Thread{
             parts.add(s.split("#"));                                              // разделяем линию на составляющие
         }
 
+        for (int i = parts.size()-1; i >= 0 ; i--) {
+            if (parts.get(i).length <  10) parts.remove(parts.get(i));
+        }
+
         int x = 0;                                                                      // счетчик количества О8
 
             for (int i = 0; i < parts.size(); i++) {
                 String[] str = parts.get(i);
 
-                if (str.length<10) continue;
+
                 // создаем первый О8
                 if (i == 0) {
                       o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));

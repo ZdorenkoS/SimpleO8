@@ -78,16 +78,17 @@ public class Email {
        ArrayList<String> lines = new ArrayList<>();
         try {
             for (Message m : messages) {
+                System.out.println(getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@"));
                s = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@")
-                        .replaceAll("P3001", "%3001")
-                        .replaceAll("Р3001", "%3001")
-                        .replaceAll("M5005", "%5005")
-                        .replaceAll("М5005", "%5005")
+                        .replaceAll("P3001", "~3001")
+                        .replaceAll("Р3001", "~3001")
+                        .replaceAll("M5005", "~5005")
+                        .replaceAll("М5005", "~5005")
                         .replaceAll("@@@@@@", "# # #")
                         .replaceAll("@@@@", "# #")
                         .replaceAll("@@", "#")
                         .replaceAll("@", "");
-                lines.addAll(Arrays.asList(s.split("%")));
+                lines.addAll(Arrays.asList(s.split("~")));
 
                 for (int i = lines.size() - 1; i >= 0; i--) {
                     if (lines.get(i).length() < 9) {lines.remove(i); continue;}

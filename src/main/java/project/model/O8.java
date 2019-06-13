@@ -133,7 +133,7 @@ public class O8 {
                     Goods goods2 = o8.goods.get(j);
 
                     if (goods1.equals(goods2)) {
-                        goods2.setQuantity(String.valueOf(Integer.parseInt(goods1.getQuantity()) + Integer.parseInt(goods2.getQuantity())));
+                         goods2.setQuantity(String.valueOf(Integer.parseInt(goods1.getQuantity()) + Integer.parseInt(goods2.getQuantity())));
                         o8.goods.remove(i);
                         break;
                     }

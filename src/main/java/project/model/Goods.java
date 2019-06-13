@@ -57,6 +57,7 @@ public class Goods {
             if (price.contains(".")) price = price.replace(".",",");
             try {
                 Integer.parseInt(sku);
+                Double.parseDouble(price.replace("," , "."));
                 if (Integer.parseInt(quantity) < 1) throw new Exception();
             } catch (Exception ex) {
                 return false;
