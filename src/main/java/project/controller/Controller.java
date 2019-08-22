@@ -28,8 +28,7 @@ public class Controller extends Thread{
         email = new Email();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         view = new View();
         SwingUtilities.invokeLater(view);
     }
@@ -64,7 +63,7 @@ public class Controller extends Thread{
             public int compare(String o1, String o2) {
                 int s1 = StringUtils.ordinalIndexOf(o1,"#",5) + 1;
                 int s2 = StringUtils.ordinalIndexOf(o2,"#",5) + 1;
-                return o1.substring(0,s1).compareTo(o2.substring(0,s2));
+                return o1.substring(0,s1).compareToIgnoreCase(o2.substring(0,s2));
             }
         });
 
@@ -111,7 +110,9 @@ public class Controller extends Thread{
                             if (str.length > 11) o8s.get(x).setDeferment(str[12]);
                             if (str.length > 12) o8s.get(x).setDate(str[13]);
                         } catch (IndexOutOfBoundsException ex) {}
-                        o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
+                        try {
+                            o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
+                        } catch (Exception ex){}
                     }
 
                  }

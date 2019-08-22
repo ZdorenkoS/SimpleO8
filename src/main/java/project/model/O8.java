@@ -98,6 +98,7 @@ public class O8 {
             if (o8.deferment.equals("_")) o8.deferment = "";
 
             if (o8.invoice.contains("від")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("від"));
+            if (o8.invoice.contains("вiд")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("вiд"));
             if (o8.invoice.contains("от")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("от"));
             if (o8.invoice.equals("_")) o8.invoice = "";
             o8.invoice = o8.invoice.replaceAll("_", "");
@@ -164,7 +165,7 @@ public class O8 {
         }
         return f;
     }
-    // TODO написать проверку и добавление новых поставщиков
+
     public String o8ForView() {
         Properties properties = new Properties();
         try {
