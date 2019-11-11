@@ -72,7 +72,7 @@ public class Email {
             return messages;
         }
     }
-
+//todo проверка на корректность отсрочки //// удаление товара если не правильный код
     public ArrayList<String> getLines (ArrayList<Message> messages){
         String s = "";
        ArrayList<String> lines = new ArrayList<>();

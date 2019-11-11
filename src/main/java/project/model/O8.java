@@ -4,10 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.ListIterator;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 
 public class O8 {
     private String stock;                          // Склад
@@ -19,7 +16,18 @@ public class O8 {
     private String deferment;                      // Отсрочка платежа
     private String date;                           // Дата прихода
     private ArrayList<Goods> goods;
+    private static Set STOP_SUPP;       // заблокированные поставщики
 
+    static {
+        Properties prop = new Properties();
+        try {
+            prop.load(new InputStreamReader(new FileInputStream("src/main/resources/stop_list.properties"),"cp1251"));}
+        catch (IOException ex){
+            System.out.println("Не удалось загрузить список запрещенных поставщиков");
+        }
+        STOP_SUPP = prop.keySet();
+
+    }
 
     public O8() {}
     public O8(String stock, String delivery, String currency, String invoice, String supplier) {
@@ -84,6 +92,11 @@ public class O8 {
         O8 o8;
         while (iterator.hasNext()){
             o8 = iterator.next();
+            if (STOP_SUPP.contains(o8.supplier)) {
+                o8Fail.add(o8);
+                o8ToRemove.add(o8);
+            }
+
 
             try {
                 Integer.parseInt(o8.supplier);
