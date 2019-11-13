@@ -1,13 +1,12 @@
 package project.controller;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.*;
 import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import project.utils.ConfigProperties;
@@ -27,11 +26,14 @@ public class BrowserController extends Thread{
     public BrowserController(browsr b) {
         if (b.equals(browsr.CHROME)){
             System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
+            ChromeOptions options = new ChromeOptions();
             driver = new ChromeDriver();
+
         }
         if (b.equals(browsr.FIREFOX)){
+            FirefoxOptions options = new FirefoxOptions().setLegacy(true);
             System.setProperty("webdriver.firefox.driver", "G:\\Java project\\SimpleO8");
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(options);
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
@@ -101,8 +103,7 @@ public class BrowserController extends Thread{
         try {
             driver.findElement(By.id("AQFormQueryList")).click();
             new Select(driver.findElement(By.id("AQFormQueryList"))).selectByVisibleText("*!= Y");
-            driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
-            driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
+            driver.findElement(By.xpath("//div[@id='div']/font")).click();
             driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
         }catch (Exception ex) {}
 
@@ -127,5 +128,4 @@ public class BrowserController extends Thread{
         driver.close();
         log.info("Браузер закрыт");
     }
-
 }
