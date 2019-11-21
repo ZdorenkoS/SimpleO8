@@ -74,7 +74,7 @@ public class Controller extends Thread{
             while (iterator.hasNext())
             {
                 Map.Entry<String, String> pair = iterator.next();
-                sendMail.send("Создан О8 № "+ pair.getKey() + " от " +prop_names.getProperty(pair.getValue()),"Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n " +
+                sendMail.send("Создан О8 № "+ pair.getKey() + " от " +prop_names.getProperty(pair.getValue()),"Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
                         "Создание прихода не означает, что склад готов к приему товара.\n" +
                         "По возникающим вопросам обращайтесь к своему менеджеру", prop_adresses.getProperty(pair.getValue()));
             }
