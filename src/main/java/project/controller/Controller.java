@@ -3,16 +3,18 @@ package project.controller;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import project.model.Email;
+import project.model.GetMail;
 import project.model.Goods;
 import project.model.O8;
+import project.model.SendMail;
 import project.view.View;
 
 import javax.mail.Message;
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 
 public class Controller extends Thread{
     private final static Logger log = Logger.getLogger(Controller.class.getName());
@@ -20,14 +22,29 @@ public class Controller extends Thread{
     private volatile ArrayList<O8> o8s = new ArrayList<>();
     private volatile ArrayList<O8> o8sFail = new ArrayList<>();
     private volatile ArrayList<Message> messages;
-    private Email email;
+    private GetMail getMail;
+    private SendMail sendMail;
     private View view;
-
+    private Properties prop;
+    private Properties prop_adresses;
+    private Properties prop_names;
 
     public Controller() {
-        email = new Email();
+        prop = new Properties();
+        prop_adresses = new Properties();
+        prop_names = new Properties();
+
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            prop.load(new InputStreamReader(new FileInputStream("src/main/resources/config.properties"),"cp1251"));
+            prop_adresses.load(new InputStreamReader(new FileInputStream("src/main/resources/send_list.properties"),"cp1251"));
+            prop_names.load(new InputStreamReader(new FileInputStream("src/main/resources/supplier.properties"),"cp1251"));
+        }
+        catch (IOException ex){}
+
+        getMail = new GetMail();
+        sendMail = new SendMail(prop.getProperty("gmail"),prop.getProperty("gmailPassword"));
+
+        try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {}
         view = new View();
         SwingUtilities.invokeLater(view);
@@ -38,21 +55,37 @@ public class Controller extends Thread{
     }
 
     public void getConnect(){
-        email.connect();
+        getMail.connect();
     }
 
     public void disconnect() {
-        email.disconnect();
+        getMail.disconnect();
     }
 
     public ArrayList<Message> getMess() {return messages;}
 
     public void getMesssages() {
-        messages = email.getMessages();
+        messages = getMail.getMessages();
+    }
+
+    public void sendMesssages(HashMap<String, String> map) {
+        try {
+            Iterator<Map.Entry<String, String>> iterator = map.entrySet().iterator();
+            while (iterator.hasNext())
+            {
+                Map.Entry<String, String> pair = iterator.next();
+                sendMail.send("Создан О8 № "+ pair.getKey() + " от " +prop_names.getProperty(pair.getValue()),"Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n " +
+                        "Создание прихода не означает, что склад готов к приему товара.\n" +
+                        "По возникающим вопросам обращайтесь к своему менеджеру", prop_adresses.getProperty(pair.getValue()));
+            }
+        } catch (Exception ex){
+            System.out.println("Ошибка при рассылке: " + ex.getCause());
+        }
+
     }
 
     public void getLines() {
-        lines = email.getLines(messages);
+        lines = getMail.getLines(messages);
     }
 
 

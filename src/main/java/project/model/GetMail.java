@@ -13,15 +13,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class Email {
-    private final static Logger log = Logger.getLogger(Email.class.getName());
+public class GetMail {
+    private final static Logger log = Logger.getLogger(GetMail.class.getName());
     private Properties props;
     private Session session;
     private Store store;
     private Folder folder;
     Properties supp;
 
-    public Email() {
+    public GetMail() {
         props = new Properties();
         props.put("mail.debug", "false");
         props.put("mail.store.protocol", "imaps");
@@ -133,7 +133,7 @@ public class Email {
         return result;
     }
 
-    public void disconnect() {
+       public void disconnect() {
         try {store.close();} catch (MessagingException ex) {log.error("Сбой при закрытии коннекта", ex);}
     }
 }

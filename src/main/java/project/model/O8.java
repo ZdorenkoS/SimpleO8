@@ -92,7 +92,7 @@ public class O8 {
         O8 o8;
         while (iterator.hasNext()){
             o8 = iterator.next();
-            if (STOP_SUPP.contains(o8.supplier)) {
+            if (STOP_SUPP.contains(o8.supplier) && o8.currency.equalsIgnoreCase("БЕЗНАЛ")) {
                 o8Fail.add(o8);
                 o8ToRemove.add(o8);
             }

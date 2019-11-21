@@ -1,5 +1,6 @@
 package project.controller;
 
+import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Point;
@@ -13,20 +14,25 @@ import project.utils.ConfigProperties;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserController extends Thread{
     public enum browsr{CHROME,FIREFOX}
     private static WebDriver driver;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
+    private static Map<String, String> numbers_send;
 
     private static String temp;
 
     public BrowserController() {}
     public BrowserController(browsr b) {
+        numbers_send = new HashMap<>();
         if (b.equals(browsr.CHROME)){
             System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
-            ChromeOptions options = new ChromeOptions();
             driver = new ChromeDriver();
 
         }
@@ -34,6 +40,7 @@ public class BrowserController extends Thread{
             FirefoxOptions options = new FirefoxOptions().setLegacy(true);
             System.setProperty("webdriver.firefox.driver", "G:\\Java project\\SimpleO8");
             driver = new FirefoxDriver(options);
+            driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
@@ -88,18 +95,39 @@ public class BrowserController extends Thread{
             driver.findElement(By.id("C0_24")).click();
         }
         driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL+"v"));
-        driver.findElement(By.id("hc_OK")).click();
 
-        try {driver.findElement(By.id("hc_Find")).click();
-        } catch (org.openqa.selenium.NoSuchElementException ex) {
+
+        try {
+            driver.findElement(By.id("hc_OK")).click();
+            driver.findElement(By.id("hc_Find")).click();
+        } catch (org.openqa.selenium.WebDriverException ex) {
             driver.findElement(By.id("hc_OK")).click();
             driver.findElement(By.id("hc_Find")).click();
         }
 
-
-
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
+        ////
+
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
+        driver.findElement(By.xpath("//div[@id='div']/font")).click();
+        driver.findElement(By.xpath("//table[@id='HE0_32']/tbody/tr/td[2]/span/nobr")).click();
+        temp = new String();
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
+
+        java.util.List<WebElement> rows = driver.findElements(By.xpath("//table[@class='dataGrid']//tr"));
+        for (WebElement row : rows) {
+            String str [] = new String[3];
+            try{
+                str  =  row.getText().split("\n");
+                if (str[0] != null && str[1] != null) numbers_send.put(str[0],str[1]);
+            } catch (Exception ex){
+                System.out.println("Ошибка: " + ex.getMessage() );
+            }
+        }
+
+        driver.findElement(By.id("hc_Close")).click();
+        ////
         try {
             driver.findElement(By.id("AQFormQueryList")).click();
             new Select(driver.findElement(By.id("AQFormQueryList"))).selectByVisibleText("*!= Y");
@@ -109,9 +137,11 @@ public class BrowserController extends Thread{
 
         driver.switchTo().parentFrame();
 
-        driver.findElement(By.id("listOCL_2")).click();
-        driver.switchTo().frame("e1menuAppIframe");
-        driver.findElement(By.id("hc_Find")).click();
+        try {
+            driver.findElement(By.id("listOCL_2")).click();
+            driver.switchTo().frame("e1menuAppIframe");
+            driver.findElement(By.id("hc_Find")).click();
+        try{TimeUnit.SECONDS.sleep(2);}catch (InterruptedException e){}
 
         try {WebElement element = driver.findElement(By.id("GOTOLAST0_1"));
             if (element.isDisplayed()) element.click();}
@@ -120,8 +150,15 @@ public class BrowserController extends Thread{
         driver.findElement(By.xpath("(//div[@id='div']/font)[2]")).click();
         driver.findElement(By.xpath("//table[@id='HE0_117']/tbody/tr/td[2]/span/nobr")).click();
         driver.switchTo().parentFrame();
-        temp = new String();
         log.info("О8 созданы");
+        }
+        catch (Exception ex){}
+    }
+
+    public HashMap<String, String> getO8Numbers(){
+        HashMap<String, String> map = new HashMap<String, String>(numbers_send);
+        numbers_send.clear();
+        return  map;
     }
 
     public void disconnect() {

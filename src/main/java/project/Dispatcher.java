@@ -53,15 +53,18 @@ public class Dispatcher implements Runnable{
                 controller.o8Validation();
                 controller.o8Merge();
 
-                try{browserController.setTemp(controller.getString());
+                try{
+                    browserController.setTemp(controller.getString());
                     browserController.createO8();
-                    } catch (Exception ex){
+                } catch (Exception ex){
                     browserController.disconnect();
                     browserController = new BrowserController(BrowserController.browsr.CHROME);
                     browserController.start();
                     browserController.createO8();
-                    }
                 }
+
+            controller.sendMesssages(browserController.getO8Numbers());
+            }
 
             try {
                 new View.Countdown(controller.getView()).run();
