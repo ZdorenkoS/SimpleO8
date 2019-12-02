@@ -55,15 +55,15 @@ public class Dispatcher implements Runnable{
 
                 try{
                     browserController.setTemp(controller.getString());
-                    browserController.createO8();
+                    browserController.createO8(controller);
                 } catch (Exception ex){
                     browserController.disconnect();
                     browserController = new BrowserController(BrowserController.browsr.CHROME);
                     browserController.start();
-                    browserController.createO8();
+                    browserController.createO8(controller);
                 }
 
-            controller.sendMesssages(browserController.getO8Numbers());
+            controller.sendMesssages();
             }
 
             try {

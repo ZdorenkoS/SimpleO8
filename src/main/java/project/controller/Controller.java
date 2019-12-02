@@ -1,6 +1,7 @@
 package project.controller;
 
 
+import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import project.model.GetMail;
@@ -22,6 +23,7 @@ public class Controller extends Thread{
     private volatile ArrayList<O8> o8s = new ArrayList<>();
     private volatile ArrayList<O8> o8sFail = new ArrayList<>();
     private volatile ArrayList<Message> messages;
+    private volatile HashMap<String, String> o8map;
     private GetMail getMail;
     private SendMail sendMail;
     private View view;
@@ -33,6 +35,7 @@ public class Controller extends Thread{
         prop = new Properties();
         prop_adresses = new Properties();
         prop_names = new Properties();
+        o8map = new HashMap<>();
 
         try {
             prop.load(new InputStreamReader(new FileInputStream("src/main/resources/config.properties"),"cp1251"));
@@ -48,6 +51,9 @@ public class Controller extends Thread{
         } catch (Exception e) {}
         view = new View();
         SwingUtilities.invokeLater(view);
+    }
+    public HashMap<String, String> getO8map() {
+        return o8map;
     }
 
     public View getView() {
@@ -68,18 +74,27 @@ public class Controller extends Thread{
         messages = getMail.getMessages();
     }
 
-    public void sendMesssages(HashMap<String, String> map) {
+    public void sendMesssages() {
         try {
-            Iterator<Map.Entry<String, String>> iterator = map.entrySet().iterator();
-            while (iterator.hasNext())
-            {
+            Iterator<Map.Entry<String, String>> iterator = o8map.entrySet().iterator();
+            while (iterator.hasNext()){
                 Map.Entry<String, String> pair = iterator.next();
-                sendMail.send("Создан О8 № "+ pair.getKey() + " от " +prop_names.getProperty(pair.getValue()),"Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
-                        "Создание прихода не означает, что склад готов к приему товара.\n" +
-                        "По возникающим вопросам обращайтесь к своему менеджеру", prop_adresses.getProperty(pair.getValue()));
+                if (prop_adresses.containsKey(pair.getValue())) {
+                    sendMail.send("Создан О8 № " + pair.getKey() + " от " + prop_names.getProperty(pair.getValue()), "Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
+                            "Создание прихода не означает, что склад готов к приему товара.\n" +
+                            "По возникающим вопросам обращайтесь к своему менеджеру.", prop_adresses.getProperty(pair.getValue()));
+                }
+                else {
+                    System.out.println("\nАдреса постача "  + prop_names.getProperty(pair.getValue()) +  " " + pair.getKey() + " нет в списке рассылки" +"\n");
+                    sendMail.send("#Создан О8 № " + pair.getKey() + " от " + prop_names.getProperty(pair.getValue()), "Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
+                            "Создание прихода не означает, что склад готов к приему товара.\n" +
+                            "По возникающим вопросам обращайтесь к своему менеджеру.", "zsa@allo.ua");
+                }
             }
         } catch (Exception ex){
             System.out.println("Ошибка при рассылке: " + ex.getCause());
+        }finally {
+            o8map.clear();    //// подумать
         }
 
     }
@@ -183,4 +198,5 @@ public class Controller extends Thread{
         log.info("Данные для ерп сформированы");
         return sb.toString();
     }
+
 }

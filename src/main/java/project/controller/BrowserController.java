@@ -1,22 +1,17 @@
 package project.controller;
 
-import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.*;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import project.utils.ConfigProperties;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +20,7 @@ public class BrowserController extends Thread{
     private static WebDriver driver;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
     private static Map<String, String> numbers_send;
+    private Controller control;
 
     private static String temp;
 
@@ -81,7 +77,8 @@ public class BrowserController extends Thread{
         log.info("ЕРП готов к работе");
     }
 
-    public void createO8(){
+    public void createO8(Controller controller){
+        control = controller;
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(temp),null);
 
         driver.findElement(By.id("listOCL_1")).click();
@@ -107,27 +104,33 @@ public class BrowserController extends Thread{
 
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
-        ////
+
 
         try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_32']/tbody/tr/td[2]/span/nobr")).click();
         temp = new String();
-        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
-
+        try{TimeUnit.SECONDS.sleep(2);}catch (InterruptedException e){}
         java.util.List<WebElement> rows = driver.findElements(By.xpath("//table[@class='dataGrid']//tr"));
         for (WebElement row : rows) {
-            String str [] = new String[3];
+            String str [];
             try{
                 str  =  row.getText().split("\n");
                 if (str[0] != null && str[1] != null) numbers_send.put(str[0],str[1]);
+                for (int i = 0; i <str.length ; i++) {
+                    System.out.println(str[i]);
+                }
+
             } catch (Exception ex){
-                System.out.println("Ошибка: " + ex.getMessage() );
+                System.out.println("Ошибка при наполнении мапы для рассылки: " + ex.getMessage() );
             }
         }
 
+        control.getO8map().putAll(numbers_send);
+        numbers_send.clear();
+
         driver.findElement(By.id("hc_Close")).click();
-        ////
+
         try {
             driver.findElement(By.id("AQFormQueryList")).click();
             new Select(driver.findElement(By.id("AQFormQueryList"))).selectByVisibleText("*!= Y");
@@ -153,12 +156,6 @@ public class BrowserController extends Thread{
         log.info("О8 созданы");
         }
         catch (Exception ex){}
-    }
-
-    public HashMap<String, String> getO8Numbers(){
-        HashMap<String, String> map = new HashMap<String, String>(numbers_send);
-        numbers_send.clear();
-        return  map;
     }
 
     public void disconnect() {

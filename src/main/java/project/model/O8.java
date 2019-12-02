@@ -191,9 +191,12 @@ public class O8 {
         String supp = properties.getProperty(supplier);
 
 
+
         StringBuilder sb = new StringBuilder();
         try {
         if (supp.length()<25) {
+            sb.append(supplier);
+            sb.append(" - ");
             sb.append(supp);
             for (int i = 0; i <24 - supp.length() ; i++) {
                 sb.append(" ");
