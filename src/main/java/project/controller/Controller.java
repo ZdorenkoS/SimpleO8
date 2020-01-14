@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Controller extends Thread{
@@ -24,6 +25,7 @@ public class Controller extends Thread{
     private volatile ArrayList<O8> o8sFail = new ArrayList<>();
     private volatile ArrayList<Message> messages;
     private volatile HashMap<String, String> o8map;
+    private volatile ArrayList<String> o8_numbers;
     private GetMail getMail;
     private SendMail sendMail;
     private View view;
@@ -36,6 +38,7 @@ public class Controller extends Thread{
         prop_adresses = new Properties();
         prop_names = new Properties();
         o8map = new HashMap<>();
+        o8_numbers = new ArrayList<>();
 
         try {
             prop.load(new InputStreamReader(new FileInputStream("src/main/resources/config.properties"),"cp1251"));
@@ -54,6 +57,9 @@ public class Controller extends Thread{
     }
     public HashMap<String, String> getO8map() {
         return o8map;
+    }
+    public ArrayList<String> getO8_numbers() {
+        return o8_numbers;
     }
 
     public View getView() {
@@ -76,7 +82,7 @@ public class Controller extends Thread{
 
     public void sendMesssages() {
         try {
-            Iterator<Map.Entry<String, String>> iterator = o8map.entrySet().iterator();
+            /*Iterator<Map.Entry<String, String>> iterator = o8map.entrySet().iterator();
             while (iterator.hasNext()){
                 Map.Entry<String, String> pair = iterator.next();
                 if (prop_adresses.containsKey(pair.getValue())) {
@@ -84,17 +90,33 @@ public class Controller extends Thread{
                             "Создание прихода не означает, что склад готов к приему товара.\n" +
                             "По возникающим вопросам обращайтесь к своему менеджеру.", prop_adresses.getProperty(pair.getValue()));
                 }
-                else {
-                    System.out.println("\nАдреса постача "  + prop_names.getProperty(pair.getValue()) +  " " + pair.getKey() + " нет в списке рассылки" +"\n");
-                    sendMail.send("#Создан О8 № " + pair.getKey() + " от " + prop_names.getProperty(pair.getValue()), "Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
-                            "Создание прихода не означает, что склад готов к приему товара.\n" +
-                            "По возникающим вопросам обращайтесь к своему менеджеру.", "zsa@allo.ua");
+            }*/
+            // продвинутая рассылка
+            for (O8 o8 : o8s){
+                DecimalFormat df = new DecimalFormat("#.##");
+                StringBuilder sb = new StringBuilder();
+                sb.append("Товары по приходу:\n");
+                for (Goods good : o8.getGoods()){
+                    sb.append(String.format("%-30s%5s шт.", good.getName(),good.getQuantity()));
+                    sb.append("\n");
+                }
+                sb.append("\nЭто автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
+                        "Создание прихода не означает, что склад готов к приему товара.\n" +
+                        "По возникающим вопросам обращайтесь к своему менеджеру.");
+
+                if (prop_adresses.containsKey(o8.getSupplier())) {
+                            sendMail.send("#Создан О8 № " + o8.getO8_number() + " от " + prop_names.getProperty(o8.getSupplier()) + ", Cчет № " + o8.getInvoice() + ", Сумма: " + df.format(o8.getSumm()),
+                            sb.toString()
+                       , prop_adresses.getProperty(o8.getSupplier()));
                 }
             }
+
         } catch (Exception ex){
             System.out.println("Ошибка при рассылке: " + ex.getCause());
         }finally {
-            o8map.clear();    //// подумать
+            o8map.clear();
+            o8_numbers.clear();
+            o8s.clear();
         }
 
     }
@@ -109,14 +131,14 @@ public class Controller extends Thread{
         Collections.sort(lines, new Comparator<String>() {                              // сортируем линии, получим нужные строки подряд
             @Override
             public int compare(String o1, String o2) {
-                int s1 = StringUtils.ordinalIndexOf(o1,"#",5) + 1;
-                int s2 = StringUtils.ordinalIndexOf(o2,"#",5) + 1;
+                int s1 = StringUtils.ordinalIndexOf(o1,"##",5) + 1;
+                int s2 = StringUtils.ordinalIndexOf(o2,"##",5) + 1;
                 return o1.substring(0,s1).compareToIgnoreCase(o2.substring(0,s2));
             }
         });
 
         for (String s :lines) {
-            parts.add(s.split("#"));                                              // разделяем линию на составляющие
+            parts.add(s.split("##"));                                              // разделяем линию на составляющие
         }
 
         for (int i = parts.size()-1; i >= 0 ; i--) {
@@ -137,7 +159,7 @@ public class Controller extends Thread{
                         if (str.length > 11) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
                         if (str.length > 12) o8s.get(0).setDate(str[13]);                // может отсутствовать
                     } catch (IndexOutOfBoundsException ex) {}
-                    o8s.get(0).getGoods().add(new Goods(str[7], str[8], str[9]));        // добавляем товары из первой линии
+                    o8s.get(0).getGoods().add(new Goods(str[6], str[7], str[8], str[9]));        // добавляем товары из первой линии
                 }
 
                 // для всех строк кроме 1
@@ -147,7 +169,7 @@ public class Controller extends Thread{
                     String[] s2 = parts.get(i - 1);
 
                     if (s1[0].equals(s2[0]) && s1[2].equals(s2[2]) && s1[3].equals(s2[3]) && s1[4].equals(s2[4])) {
-                        o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));      // добавляем товары
+                        o8s.get(x).getGoods().add(new Goods(str[6], str[7], str[8], str[9]));      // добавляем товары
                     }
                     // создаем новый О8
                     else {
@@ -159,7 +181,7 @@ public class Controller extends Thread{
                             if (str.length > 12) o8s.get(x).setDate(str[13]);
                         } catch (IndexOutOfBoundsException ex) {}
                         try {
-                            o8s.get(x).getGoods().add(new Goods(str[7], str[8], str[9]));
+                            o8s.get(x).getGoods().add(new Goods(str[6], str[7], str[8], str[9]));
                         } catch (Exception ex){}
                     }
 
@@ -185,6 +207,11 @@ public class Controller extends Thread{
         }
     }
 
+    public void addO8Numbers(){
+        for (int i = 0; i <o8s.size() ; i++) {
+            o8s.get(i).setO8_number(o8_numbers.get(i));
+        }
+    }
 
     public String getString(){
         StringBuilder sb = new StringBuilder();
@@ -193,7 +220,6 @@ public class Controller extends Thread{
         }
         messages.clear();
         lines.clear();
-        o8s.clear();
         o8sFail.clear();
         log.info("Данные для ерп сформированы");
         return sb.toString();

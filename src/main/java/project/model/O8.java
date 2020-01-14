@@ -1,5 +1,7 @@
 package project.model;
 
+import com.fasterxml.jackson.databind.util.ISO8601Utils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,6 +17,8 @@ public class O8 {
     private String parcel;                         // Номер ТТН (для посылок)
     private String deferment;                      // Отсрочка платежа
     private String date;                           // Дата прихода
+    private String o8_number;                      // Номер О8 в ЕРП
+
     private ArrayList<Goods> goods;
     private static Set STOP_SUPP;       // заблокированные поставщики
 
@@ -40,6 +44,7 @@ public class O8 {
         parcel = "";
         deferment = "";
         date = "";
+        o8_number = "";
     }
 
     public String buildString (int i){
@@ -93,6 +98,7 @@ public class O8 {
         while (iterator.hasNext()){
             o8 = iterator.next();
             if (STOP_SUPP.contains(o8.supplier) && o8.currency.equalsIgnoreCase("БЕЗНАЛ")) {
+                System.out.println("ПОСТАВЩИК ЗАБЛОКИРОВАН - " + o8.supplier);
                 o8Fail.add(o8);
                 o8ToRemove.add(o8);
             }
@@ -103,6 +109,8 @@ public class O8 {
                 if (!o8.stock.equals("3001") && !o8.stock.equals("5005")) throw new NumberFormatException();
                 if (o8.goods.isEmpty()) throw new NumberFormatException();
             }catch (NumberFormatException ex) {
+                System.out.println("НЕ ПРАВИЛЬНЫЙ СКЛАД - поставщик " + o8.supplier);
+                o8Fail.add(o8);
                 o8Fail.add(o8);
                 o8ToRemove.add(o8);
                 continue;
@@ -167,7 +175,7 @@ public class O8 {
         o8s.removeAll(o8ToRemove);
     }
 
-    private float getSumm (){
+    public float getSumm (){
         float f = 0.0f;
         for (Goods good: this.goods) {
            try {
@@ -236,6 +244,26 @@ public class O8 {
         return goods;
     }
 
+    public String getStock() {
+        return stock;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getInvoice() {
+        return invoice;
+    }
+
+    public String getO8_number() {
+        return o8_number;
+    }
+
+    public String getSupplier() {
+        return supplier;
+    }
+
     public void setParcel(String parcel) {
         this.parcel = parcel;
     }
@@ -246,6 +274,10 @@ public class O8 {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public void setO8_number(String o8_number) {
+        this.o8_number = o8_number;
     }
 
     @Override

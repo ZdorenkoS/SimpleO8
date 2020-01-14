@@ -72,7 +72,7 @@ public class GetMail {
             return messages;
         }
     }
-//todo проверка на корректность отсрочки //// удаление товара если не правильный код
+
     public ArrayList<String> getLines (ArrayList<Message> messages){
         String s = "";
        ArrayList<String> lines = new ArrayList<>();
@@ -84,9 +84,9 @@ public class GetMail {
                         .replaceAll("Р3001", "~3001")
                         .replaceAll("M5005", "~5005")
                         .replaceAll("М5005", "~5005")
-                        .replaceAll("@@@@@@", "# # #")
-                        .replaceAll("@@@@", "# #")
-                        .replaceAll("@@", "#")
+                        .replaceAll("@@@@@@", "## ## ##")
+                        .replaceAll("@@@@", "## ##")
+                        .replaceAll("@@", "##")
                         .replaceAll("@", "");
                 lines.addAll(Arrays.asList(s.split("~")));
 

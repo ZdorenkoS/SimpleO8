@@ -62,7 +62,7 @@ public class Dispatcher implements Runnable{
                     browserController.start();
                     browserController.createO8(controller);
                 }
-
+            controller.addO8Numbers();
             controller.sendMesssages();
             }
 

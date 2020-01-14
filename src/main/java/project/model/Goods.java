@@ -6,12 +6,15 @@ public class Goods {
     private String sku;        // Код товара
     private String quantity;   // Количество
     private String price;      // Цена
+    private String name;       // Наименование товара
+
 
     public Goods() {}
-    public Goods(String sku, String quantity, String price) {
+    public Goods(String name, String sku, String quantity, String price) {
         this.sku = sku;
         this.quantity = quantity;
         this.price = price;
+        this.name = name;
     }
 
     public String getSku() {
@@ -30,8 +33,8 @@ public class Goods {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -68,9 +71,11 @@ public class Goods {
     @Override
     public String toString() {
         return "Goods{" +
-                "sku='" + sku + '\'' +
+
+                "name='" + name + '\'' +
                 ", quantity='" + quantity + '\'' +
                 ", price='" + price + '\'' +
+                ", sku='" + sku + '\'' +
                 '}';
     }
 }

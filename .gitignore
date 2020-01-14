@@ -36,5 +36,6 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
-
+H:\Java Project\SimpleO8\src\main\resources\log4j.properties
+H:\Java Project\SimpleO8\src\main\resources\log4j-application.log
 

@@ -11,6 +11,7 @@ import project.utils.ConfigProperties;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +21,7 @@ public class BrowserController extends Thread{
     private static WebDriver driver;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
     private static Map<String, String> numbers_send;
+    private static ArrayList<String> o8_numbers;
     private Controller control;
 
     private static String temp;
@@ -27,6 +29,7 @@ public class BrowserController extends Thread{
     public BrowserController() {}
     public BrowserController(browsr b) {
         numbers_send = new HashMap<>();
+        o8_numbers = new ArrayList<>();
         if (b.equals(browsr.CHROME)){
             System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
             driver = new ChromeDriver();
@@ -55,6 +58,9 @@ public class BrowserController extends Thread{
         driver.findElement(By.id("User")).sendKeys(ConfigProperties.getProperty("erpUser"));
         driver.findElement(By.id("Password")).sendKeys(ConfigProperties.getProperty("erpPassword"));
         driver.findElement(By.id("F1")).submit();
+        driver.switchTo().frame("e1menuAppIframe");
+        driver.findElement(By.id("tab0")).click();
+        driver.switchTo().parentFrame();
         driver.findElement(By.id("drop_mainmenu")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Справка'])[1]/following::td[4]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Профиль задачи'])[11]/following::span[2]")).click();
@@ -80,9 +86,7 @@ public class BrowserController extends Thread{
     public void createO8(Controller controller){
         control = controller;
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(temp),null);
-
         driver.findElement(By.id("listOCL_1")).click();
-
         driver.switchTo().frame("e1menuAppIframe");
 
         try{
@@ -92,6 +96,7 @@ public class BrowserController extends Thread{
             driver.findElement(By.id("C0_24")).click();
         }
         driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL+"v"));
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(""),null);
 
 
         try {
@@ -104,30 +109,36 @@ public class BrowserController extends Thread{
 
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
-
-
-        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
-        driver.findElement(By.xpath("//div[@id='div']/font")).click();
-        driver.findElement(By.xpath("//table[@id='HE0_32']/tbody/tr/td[2]/span/nobr")).click();
+        try {
+            try {TimeUnit.SECONDS.sleep(2); } catch (InterruptedException e) {}
+            driver.findElement(By.xpath("//div[@id='div']/font")).click();
+            driver.findElement(By.xpath("//table[@id='HE0_32']/tbody/tr/td[2]/span/nobr")).click();
+        }catch (Exception ex){
+            System.out.println(ex.getCause() + ex.getMessage());
+            driver.findElement(By.xpath("//div[@id='div']/font")).click();
+            driver.findElement(By.xpath("//table[@id='HE0_32']/tbody/tr/td[2]/span/nobr")).click();
+        }
         temp = new String();
-        try{TimeUnit.SECONDS.sleep(2);}catch (InterruptedException e){}
+        try{TimeUnit.SECONDS.sleep(10);}catch (InterruptedException e){}
         java.util.List<WebElement> rows = driver.findElements(By.xpath("//table[@class='dataGrid']//tr"));
         for (WebElement row : rows) {
             String str [];
             try{
                 str  =  row.getText().split("\n");
-                if (str[0] != null && str[1] != null) numbers_send.put(str[0],str[1]);
-                for (int i = 0; i <str.length ; i++) {
-                    System.out.println(str[i]);
+                if (str[0] != null && str[1] != null) {
+                    numbers_send.put(str[0],str[1]);
+                    o8_numbers.add(str[0]);
                 }
-
             } catch (Exception ex){
-                System.out.println("Ошибка при наполнении мапы для рассылки: " + ex.getMessage() );
+                System.out.println("Ошибка при наполнении мапы для рассылки: " + ex.getCause() +"\n"+ ex.getMessage() );
+                System.out.println(row.getText());
             }
         }
 
         control.getO8map().putAll(numbers_send);
+        control.getO8_numbers().addAll(o8_numbers);
         numbers_send.clear();
+        o8_numbers.clear();
 
         driver.findElement(By.id("hc_Close")).click();
 
