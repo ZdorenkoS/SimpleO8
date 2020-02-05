@@ -1,9 +1,6 @@
 package project;
 
-import com.viber.bot.api.MessageDestination;
-import com.viber.bot.api.ViberBot;
-import com.viber.bot.profile.BotProfile;
-import com.viber.bot.profile.UserProfile;
+
 import org.apache.log4j.Logger;
 import project.controller.BrowserController;
 import project.controller.Controller;

@@ -1,7 +1,7 @@
 package project.controller;
 
 
-import com.fasterxml.jackson.databind.util.ISO8601Utils;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import project.model.GetMail;
@@ -92,7 +92,7 @@ public class Controller extends Thread{
                 }
             }*/
             // продвинутая рассылка
-            for (O8 o8 : o8s){
+/*            for (O8 o8 : o8s){
                 DecimalFormat df = new DecimalFormat("#.##");
                 StringBuilder sb = new StringBuilder();
                 sb.append("Товары по приходу:\n");
@@ -109,7 +109,7 @@ public class Controller extends Thread{
                             sb.toString()
                        , prop_adresses.getProperty(o8.getSupplier()));
                 }
-            }
+            }*/
 
         } catch (Exception ex){
             System.out.println("Ошибка при рассылке: " + ex.getCause());
@@ -208,9 +208,11 @@ public class Controller extends Thread{
     }
 
     public void addO8Numbers(){
+       try{
         for (int i = 0; i <o8s.size() ; i++) {
             o8s.get(i).setO8_number(o8_numbers.get(i));
-        }
+        }}
+       catch (Exception ex){}
     }
 
     public String getString(){
