@@ -1,7 +1,6 @@
 package project.model;
 
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -117,21 +116,36 @@ public class O8 {
             }
 
             if (o8.deferment.equals("_")) o8.deferment = "";
+            try {if (Integer.parseInt(o8.deferment) > 100) o8.deferment = "";}
+            catch (NumberFormatException ex){
+                o8.deferment = "";
+            }
 
             if (o8.invoice.contains("від")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("від"));
             if (o8.invoice.contains("вiд")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("вiд"));
             if (o8.invoice.contains("от")) o8.invoice = o8.invoice.substring(0,o8.invoice.indexOf("от"));
             if (o8.invoice.equals("_")) o8.invoice = "";
             o8.invoice = o8.invoice.replaceAll("_", "");
+            o8.invoice = o8.invoice.replaceAll(":", "");
             o8.invoice = o8.invoice.replaceAll("№", "");
             o8.invoice = o8.invoice.replaceAll("No", "");
+            o8.invoice = o8.invoice.replaceAll("Видаткова накладна", "");
+            o8.invoice = o8.invoice.replaceAll("Расходная накладная", "");
+            o8.invoice = o8.invoice.replaceAll("Замовлення покупця", "");
+            o8.invoice = o8.invoice.replaceAll("Заказ покупателя", "");
+            o8.invoice = o8.invoice.replaceAll("покупателю", "");
             o8.invoice = o8.invoice.replace("Рахунок-фактура", "");
-            o8.invoice = o8.invoice.replace("Рахунок на оплату по замовленню", "");
-            o8.invoice = o8.invoice.replace("Рахунок на оплату за замовленням", "");
-            o8.invoice = o8.invoice.replace("Рахунок на оплату", "");
             o8.invoice = o8.invoice.replace("Рахунок", "");
+            o8.invoice = o8.invoice.replace("РАХУНОК", "");
+            o8.invoice = o8.invoice.replace("по замовленню", "");
+            o8.invoice = o8.invoice.replace("за замовленням", "");
             o8.invoice = o8.invoice.replace("Счет", "");
+            o8.invoice = o8.invoice.replace("Счёт", "");
+            o8.invoice = o8.invoice.replace("на оплату", "");
+            o8.invoice = o8.invoice.replace("на сплату", "");
             o8.invoice = o8.invoice.replace(" ", "");
+            
+
             o8.supplier = o8.supplier.replaceAll(" ", "");
 
             if (o8.parcel.equals("_")) o8.parcel = "";
@@ -209,7 +223,7 @@ public class O8 {
             for (int i = 0; i <24 - supp.length() ; i++) {
                 sb.append(" ");
             }
-        } else sb.append(supp.substring(0,24));}
+        } else sb.append(supp, 0, 24);}
         catch (NullPointerException ex){
             sb.append(supplier);
         }

@@ -1,12 +1,21 @@
 package project;
 
 
+import com.google.inject.internal.cglib.proxy.$CallbackFilter;
 import org.apache.log4j.Logger;
 import project.controller.BrowserController;
 import project.controller.Controller;
 import project.utils.ConfigProperties;
 import project.view.View;
 
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class Dispatcher implements Runnable{
@@ -15,6 +24,7 @@ public class Dispatcher implements Runnable{
     private volatile boolean isRunning;
     private Controller controller;
     private BrowserController browserController;
+
 
     public Dispatcher() {
         log.info("Старт программы");
@@ -27,17 +37,16 @@ public class Dispatcher implements Runnable{
     }
 
     public static void main(String[] args) {
-        Dispatcher dispatcher = new Dispatcher();
-        new Thread(dispatcher).start();
-
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                dispatcher.controller.disconnect();
-                dispatcher.browserController.disconnect();
-                log.info("Конец работы программы");
-                }
-        });
+        Dispatcher dispatcher = null;
+        try{
+           dispatcher = new Dispatcher();
+           new Thread(dispatcher).start();}
+       catch (Exception ex){
+           telegramNotify(ex.getMessage(),true);
+           dispatcher.controller.disconnect();
+           dispatcher.browserController.disconnect();
+           log.info("Конец работы программы");
+       }
     }
 
     @Override
@@ -52,24 +61,24 @@ public class Dispatcher implements Runnable{
 
                 try{
                     browserController.setTemp(controller.getString());
-                    browserController.createO8(controller);
+                    telegramNotify(controller.getTelegramString(),false);
+                    browserController.createO8();
+
                 } catch (Exception ex){
-                    browserController.disconnect();
-                    browserController = new BrowserController(BrowserController.browsr.CHROME);
-                    browserController.start();
-                    browserController.createO8(controller);
+                    try {
+                        log.debug(ex.getMessage() + ex.getCause());
+                        browserController.disconnect();
+                        browserController = new BrowserController(BrowserController.browsr.CHROME);
+                        browserController.start();
+                        browserController.createO8();
+                    } catch (Exception e){
+                        telegramNotify("Сбой:", true);
+                        telegramNotify(e.getMessage(), true);
+                    }
                 }
-            controller.addO8Numbers();
-            controller.sendMesssages();
             }
 
-            try {
-                new View.Countdown(controller.getView()).run();
-                TimeUnit.SECONDS.sleep(Long.parseLong(ConfigProperties.getProperty("sleepTime")));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
+            new View.Countdown(controller.getView()).run();
 
             synchronized (this) {
                 if (!isRunning) {
@@ -97,7 +106,32 @@ public class Dispatcher implements Runnable{
         return isRunning;
     }
 
-    public Controller getController() {
-        return controller;
+    private static void telegramNotify(String message, Boolean fail){
+        Properties prop = new Properties();
+        try {
+            prop.load(new InputStreamReader(new FileInputStream("src/main/resources/config.properties"),"cp1251"));
+        }
+        catch (IOException ex){}
+        String urlString = prop.getProperty("urlTelegram");
+        String apiToken = fail ? prop.getProperty("apiTokenFail") : prop.getProperty("apiTokenLog");
+        String chatId = prop.getProperty("chatId");
+        String text;
+        try {
+            text =  URLEncoder.encode(message, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            text = "не_получилось_преобразовать_URL";
+        }
+
+        urlString = String.format(urlString, apiToken, chatId, text);
+
+        URL url = null;
+        try {
+            url = new URL(urlString);
+            url.openConnection().getInputStream();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

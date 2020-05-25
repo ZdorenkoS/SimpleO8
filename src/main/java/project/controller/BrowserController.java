@@ -20,16 +20,10 @@ public class BrowserController extends Thread{
     public enum browsr{CHROME,FIREFOX}
     private static WebDriver driver;
     private final static Logger log = Logger.getLogger(BrowserController.class.getName());
-    private static Map<String, String> numbers_send;
-    private static ArrayList<String> o8_numbers;
-    private Controller control;
-
     private static String temp;
 
     public BrowserController() {}
     public BrowserController(browsr b) {
-        numbers_send = new HashMap<>();
-        o8_numbers = new ArrayList<>();
         if (b.equals(browsr.CHROME)){
             System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
             driver = new ChromeDriver();
@@ -39,9 +33,8 @@ public class BrowserController extends Thread{
             FirefoxOptions options = new FirefoxOptions().setLegacy(true);
             System.setProperty("webdriver.firefox.driver", "G:\\Java project\\SimpleO8");
             driver = new FirefoxDriver(options);
-            driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().window().setPosition(new Point(0,0));
@@ -55,9 +48,11 @@ public class BrowserController extends Thread{
 
     public void start(){
         driver.get(ConfigProperties.getProperty("erpUrl"));
+        try{TimeUnit.SECONDS.sleep(3);}catch (InterruptedException e){}
         driver.findElement(By.id("User")).sendKeys(ConfigProperties.getProperty("erpUser"));
         driver.findElement(By.id("Password")).sendKeys(ConfigProperties.getProperty("erpPassword"));
         driver.findElement(By.id("F1")).submit();
+        try{TimeUnit.SECONDS.sleep(3);}catch (InterruptedException e){}
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("tab0")).click();
         driver.switchTo().parentFrame();
@@ -67,80 +62,53 @@ public class BrowserController extends Thread{
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Профиль задачи'])[20]/following::span[2]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Профиль задачи'])[23]/following::span[2]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Профиль задачи'])[26]/following::a[1]")).click();
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_62']/tbody/tr/td[2]/span/nobr")).click();
-
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.switchTo().parentFrame();
         try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.findElement(By.id("listOCL_0")).click();
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.switchTo().frame("e1menuAppIframe");
-        driver.switchTo().frame("wcFrame0");
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
+        driver.switchTo().frame(driver.findElement(By.className("wcFrame")));
         driver.findElement(By.id("tileDescription_7")).click();
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.id("hc_Find")).click();
         driver.switchTo().parentFrame();
         log.info("ЕРП готов к работе");
     }
 
-    public void createO8(Controller controller){
-        control = controller;
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(temp),null);
+    public void createO8(){
         driver.findElement(By.id("listOCL_1")).click();
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         driver.switchTo().frame("e1menuAppIframe");
 
         try{
-        driver.findElement(By.id("C0_24")).click();
+            try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
+            driver.findElement(By.id("C0_24")).click();
         } catch (org.openqa.selenium.NoSuchElementException ex) {
             try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
             driver.findElement(By.id("C0_24")).click();
+            try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
         }
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(temp),null);
         driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL+"v"));
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(""),null);
 
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
+        driver.findElement(By.id("hc_OK")).click();
 
-        try {
-            driver.findElement(By.id("hc_OK")).click();
-            driver.findElement(By.id("hc_Find")).click();
-        } catch (org.openqa.selenium.WebDriverException ex) {
-            driver.findElement(By.id("hc_OK")).click();
-            driver.findElement(By.id("hc_Find")).click();
-        }
+        try{TimeUnit.SECONDS.sleep(1);}catch (InterruptedException e){}
+        driver.findElement(By.id("hc_Find")).click();
+        temp = new String();
+
 
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
-        try {
-            try {TimeUnit.SECONDS.sleep(2); } catch (InterruptedException e) {}
-            driver.findElement(By.xpath("//div[@id='div']/font")).click();
-            driver.findElement(By.xpath("//table[@id='HE0_32']/tbody/tr/td[2]/span/nobr")).click();
-        }catch (Exception ex){
-            System.out.println(ex.getCause() + ex.getMessage());
-            driver.findElement(By.xpath("//div[@id='div']/font")).click();
-            driver.findElement(By.xpath("//table[@id='HE0_32']/tbody/tr/td[2]/span/nobr")).click();
-        }
-        temp = new String();
-        try{TimeUnit.SECONDS.sleep(10);}catch (InterruptedException e){}
-        java.util.List<WebElement> rows = driver.findElements(By.xpath("//table[@class='dataGrid']//tr"));
-        for (WebElement row : rows) {
-            String str [];
-            try{
-                str  =  row.getText().split("\n");
-                if (str[0] != null && str[1] != null) {
-                    numbers_send.put(str[0],str[1]);
-                    o8_numbers.add(str[0]);
-                }
-            } catch (Exception ex){
-                System.out.println("Ошибка при наполнении мапы для рассылки: " + ex.getCause() +"\n"+ ex.getMessage() );
-                System.out.println(row.getText());
-            }
-        }
-
-        control.getO8map().putAll(numbers_send);
-        control.getO8_numbers().addAll(o8_numbers);
-        numbers_send.clear();
-        o8_numbers.clear();
-
-        driver.findElement(By.id("hc_Close")).click();
+        try {TimeUnit.SECONDS.sleep(2); } catch (InterruptedException e) {}
 
         try {
             driver.findElement(By.id("AQFormQueryList")).click();
@@ -155,7 +123,7 @@ public class BrowserController extends Thread{
             driver.findElement(By.id("listOCL_2")).click();
             driver.switchTo().frame("e1menuAppIframe");
             driver.findElement(By.id("hc_Find")).click();
-        try{TimeUnit.SECONDS.sleep(2);}catch (InterruptedException e){}
+        try{TimeUnit.SECONDS.sleep(5);}catch (InterruptedException e){}
 
         try {WebElement element = driver.findElement(By.id("GOTOLAST0_1"));
             if (element.isDisplayed()) element.click();}

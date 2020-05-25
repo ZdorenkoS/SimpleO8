@@ -15,7 +15,13 @@ import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Controller extends Thread{
@@ -24,42 +30,27 @@ public class Controller extends Thread{
     private volatile ArrayList<O8> o8s = new ArrayList<>();
     private volatile ArrayList<O8> o8sFail = new ArrayList<>();
     private volatile ArrayList<Message> messages;
-    private volatile HashMap<String, String> o8map;
-    private volatile ArrayList<String> o8_numbers;
     private GetMail getMail;
-    private SendMail sendMail;
     private View view;
     private Properties prop;
-    private Properties prop_adresses;
     private Properties prop_names;
 
     public Controller() {
         prop = new Properties();
-        prop_adresses = new Properties();
         prop_names = new Properties();
-        o8map = new HashMap<>();
-        o8_numbers = new ArrayList<>();
 
         try {
             prop.load(new InputStreamReader(new FileInputStream("src/main/resources/config.properties"),"cp1251"));
-            prop_adresses.load(new InputStreamReader(new FileInputStream("src/main/resources/send_list.properties"),"cp1251"));
             prop_names.load(new InputStreamReader(new FileInputStream("src/main/resources/supplier.properties"),"cp1251"));
         }
         catch (IOException ex){}
 
         getMail = new GetMail();
-        sendMail = new SendMail(prop.getProperty("gmail"),prop.getProperty("gmailPassword"));
 
         try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {}
         view = new View();
         SwingUtilities.invokeLater(view);
-    }
-    public HashMap<String, String> getO8map() {
-        return o8map;
-    }
-    public ArrayList<String> getO8_numbers() {
-        return o8_numbers;
     }
 
     public View getView() {
@@ -78,47 +69,6 @@ public class Controller extends Thread{
 
     public void getMesssages() {
         messages = getMail.getMessages();
-    }
-
-    public void sendMesssages() {
-        try {
-            /*Iterator<Map.Entry<String, String>> iterator = o8map.entrySet().iterator();
-            while (iterator.hasNext()){
-                Map.Entry<String, String> pair = iterator.next();
-                if (prop_adresses.containsKey(pair.getValue())) {
-                    sendMail.send("Создан О8 № " + pair.getKey() + " от " + prop_names.getProperty(pair.getValue()), "Это автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
-                            "Создание прихода не означает, что склад готов к приему товара.\n" +
-                            "По возникающим вопросам обращайтесь к своему менеджеру.", prop_adresses.getProperty(pair.getValue()));
-                }
-            }*/
-            // продвинутая рассылка
-/*            for (O8 o8 : o8s){
-                DecimalFormat df = new DecimalFormat("#.##");
-                StringBuilder sb = new StringBuilder();
-                sb.append("Товары по приходу:\n");
-                for (Goods good : o8.getGoods()){
-                    sb.append(String.format("%-30s%5s шт.", good.getName(),good.getQuantity()));
-                    sb.append("\n");
-                }
-                sb.append("\nЭто автоматическое сообщение о создании нового прихода товара в ИТ-системе компании \"Алло\". \n" +
-                        "Создание прихода не означает, что склад готов к приему товара.\n" +
-                        "По возникающим вопросам обращайтесь к своему менеджеру.");
-
-                if (prop_adresses.containsKey(o8.getSupplier())) {
-                            sendMail.send("#Создан О8 № " + o8.getO8_number() + " от " + prop_names.getProperty(o8.getSupplier()) + ", Cчет № " + o8.getInvoice() + ", Сумма: " + df.format(o8.getSumm()),
-                            sb.toString()
-                       , prop_adresses.getProperty(o8.getSupplier()));
-                }
-            }*/
-
-        } catch (Exception ex){
-            System.out.println("Ошибка при рассылке: " + ex.getCause());
-        }finally {
-            o8map.clear();
-            o8_numbers.clear();
-            o8s.clear();
-        }
-
     }
 
     public void getLines() {
@@ -207,14 +157,6 @@ public class Controller extends Thread{
         }
     }
 
-    public void addO8Numbers(){
-       try{
-        for (int i = 0; i <o8s.size() ; i++) {
-            o8s.get(i).setO8_number(o8_numbers.get(i));
-        }}
-       catch (Exception ex){}
-    }
-
     public String getString(){
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < o8s.size() ; i++) {
@@ -227,4 +169,17 @@ public class Controller extends Thread{
         return sb.toString();
     }
 
+    public String getTelegramString (){
+        if (o8s.size() <1) return "Пустой список О8";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < o8s.size() ; i++) {
+            sb.append(prop_names.getProperty(o8s.get(i).getSupplier()));
+            sb.append("  ");
+            DecimalFormat myFormatter = new DecimalFormat("###,###.##");
+            sb.append( myFormatter.format(o8s.get(i).getSumm()));
+            sb.append("\n");
+        }
+        o8s.clear();
+        return sb.toString();
+    }
 }

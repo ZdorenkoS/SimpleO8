@@ -119,11 +119,13 @@
             <version>2.3.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.telegram/telegrambots -->
         <dependency>
-            <groupId>com.viber</groupId>
-            <artifactId>viber-bot</artifactId>
-            <version>1.0.11</version>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots</artifactId>
+            <version>3.5</version>
         </dependency>
+
 
     </dependencies>
 

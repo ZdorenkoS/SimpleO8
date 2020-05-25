@@ -26,10 +26,6 @@ public class View implements Runnable{
     private StringBuilder stringBuilderFail = new StringBuilder();
     private Dispatcher dispatcher;
 
-
-
-// TODO отрисовка после создания О8 в ерп...
-
     public View()  {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = screenSize.width;
