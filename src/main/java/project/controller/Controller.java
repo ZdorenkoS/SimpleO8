@@ -100,10 +100,9 @@ public class Controller extends Thread{
             for (int i = 0; i < parts.size(); i++) {
                 String[] str = parts.get(i);
 
-
                 // создаем первый О8
                 if (i == 0) {
-                      o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
+                      o8s.add(new O8(str[0], str[1], str[2], str[3], str[4],str[str.length-1]));
                     try {
                         if (str.length > 10) o8s.get(0).setParcel(str[11]);              // может отсутствовать
                         if (str.length > 11) o8s.get(0).setDeferment(str[12]);           // может отсутствовать
@@ -123,7 +122,7 @@ public class Controller extends Thread{
                     }
                     // создаем новый О8
                     else {
-                        o8s.add(new O8(str[0], str[1], str[2], str[3], str[4]));
+                        o8s.add(new O8(str[0], str[1], str[2], str[3], str[4],str[str.length-1]));
                         x++;
                         try {
                             if (str.length > 10) o8s.get(x).setParcel(str[11]);
@@ -173,6 +172,7 @@ public class Controller extends Thread{
         if (o8s.size() <1) return "Пустой список О8";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < o8s.size() ; i++) {
+            sb.append(o8s.get(i).getInitialPerson() + " - ");
             sb.append(prop_names.getProperty(o8s.get(i).getSupplier()));
             sb.append("  ");
             DecimalFormat myFormatter = new DecimalFormat("###,###.##");

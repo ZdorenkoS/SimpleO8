@@ -17,6 +17,7 @@ public class O8 {
     private String deferment;                      // Отсрочка платежа
     private String date;                           // Дата прихода
     private String o8_number;                      // Номер О8 в ЕРП
+    private String initialPerson;                  // Инициатор
 
     private ArrayList<Goods> goods;
     private static Set STOP_SUPP;       // заблокированные поставщики
@@ -33,12 +34,13 @@ public class O8 {
     }
 
     public O8() {}
-    public O8(String stock, String delivery, String currency, String invoice, String supplier) {
+    public O8(String stock, String delivery, String currency, String invoice, String supplier, String person) {
         this.stock = stock;
         this.delivery = delivery;
         this.currency = currency;
         this.invoice = invoice;
         this.supplier = supplier;
+        initialPerson = person;
         goods = new ArrayList<>();
         parcel = "";
         deferment = "";
@@ -134,17 +136,16 @@ public class O8 {
             o8.invoice = o8.invoice.replaceAll("Замовлення покупця", "");
             o8.invoice = o8.invoice.replaceAll("Заказ покупателя", "");
             o8.invoice = o8.invoice.replaceAll("покупателю", "");
-            o8.invoice = o8.invoice.replace("Рахунок-фактура", "");
-            o8.invoice = o8.invoice.replace("Рахунок", "");
-            o8.invoice = o8.invoice.replace("РАХУНОК", "");
-            o8.invoice = o8.invoice.replace("по замовленню", "");
-            o8.invoice = o8.invoice.replace("за замовленням", "");
-            o8.invoice = o8.invoice.replace("Счет", "");
-            o8.invoice = o8.invoice.replace("Счёт", "");
-            o8.invoice = o8.invoice.replace("на оплату", "");
-            o8.invoice = o8.invoice.replace("на сплату", "");
-            o8.invoice = o8.invoice.replace(" ", "");
-            
+            o8.invoice = o8.invoice.replaceAll("Рахунок-фактура", "");
+            o8.invoice = o8.invoice.replaceAll("Рахунок", "");
+            o8.invoice = o8.invoice.replaceAll("РАХУНОК", "");
+            o8.invoice = o8.invoice.replaceAll("по замовленню", "");
+            o8.invoice = o8.invoice.replaceAll("за замовленням", "");
+            o8.invoice = o8.invoice.replaceAll("Счет", "");
+            o8.invoice = o8.invoice.replaceAll("Счёт", "");
+            o8.invoice = o8.invoice.replaceAll("на оплату", "");
+            o8.invoice = o8.invoice.replaceAll("на сплату", "");
+            o8.invoice = o8.invoice.replaceAll(" ", "");
 
             o8.supplier = o8.supplier.replaceAll(" ", "");
 
@@ -179,8 +180,9 @@ public class O8 {
 
             for (int i = 0; i <o8.goods.size() ; i++) {
                 if (!o8.goods.get(i).goodsValidate()) {
-                    o8Fail.add(o8);
-                    o8ToRemove.add(o8);
+                    o8.goods.remove(i);
+                   // o8Fail.add(o8);
+                   // o8ToRemove.add(o8);
                     break;
                 }
             }
@@ -292,6 +294,10 @@ public class O8 {
 
     public void setO8_number(String o8_number) {
         this.o8_number = o8_number;
+    }
+
+    public String getInitialPerson() {
+        return initialPerson;
     }
 
     @Override

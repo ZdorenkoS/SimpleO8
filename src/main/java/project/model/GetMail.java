@@ -1,5 +1,6 @@
 package project.model;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import project.utils.ConfigProperties;
 
@@ -78,9 +79,14 @@ public class GetMail {
        ArrayList<String> lines = new ArrayList<>();
         try {
             for (Message m : messages) {
-                System.out.println(getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@"));
-               s = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@")
-                        .replaceAll("P3001", "~#~3001")
+               String text = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@");
+               int begin = StringUtils.ordinalIndexOf(text," ",1)+1;
+               int end = StringUtils.ordinalIndexOf(text," ",3);
+               String from = text.substring(begin,end);
+               System.out.println(text);
+
+
+               s =  text.replaceAll("P3001", "~#~3001")
                         .replaceAll("Р3001", "~#~3001")
                         .replaceAll("M5005", "~#~5005")
                         .replaceAll("М5005", "~#~5005")
@@ -89,7 +95,13 @@ public class GetMail {
                         .replaceAll("@@@@", "## ##")
                         .replaceAll("@@", "##")
                         .replaceAll("@", "");
-                lines.addAll(Arrays.asList(s.split("~#~")));
+
+               ArrayList<String> temp = new ArrayList<>(Arrays.asList(s.split("~#~")));
+                for (String str : temp) {
+                    lines.add(str + from);
+                }
+
+
 
                 for (int i = lines.size() - 1; i >= 0; i--) {
                     if (lines.get(i).length() < 9) {lines.remove(i); continue;}
