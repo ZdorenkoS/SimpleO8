@@ -82,7 +82,7 @@ public class GetMail {
                String text = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@");
                int begin = StringUtils.ordinalIndexOf(text," ",1)+1;
                int end = StringUtils.ordinalIndexOf(text," ",3);
-               String from = text.substring(begin,end);
+               String from = text.substring(begin,end).replace("@Sent:","");
                System.out.println(text);
 
 
@@ -98,7 +98,11 @@ public class GetMail {
 
                ArrayList<String> temp = new ArrayList<>(Arrays.asList(s.split("~#~")));
                 for (String str : temp) {
-                    lines.add(str + from);
+                    if (StringUtils.countMatches(str, "##") > 15){
+                        lines.add(str.substring(0, StringUtils.ordinalIndexOf(str,"##",15)) + from);
+                    }
+                     else lines.add(str + from);
+
                 }
 
 
