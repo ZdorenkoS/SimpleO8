@@ -1,22 +1,17 @@
 package project;
 
 
-import com.google.inject.internal.cglib.proxy.$CallbackFilter;
+
 import org.apache.log4j.Logger;
 import project.controller.BrowserController;
 import project.controller.Controller;
-import project.utils.ConfigProperties;
 import project.view.View;
-
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
+
 
 public class Dispatcher implements Runnable{
     private final static Logger log;

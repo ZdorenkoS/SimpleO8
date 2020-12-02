@@ -21,15 +21,19 @@ public class O8 {
 
     private ArrayList<Goods> goods;
     private static Set STOP_SUPP;       // заблокированные поставщики
+    private static Set STOP_UKRCASTOM;       // заблокированные поставщики
 
     static {
         Properties prop = new Properties();
+        Properties prop2 = new Properties();
         try {
-            prop.load(new InputStreamReader(new FileInputStream("src/main/resources/stop_list.properties"),"cp1251"));}
+            prop.load(new InputStreamReader(new FileInputStream("src/main/resources/stop_list.properties"),"cp1251"));
+            prop2.load(new InputStreamReader(new FileInputStream("src/main/resources/ukrcastom.properties"),"cp1251"));}
         catch (IOException ex){
             System.out.println("Не удалось загрузить список запрещенных поставщиков");
         }
         STOP_SUPP = prop.keySet();
+        STOP_UKRCASTOM = prop2.keySet();
 
     }
 
@@ -98,12 +102,17 @@ public class O8 {
         O8 o8;
         while (iterator.hasNext()){
             o8 = iterator.next();
-            if (STOP_SUPP.contains(o8.supplier) && o8.currency.equalsIgnoreCase("БЕЗНАЛ")) {
+            if (STOP_SUPP.contains(o8.supplier)) {
                 System.out.println("ПОСТАВЩИК ЗАБЛОКИРОВАН - " + o8.supplier);
                 o8Fail.add(o8);
                 o8ToRemove.add(o8);
             }
 
+            if (STOP_UKRCASTOM.contains(o8.supplier) && o8.currency.equalsIgnoreCase("БЕЗНАЛ")) {
+                System.out.println("ПОСТАВЩИК ЗАБЛОКИРОВАН - " + o8.supplier);
+                o8Fail.add(o8);
+                o8ToRemove.add(o8);
+            }
 
             try {
                 Integer.parseInt(o8.supplier);
@@ -111,7 +120,6 @@ public class O8 {
                 if (o8.goods.isEmpty()) throw new NumberFormatException();
             }catch (NumberFormatException ex) {
                 System.out.println("НЕ ПРАВИЛЬНЫЙ СКЛАД - поставщик " + o8.supplier);
-                o8Fail.add(o8);
                 o8Fail.add(o8);
                 o8ToRemove.add(o8);
                 continue;
@@ -132,6 +140,8 @@ public class O8 {
             o8.invoice = o8.invoice.replaceAll("№", "");
             o8.invoice = o8.invoice.replaceAll("No", "");
             o8.invoice = o8.invoice.replaceAll("Видаткова накладна", "");
+            o8.invoice = o8.invoice.replaceAll("Счет-фактура", "");
+            o8.invoice = o8.invoice.replaceAll("Розрахунковий рахунок", "");
             o8.invoice = o8.invoice.replaceAll("Расходная накладная", "");
             o8.invoice = o8.invoice.replaceAll("Замовлення покупця", "");
             o8.invoice = o8.invoice.replaceAll("Заказ покупателя", "");
@@ -145,7 +155,9 @@ public class O8 {
             o8.invoice = o8.invoice.replaceAll("Счёт", "");
             o8.invoice = o8.invoice.replaceAll("на оплату", "");
             o8.invoice = o8.invoice.replaceAll("на сплату", "");
-            o8.invoice = o8.invoice.replaceAll(" ", "");
+            o8.invoice = o8.invoice.replaceAll("РН АЛЛО", "");
+            o8.invoice = o8.invoice.replaceAll("вхідний", "");
+            o8.invoice.trim();
 
             o8.supplier = o8.supplier.replaceAll(" ", "");
 
@@ -155,6 +167,7 @@ public class O8 {
             o8.setParcel(o8.parcel.replace("ТТН", ""));
             o8.setParcel(o8.parcel.replace("НП", ""));
             o8.setParcel(o8.parcel.replace(",00", ""));
+
              try{
               if (o8.parcel.substring(0,6).matches("^\\D*$") && o8.parcel.length()>1) o8.parcel = "";}
              catch (StringIndexOutOfBoundsException ex) { }

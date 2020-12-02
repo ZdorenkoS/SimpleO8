@@ -14,9 +14,7 @@ public class TelegramMessage {
         urlString = String.format(urlString, apiToken, chatId, text);
         URL url = new URL(urlString);
         url.openConnection().getInputStream();
-
-
     }
-    }
+}
 
 
