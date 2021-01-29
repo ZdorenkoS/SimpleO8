@@ -25,7 +25,7 @@ public class BrowserController extends Thread{
     public BrowserController() {}
     public BrowserController(browsr b) {
         if (b.equals(browsr.CHROME)){
-            System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
+            System.setProperty("chromedriver.chrome.driver", "C:\\Users\\zdore\\IdeaProjects\\SimpleO8");
             driver = new ChromeDriver();
 
         }
