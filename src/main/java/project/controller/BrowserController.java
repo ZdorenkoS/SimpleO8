@@ -25,9 +25,8 @@ public class BrowserController extends Thread{
     public BrowserController() {}
     public BrowserController(browsr b) {
         if (b.equals(browsr.CHROME)){
-            System.setProperty("chromedriver.chrome.driver", "C:\\Users\\zdore\\IdeaProjects\\SimpleO8");
+            System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
             driver = new ChromeDriver();
-
         }
         if (b.equals(browsr.FIREFOX)){
             FirefoxOptions options = new FirefoxOptions().setLegacy(true);
