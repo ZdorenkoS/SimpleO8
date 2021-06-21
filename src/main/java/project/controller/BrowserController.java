@@ -25,9 +25,8 @@ public class BrowserController extends Thread{
     public BrowserController() {}
     public BrowserController(browsr b) {
         if (b.equals(browsr.CHROME)){
-            System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
+            System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
             driver = new ChromeDriver();
-
         }
         if (b.equals(browsr.FIREFOX)){
             FirefoxOptions options = new FirefoxOptions().setLegacy(true);
@@ -35,8 +34,8 @@ public class BrowserController extends Thread{
             driver = new FirefoxDriver(options);
         }
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().window().setPosition(new Point(0,0));
         driver.manage().window().maximize();
         log.info("Браузер готов к работе");

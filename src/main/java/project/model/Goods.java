@@ -51,6 +51,7 @@ public class Goods {
         return Objects.hash(getSku(), getPrice());
     }
 
+    //TODO проверка скю больше 100 000
     public boolean goodsValidate(){
             if (sku.contains(" "))  sku = sku.replaceAll(" ", "");
             if (quantity.contains(" "))  quantity = quantity.replaceAll(" ", "");

@@ -68,8 +68,9 @@ public class GetMail {
         }
         finally {
             if (messages.size()==0) try {folder.close();}
-            catch (MessagingException e) {e.printStackTrace();}
-            catch (IllegalStateException e) {e.printStackTrace();}
+            catch (NullPointerException ex) {ex.printStackTrace();}
+            catch (MessagingException ex) {ex.printStackTrace();}
+            catch (IllegalStateException ex) {ex.printStackTrace();}
             return messages;
         }
     }
@@ -99,9 +100,9 @@ public class GetMail {
                ArrayList<String> temp = new ArrayList<>(Arrays.asList(s.split("~#~")));
                 for (String str : temp) {
                     if (StringUtils.countMatches(str, "##") > 15){
-                        lines.add(str.substring(0, StringUtils.ordinalIndexOf(str,"##",15)) + from);
+                        lines.add(str.substring(0, StringUtils.ordinalIndexOf(str,"##",15)) + "##" +from);
                     }
-                     else lines.add(str + from);
+                     else lines.add(str +  from);
 
                 }
 
