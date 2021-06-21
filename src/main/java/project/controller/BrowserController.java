@@ -105,7 +105,6 @@ public class BrowserController extends Thread{
         driver.findElement(By.id("hc_Find")).click();
         temp = new String();
 
-
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
         try {TimeUnit.SECONDS.sleep(2); } catch (InterruptedException e) {}
@@ -123,16 +122,16 @@ public class BrowserController extends Thread{
             driver.findElement(By.id("listOCL_2")).click();
             driver.switchTo().frame("e1menuAppIframe");
             driver.findElement(By.id("hc_Find")).click();
-        try{TimeUnit.SECONDS.sleep(5);}catch (InterruptedException e){}
+            try{TimeUnit.SECONDS.sleep(5);}catch (InterruptedException e){}
 
-        try {WebElement element = driver.findElement(By.id("GOTOLAST0_1"));
-            if (element.isDisplayed()) element.click();}
-        catch (Exception ex){}
-        driver.findElement(By.id("selectAll0_1")).click();
-        driver.findElement(By.xpath("(//div[@id='div']/font)[2]")).click();
-        driver.findElement(By.xpath("//table[@id='HE0_117']/tbody/tr/td[2]/span/nobr")).click();
-        driver.switchTo().parentFrame();
-        log.info("О8 созданы");
+            try {WebElement element = driver.findElement(By.id("GOTOLAST0_1"));
+                if (element.isDisplayed()) element.click();}
+            catch (Exception ex){}
+            driver.findElement(By.id("selectAll0_1")).click();
+            driver.findElement(By.xpath("(//div[@id='div']/font)[2]")).click();
+            driver.findElement(By.xpath("//table[@id='HE0_117']/tbody/tr/td[2]/span/nobr")).click();
+            driver.switchTo().parentFrame();
+            log.info("О8 созданы");
         }
         catch (Exception ex){}
     }

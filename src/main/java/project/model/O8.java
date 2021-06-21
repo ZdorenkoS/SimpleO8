@@ -30,7 +30,6 @@ public class O8 {
             System.out.println("Не удалось загрузить список запрещенных поставщиков");
         }
         STOP_SUPP = prop.keySet();
-
     }
 
     public O8() {}
