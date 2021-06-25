@@ -1,7 +1,6 @@
 package project;
 
 
-import org.apache.log4j.Logger;
 import project.controller.BrowserController;
 import project.controller.Controller;
 import project.view.View;
@@ -16,19 +15,12 @@ import java.net.URLEncoder;
 import java.util.Properties;
 
 public class Dispatcher implements Runnable {
-    private final static Logger log;
-
-    static {
-        log = Logger.getLogger(Dispatcher.class.getName());
-    }
-
     private volatile boolean isRunning;
     private Controller controller;
     private BrowserController browserController;
 
 
     public Dispatcher() {
-        log.info("Старт программы");
         isRunning = true;
         controller = new Controller();
         controller.getConnect();
@@ -46,7 +38,7 @@ public class Dispatcher implements Runnable {
             telegramNotify(ex.getMessage(), true);
             dispatcher.controller.disconnect();
             dispatcher.browserController.disconnect();
-            log.info("Конец работы программы");
+
         }
     }
 
@@ -67,7 +59,6 @@ public class Dispatcher implements Runnable {
 
                 } catch (Exception ex) {
                     try {
-                        log.debug(ex.getMessage() + ex.getCause());
                         browserController.disconnect();
                         browserController = new BrowserController(BrowserController.browsr.CHROME);
                         browserController.start();

@@ -1,7 +1,6 @@
 package project.model;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import project.utils.ConfigProperties;
 
 import javax.mail.*;
@@ -15,7 +14,6 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class GetMail {
-    private final static Logger log = Logger.getLogger(GetMail.class.getName());
     private Properties props;
     private Session session;
     private Store store;
@@ -29,18 +27,21 @@ public class GetMail {
         props.put("mail.imap.ssl.enable", "true");
         props.put("mail.imap.port", "IMAP_port");
         session = Session.getInstance(props);
-        try {store = session.getStore();} catch (NoSuchProviderException ex) {log.error("Сбой при попытке соединения с почтовым сервером", ex);}
+        try {
+            store = session.getStore();
+        } catch (NoSuchProviderException ex) {
+        }
 
     }
 
 
-
     public void connect() {
-        try {store.connect(ConfigProperties.getProperty("emailHost"), ConfigProperties.getProperty("emailUser"), ConfigProperties.getProperty("emailPassword"));
-             folder = store.getFolder("INBOX");
-            log.info("Соединение с почтовым сервером установлено");
+        try {
+            store.connect(ConfigProperties.getProperty("emailHost"), ConfigProperties.getProperty("emailUser"), ConfigProperties.getProperty("emailPassword"));
+            folder = store.getFolder("INBOX");
+
         } catch (MessagingException ex) {
-            log.error("Сбой при попытке доступа к папкам", ex);
+
         }
 
         supp = new Properties();
@@ -52,42 +53,45 @@ public class GetMail {
     }
 
 
-    public ArrayList<Message> getMessages(){
+    public ArrayList<Message> getMessages() {
         ArrayList<Message> messages = new ArrayList<Message>();
         try {
             folder.open(Folder.READ_WRITE);
             messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
-            if (messages.size()<1) {
-                log.info("Новых писем нет");
+            if (messages.size() < 1) {
+
+            } else {
             }
-            else {
-                log.info("Получено писем: " + messages.size());}
 
         } catch (MessagingException ex) {
-            log.info("Сбой при попытке доступа к папкам", ex);
-        }
-        finally {
-            if (messages.size()==0) try {folder.close();}
-            catch (NullPointerException ex) {ex.printStackTrace();}
-            catch (MessagingException ex) {ex.printStackTrace();}
-            catch (IllegalStateException ex) {ex.printStackTrace();}
+
+        } finally {
+            if (messages.size() == 0) try {
+                folder.close();
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+            } catch (MessagingException ex) {
+                ex.printStackTrace();
+            } catch (IllegalStateException ex) {
+                ex.printStackTrace();
+            }
             return messages;
         }
     }
 
-    public ArrayList<String> getLines (ArrayList<Message> messages){
+    public ArrayList<String> getLines(ArrayList<Message> messages) {
         String s = "";
-       ArrayList<String> lines = new ArrayList<>();
+        ArrayList<String> lines = new ArrayList<>();
         try {
             for (Message m : messages) {
-               String text = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@");
-               int begin = StringUtils.ordinalIndexOf(text," ",1)+1;
-               int end = StringUtils.ordinalIndexOf(text," ",3);
-               String from = text.substring(begin,end).replace("@Sent:","");
-               System.out.println(text);
+                String text = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@");
+                int begin = StringUtils.ordinalIndexOf(text, " ", 1) + 1;
+                int end = StringUtils.ordinalIndexOf(text, " ", 3);
+                String from = text.substring(begin, end).replace("@Sent:", "");
+                System.out.println(text);
 
 
-               s =  text.replaceAll("P3001", "~#~3001")
+                s = text.replaceAll("P3001", "~#~3001")
                         .replaceAll("Р3001", "~#~3001")
                         .replaceAll("M5005", "~#~5005")
                         .replaceAll("М5005", "~#~5005")
@@ -97,28 +101,33 @@ public class GetMail {
                         .replaceAll("@@", "##")
                         .replaceAll("@", "");
 
-               ArrayList<String> temp = new ArrayList<>(Arrays.asList(s.split("~#~")));
+                ArrayList<String> temp = new ArrayList<>(Arrays.asList(s.split("~#~")));
                 for (String str : temp) {
-                    if (StringUtils.countMatches(str, "##") > 15){
-                        lines.add(str.substring(0, StringUtils.ordinalIndexOf(str,"##",15)) + "##" +from);
-                    }
-                     else lines.add(str +  from);
+                    if (StringUtils.countMatches(str, "##") > 15) {
+                        lines.add(str.substring(0, StringUtils.ordinalIndexOf(str, "##", 15)) + "##" + from);
+                    } else lines.add(str + from);
 
                 }
 
 
-
                 for (int i = lines.size() - 1; i >= 0; i--) {
-                    if (lines.get(i).length() < 9) {lines.remove(i); continue;}
+                    if (lines.get(i).length() < 9) {
+                        lines.remove(i);
+                        continue;
+                    }
                     if (!(lines.get(i).startsWith("3001")) && !(lines.get(i).startsWith("5005"))) lines.remove(i);
 
                 }
             }
         } catch (MessagingException | IOException ex) {
-            log.info("Ошибка при парсинге строк", ex);
+
         }
-        log.info("Строки прочитаны");
-        try {folder.close();} catch (MessagingException e) {e.printStackTrace();}
+
+        try {
+            folder.close();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
         return lines;
     }
 
@@ -151,8 +160,11 @@ public class GetMail {
         return result;
     }
 
-       public void disconnect() {
-        try {store.close();} catch (MessagingException ex) {log.error("Сбой при закрытии коннекта", ex);}
+    public void disconnect() {
+        try {
+            store.close();
+        } catch (MessagingException ex) {
+        }
     }
 }
 
