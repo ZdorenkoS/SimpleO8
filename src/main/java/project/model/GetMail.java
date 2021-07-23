@@ -1,6 +1,7 @@
 package project.model;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import project.utils.ConfigProperties;
 
 import javax.mail.*;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class GetMail {
+    private final static Logger log = Logger.getLogger(GetMail.class.getName());
     private Properties props;
     private Session session;
     private Store store;
@@ -58,10 +60,11 @@ public class GetMail {
         try {
             folder.open(Folder.READ_WRITE);
             messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
-            if (messages.size() < 1) {
-
-            } else {
+            if (messages.size()<1) {
+                log.info("Новых писем нет");
             }
+            else {
+                log.info("Получено писем: " + messages.size());}
 
         } catch (MessagingException ex) {
 
@@ -95,7 +98,9 @@ public class GetMail {
                         .replaceAll("Р3001", "~#~3001")
                         .replaceAll("M5005", "~#~5005")
                         .replaceAll("М5005", "~#~5005")
-                        .replaceAll("W2149", "~#~W2149")
+                        .replaceAll("W2149", "~#~2149")
+                        .replaceAll("P2021", "~#~2021")
+                        .replaceAll("Р2021", "~#~2021")
                         .replaceAll("@@@@@@", "## ## ##")
                         .replaceAll("@@@@", "## ##")
                         .replaceAll("@@", "##")
@@ -115,8 +120,7 @@ public class GetMail {
                         lines.remove(i);
                         continue;
                     }
-                    if (!(lines.get(i).startsWith("3001")) && !(lines.get(i).startsWith("5005"))) lines.remove(i);
-
+                    if (lines.get(i).startsWith("##")) lines.remove(i);
                 }
             }
         } catch (MessagingException | IOException ex) {

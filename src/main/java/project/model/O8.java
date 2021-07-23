@@ -53,6 +53,8 @@ public class O8 {
                 sb.append(i + "\t");
                 if (stock.equals("3001")) sb.append("P3001\t");
                 if (stock.equals("5005")) sb.append("M5005\t");
+                if (stock.equals("2149")) sb.append("W2149\t");
+                if (stock.equals("2021")) sb.append("P2021\t");
                 if (currency.equalsIgnoreCase("БЕЗНАЛ")) sb.append("UAH\t");
                 else if (currency.equalsIgnoreCase("USD")) sb.append("USD\t");
                 else sb.append("UA2\t");
@@ -106,7 +108,7 @@ public class O8 {
 
             try {
                 Integer.parseInt(o8.supplier);
-                if (!o8.stock.equals("3001") && !o8.stock.equals("5005")) throw new NumberFormatException();
+                if (!o8.stock.equals("3001") && !o8.stock.equals("5005") && !o8.stock.equals("2149") && !o8.stock.equals("2021")) throw new NumberFormatException();
                 if (o8.goods.isEmpty()) throw new NumberFormatException();
             }catch (NumberFormatException ex) {
                 System.out.println("НЕ ПРАВИЛЬНЫЙ СКЛАД - поставщик " + o8.supplier);
