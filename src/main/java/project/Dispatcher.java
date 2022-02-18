@@ -24,7 +24,7 @@ public class Dispatcher implements Runnable {
         isRunning = true;
         controller = new Controller();
         controller.getConnect();
-        browserController = new BrowserController(BrowserController.browsr.CHROME);
+        browserController = new BrowserController(BrowserController.browsr.FIREFOX);
         browserController.start();
         controller.getView().setDispatcher(this);
     }
@@ -35,6 +35,7 @@ public class Dispatcher implements Runnable {
             dispatcher = new Dispatcher();
             new Thread(dispatcher).start();
         } catch (Exception ex) {
+            ex.printStackTrace();
             telegramNotify(ex.getMessage(), true);
             dispatcher.controller.disconnect();
             dispatcher.browserController.disconnect();

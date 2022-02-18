@@ -1,7 +1,6 @@
 package project.model;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import project.utils.ConfigProperties;
 
 import javax.mail.*;
@@ -15,7 +14,6 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class GetMail {
-    private final static Logger log = Logger.getLogger(GetMail.class.getName());
     private Properties props;
     private Session session;
     private Store store;
@@ -60,12 +58,6 @@ public class GetMail {
         try {
             folder.open(Folder.READ_WRITE);
             messages = new ArrayList<Message>(Arrays.asList(folder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false))));
-            if (messages.size()<1) {
-                log.info("Новых писем нет");
-            }
-            else {
-                log.info("Получено писем: " + messages.size());}
-
         } catch (MessagingException ex) {
 
         } finally {
@@ -90,7 +82,12 @@ public class GetMail {
                 String text = getTextFromMessage(m).replaceAll("(\\r\\n|\\r|\\n)", "@");
                 int begin = StringUtils.ordinalIndexOf(text, " ", 1) + 1;
                 int end = StringUtils.ordinalIndexOf(text, " ", 3);
-                String from = text.substring(begin, end).replace("@Sent:", "");
+                String from;
+                try {
+                    from = text.substring(begin, end).replace("@Sent:", "");
+                }catch (Exception e){
+                    from = "";
+                }
                 System.out.println(text);
 
 

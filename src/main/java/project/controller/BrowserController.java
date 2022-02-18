@@ -4,6 +4,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.Select;
 import project.utils.ConfigProperties;
@@ -23,11 +24,13 @@ public class BrowserController extends Thread {
 
     public BrowserController(browsr b) {
         if (b.equals(browsr.CHROME)) {
-            System.setProperty("chromedriver.chrome.driver", "G:\\Java project\\SimpleO8");
+            System.setProperty("chromedriver.chrome.driver", "D:\\Java project\\SimpleO8");
             driver = new ChromeDriver();
         }
         if (b.equals(browsr.FIREFOX)) {
-            FirefoxOptions options = new FirefoxOptions().setLegacy(true);
+            FirefoxOptions options = new FirefoxOptions();
+            //options.setHeadless(true);
+            System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
             System.setProperty("webdriver.firefox.driver", "G:\\Java project\\SimpleO8");
             driver = new FirefoxDriver(options);
         }
@@ -66,38 +69,39 @@ public class BrowserController extends Thread {
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Профиль задачи'])[23]/following::span[2]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Профиль задачи'])[26]/following::a[1]")).click();
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
         driver.switchTo().frame("e1menuAppIframe");
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_62']/tbody/tr/td[2]/span/nobr")).click();
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
         driver.switchTo().parentFrame();
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
         driver.findElement(By.id("listOCL_0")).click();
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
         driver.switchTo().frame("e1menuAppIframe");
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
         }
         driver.switchTo().frame(driver.findElement(By.className("wcFrame")));
         driver.findElement(By.id("tileDescription_7")).click();
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
         }
-        driver.switchTo().frame("e1menuAppIframe");
+//        driver.switchTo().frame("e1menuAppIframe");
+        driver.switchTo().parentFrame();
         driver.findElement(By.id("hc_Find")).click();
         driver.switchTo().parentFrame();
     }
@@ -105,25 +109,25 @@ public class BrowserController extends Thread {
     public void createO8() {
         driver.findElement(By.id("listOCL_1")).click();
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
         driver.switchTo().frame("e1menuAppIframe");
 
         try {
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
             }
             driver.findElement(By.id("C0_24")).click();
         } catch (org.openqa.selenium.NoSuchElementException ex) {
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
             }
             driver.findElement(By.id("C0_24")).click();
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
             }
         }
@@ -131,13 +135,13 @@ public class BrowserController extends Thread {
         driver.findElement(By.className("JSTextfield")).sendKeys(Keys.chord(Keys.CONTROL + "v"));
 
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
         driver.findElement(By.id("hc_OK")).click();
 
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
         driver.findElement(By.id("hc_Find")).click();
@@ -146,7 +150,7 @@ public class BrowserController extends Thread {
         driver.findElement(By.xpath("//div[@id='div']/font")).click();
         driver.findElement(By.xpath("//table[@id='HE0_26']/tbody/tr/td[2]/span/nobr")).click();
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
         }
 
